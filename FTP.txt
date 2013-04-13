@@ -1,0 +1,26 @@
+Link to the page.
+
+http://e-globallink.gr/
+http://e-globallink.gr/panel/
+
+CPanel:
++===================================+
+| New Account Info                  |
++===================================+
+| Domain: e-globallink.gr
+| Ip: 213.175.221.228 (n)
+| HasCgi: y
+| UserName: egloball
+| PassWord: egl-egl-
+| CpanelMod: x3
+| HomeRoot: /home
+| Quota: 200 Meg
+
+
+server:     ftp.e-globallink.gr
+username:   matrixrp@e-globallink.gr
+password:   we500$xn
+
+ADMIN:
+kouridakis@globallink.gr
+globalmaster
