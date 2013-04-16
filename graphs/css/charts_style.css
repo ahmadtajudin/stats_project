@@ -5,3 +5,6 @@
     Description:
         Purpose of the stylesheet follows.
 */
+.floatLeft{float:left;}
+.floatRight{float:right;}
+.clearBoth{clear:both;}

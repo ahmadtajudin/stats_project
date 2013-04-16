@@ -4,6 +4,7 @@
     {
         border:solid 1px #ff0000;
         position: relative;
+        background-color: #ffffff;
     }
     #charts__holder
     {

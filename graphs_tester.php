@@ -10,6 +10,12 @@ and open the template in the editor.
         
         <style>
             
+            body
+            {
+                background-color: #ff0000;
+                padding:0px;
+                margin:0px;
+            }
             #chart_html_template_test_holder
             {
                 border:solid 1px;

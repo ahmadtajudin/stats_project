@@ -24,3 +24,6 @@ password:   we500$xn
 ADMIN:
 kouridakis@globallink.gr
 globalmaster
+
+http://e-globallink.gr/csi/hyundai/login.php
+matrixrp/toreador@1
