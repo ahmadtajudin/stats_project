@@ -1,5 +1,8 @@
 <?php
-
+if(!isset($_SESSION))
+{
+    session_start();
+}
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -8,7 +11,12 @@ require_once 'settings.php';
 require_once 'db_details.php';
 require_once 'charts_data/data_moderator.php';
 require_once 'charts_data/chart_data.php';
+require_once 'user.php';
+require_once 'dealer.php';
+require_once 'chain.php';
+require_once 'area.php';
 
+CHART_User::init_logged_user();
 /*
  * Loading library for data passing to the charts.
  */

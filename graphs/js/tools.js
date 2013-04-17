@@ -227,7 +227,7 @@ function ChartTest()
     this.init
     (
             new Rectangle(0,0,900,700),
-            new Rectangle(30,30,770,400)
+            new Rectangle(100,170,770,400)
     );
     this.add_simple_horizontal_line("test_1");
     this.add_simple_horizontal_line("test_2");

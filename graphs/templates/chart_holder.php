@@ -66,6 +66,39 @@
 </style>
 
 <div id="chart_main_holder">
+    <div>ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ</div>
+    <div>
+        <div>
+            <div class="floatLeft">
+                <div>
+                    <div class="floatLeft">
+                        <img src="graphs/images/group_a_rectangle.jpg" />
+                    </div>
+                    <div class="floatLeft">
+                        <div>Αντιπρόσωποι:<b>Όλα</b></div>
+                        <div>Αλυσίδα:<b>Όλα</b></div>
+                        <div>Περιοχή:<b>Όλα</b></div>
+                        <div>Περίοδος:<b>Όλα</b></div>
+                    </div>
+                </div>
+            </div>
+            <div class="floatLeft">
+                <div>
+                    <div class="floatLeft">
+                        <img src="graphs/images/group_b_rectangle.jpg" />
+                    </div>
+                    <div class="floatLeft">
+                        <div>Αντιπρόσωποι:<b>Όλα</b></div>
+                        <div>Αλυσίδα:<b>Όλα</b></div>
+                        <div>Περιοχή:<b>Όλα</b></div>
+                        <div>Περίοδος:<b>Όλα</b></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearBoth"></div>
+        </div>
+        <div>"Τελευταία ενσωμάτωση δεδομένων: month.. year...." </div>
+    </div>
     <div id="charts__holder">
         <div class="holder">
             <div class="background"></div>
