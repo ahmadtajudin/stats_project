@@ -99,10 +99,32 @@ function ChartSimpleLineHorizontal(id_or_class_reference)
 }
 ChartSimpleLineHorizontal.prototype = new ChartLineBase();
 
-function SimpleLine_LeftRightQuestions()
+function SimpleLine_LeftRightQuestions(chart, position)
 {
+    this.position = position;
+    this.chart = chart;
     $("#chart_holder_lines").append( $("#template_simple_line_left_right_question").html() );
     this.line_holder = $("#chart_holder_lines").find( ".simple_line_left_right_question" ).last();
+    //var top_position = Math.random()*400;
+    $(this.line_holder).css("top", this.position.y+"px");
+    $($(this.line_holder).find(".line")).width( this.chart.chart_diagram_poz_size.w );
+    /*
+     * 
+     * @type ChartLineBase
+     * .simple_line_left_question
+     * .simple_line_right_question
+     */
+    this.init = function(above_valueA, under_valueA, above_valueB, under_valueB)
+    {
+        var percentA = above_valueA/under_valueA;
+        var percentB = above_valueB/under_valueB;
+        var widthA = this.chart.chart_diagram_poz_size.w*percentA;
+        var widthB = this.chart.chart_diagram_poz_size.w*percentB;
+        $($(this.line_holder).find(".simple_line_left_question .line_color_width")).stop().animate({width:widthA}, 500);
+        $($(this.line_holder).find(".simple_line_left_question")).css("color", "#ff0000");
+        $($(this.line_holder).find(".simple_line_right_question .line_color_width")).stop().animate({width:widthB}, 500);
+        $($(this.line_holder).find(".simple_line_right_question")).css("color", "#00ff00");
+    }
 }
 SimpleLine_LeftRightQuestions.prototype = new ChartLineBase();
 
@@ -112,10 +134,14 @@ function ChartBase()
      * 
      * Chart diagram coordinates, backgrounds, numbers, and rectangles variables
      */
-    this.chart_diagram_bg_parce_width = 70;
+    this.chart_diagram_bg_parce_width = function()
+    {
+        return (this.chart_diagram_poz_size.w/((this.chart_max_value-this.chart_min_value)/this.delta_plus))/2;
+    }
     this.chart_diagram_poz_size = null;
     this.chart_min_value = 0;
     this.chart_max_value = 2;
+    this.delta_plus = 0.1;
     this.coordinates_weight = 2;
     /*
      * 
@@ -123,40 +149,27 @@ function ChartBase()
      */
     this.chart_poz_size         = null;
     /*
-     * this.get_data will take the data from MySQL
-     * according to selected variables trought the filter
-     */
-    this.get_data = function()
-    {
-    }
-    
-    /*
-     * this.draw_background is function for drawing the background of the 
-     * chart.....
-     * this.draw_coordinates for drawing cordinates
-     */
-    this.draw_background = function()
-    {
-    }
-    this.draw_coordinates = function(rang_from, rang_to, rang_delta_plus)
-    {
-    }
-    /*
      * this.init
      * 1.Init all chart, labels and results objects
      * 2.Init position of the chart, coordinates, background and lines
      */
-    this.init = function(chart_poz_size, chart_diagram_poz_size)
+    this.init = function(range, chart_poz_size, chart_diagram_poz_size)
     {
+        this.chart_min_value = range.chart_min_value;
+        this.chart_max_value = range.chart_max_value;
+        this.delta_plus = range.delta_plus;
+        this.data_type_chart = range.data_type_chart;
         this.chart_poz_size = chart_poz_size;
         this.chart_diagram_poz_size = chart_diagram_poz_size;
-        ResizerPozicioner.resize("#chart_main_holder", this.chart_poz_size);
+        //ResizerPozicioner.resize("#chart_main_holder", this.chart_poz_size);
+        //$("#chart_main_holder").width( this.chart_poz_size.w );
+        $("#chart_main_holder").height( this.chart_poz_size.h );
         ResizerPozicioner.resize_pozicion("#charts__holder", this.chart_diagram_poz_size);
-        ResizerPozicioner.resize("#chart_holder_lines", this.chart_diagram_poz_size);
+        ResizerPozicioner.resize("#chart_lines", this.chart_diagram_poz_size);
         this.draw_the_background();
         this.draw_the_coordinates();
     }
-    this.count_bg_parcinja = function(){return Math.floor(this.chart_diagram_poz_size.w/this.chart_diagram_bg_parce_width);}
+    this.count_bg_parcinja = function(){return Math.floor(this.chart_diagram_poz_size.w/this.chart_diagram_bg_parce_width());}
     this.draw_the_background = function()
     {
         $("charts__holder .background").html();
@@ -173,19 +186,19 @@ function ChartBase()
             if(i==this.count_bg_parcinja()-1)
             $($("#charts__holder .background").find(".chart_bg_parce").last()).width
             (
-                    this.chart_diagram_bg_parce_width 
+                    this.chart_diagram_bg_parce_width()
                     +
-                    this.chart_diagram_poz_size.w-this.count_bg_parcinja()*this.chart_diagram_bg_parce_width
+                    this.chart_diagram_poz_size.w-this.count_bg_parcinja()*this.chart_diagram_bg_parce_width()
             );
             else
-            $($("#charts__holder .background").find(".chart_bg_parce").last()).width(this.chart_diagram_bg_parce_width);
+            $($("#charts__holder .background").find(".chart_bg_parce").last()).width(this.chart_diagram_bg_parce_width());
             $($("#charts__holder .background").find(".chart_bg_parce").last()).height(this.chart_diagram_poz_size.h);
         }
     }
     this.draw_the_coordinates = function()
     {
         var delta_cordinate_out = 5;
-        var delta_values_plus = (this.chart_max_value-this.chart_min_value)/(Math.floor(this.count_bg_parcinja()/2)), 
+        //var delta_values_plus = (this.chart_max_value-this.chart_min_value)/(Math.floor(this.count_bg_parcinja()/2)), 
         values_to_x_coordinate=this.chart_min_value;
         $(".coordinate_x").width( this.chart_diagram_poz_size.w+delta_cordinate_out );
         $(".coordinate_x").height( this.coordinates_weight );
@@ -193,17 +206,17 @@ function ChartBase()
         $(".coordinate_y").height( this.chart_diagram_poz_size.h+delta_cordinate_out );
         ResizerPozicioner.pozicion( ".coordinate_x", new Point(-1*delta_cordinate_out, this.chart_diagram_poz_size.h) );
         ResizerPozicioner.pozicion( ".coordinate_y", new Point(0, 0) );
-        for(var i=0;i<this.count_bg_parcinja();i+=2)
+        for(var i=0;i<=this.count_bg_parcinja();i+=2)
         {
             $("#charts__holder .holder").append( $("#chart_coordinates_numbers_template").html() );
             var last_dash_number_coordinate = $("#charts__holder .holder").find(".chart_coordinates_numbers").last();
             $(last_dash_number_coordinate).find(".number").html( values_to_x_coordinate );
             $(last_dash_number_coordinate).find(".dash").height( delta_cordinate_out );
             $(last_dash_number_coordinate).find(".dash").width(this.coordinates_weight);
-            var left_position = i*this.chart_diagram_bg_parce_width-$(last_dash_number_coordinate).width()/2;
+            var left_position = i*this.chart_diagram_bg_parce_width()-$(last_dash_number_coordinate).width()/2;
             $(last_dash_number_coordinate).css("left", left_position+"px");
             $(last_dash_number_coordinate).css("top", this.chart_diagram_poz_size.h+"px");
-            values_to_x_coordinate += delta_values_plus;
+            values_to_x_coordinate += this.delta_plus;
         }
     }
     /*
@@ -220,6 +233,56 @@ function ChartBase()
     {
         this.simple_horizontal_lines_reference.push( new ChartSimpleLineHorizontal( id_line ) );
     }
+    /*
+     * 
+     * @returns {undefined}
+     * Functions for adding x2, group A,B lines.
+     */
+    this.simple_left_right_questions_lines_reference = [];
+    this.add_simple_left_right_questions_line = function( position )
+    {
+        var new_line = new SimpleLine_LeftRightQuestions( this, position );
+        this.simple_left_right_questions_lines_reference.push( new_line );
+        return new_line;
+    }
+    
+    
+    /*
+     * 
+     * this.data_type_chart will be variable
+     * that will sent to server, and acording to that variable will load the data for the 
+     * chart
+     */
+    this.data_type_chart = "undefined";
+    this.data_xml = null;
+    this.load_data = function()
+    {
+        var object_data = {};
+        object_data[this.data_type_chart] = "Yes i will do this without a problem.:).";
+        FiltersModerator.FM.add_variables_to_object( object_data );
+        $.post("graphs/php/tools.php", object_data, 
+        function(data)
+        {
+            console.log(data);
+            ChartModerator.CHART.data_xml = $.parseXML( data );
+            ChartModerator.CHART.show_data_to_diagram(  );
+        });
+    }
+    /*
+     * 
+     * @returns {undefined}
+     * Get quantity and total quantity from this.data_xml, by data table MySQL column
+     */
+    this.get_quantity = function(column_name, data_type_A_or_B)
+    {
+        var quantity_xml = $($(this.data_xml).find("group_"+data_type_A_or_B+"_data")).find("quantity").get(0);
+        return parseFloat( $(quantity_xml).find("quantity").find(column_name).text() );
+    }
+    this.get_quantity_total = function(column_name, data_type_A_or_B)
+    {
+        var quantity_xml = $($(this.data_xml).find("group_"+data_type_A_or_B+"_data")).find("quantity").get(0);
+        return parseFloat( $(quantity_xml).find("quantity_total").find(column_name).text() ); 
+    }
 }
 
 function ChartTest()
@@ -227,13 +290,43 @@ function ChartTest()
     this.init
     (
             new Rectangle(0,0,900,700),
-            new Rectangle(100,170,770,400)
+            new Rectangle(140,170,665,314)
     );
     this.add_simple_horizontal_line("test_1");
     this.add_simple_horizontal_line("test_2");
     this.add_simple_horizontal_line("test_3");
 }
 ChartTest.prototype = new ChartBase();
+
+/*
+ * ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ 
+ * Reason to visit
+ * data holder charts_moderator/reason_to_visit.php
+ */
+function Chart__ReasonToVisit()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"ReasonToVisit"},
+            new Rectangle(0,0,900,550),
+            new Rectangle(140,170,665,314)
+    );
+    this.q6_1 = this.add_simple_left_right_questions_line( new Point(0, 55) );
+    this.q6_2 = this.add_simple_left_right_questions_line( new Point(0, 160) );
+    this.q6_3 = this.add_simple_left_right_questions_line( new Point(0, 265) );
+    
+    this.show_data_to_diagram = function(  )
+    {
+        //var xml_data = 
+        this.q6_1.init( this.get_quantity("q6_1", "A"), this.get_quantity_total("q6_1", "A"), 
+                        this.get_quantity("q6_1", "B"), this.get_quantity_total("q6_1", "B") );
+        this.q6_2.init( this.get_quantity("q6_2", "A"), this.get_quantity_total("q6_2", "A"), 
+                        this.get_quantity("q6_2", "B"), this.get_quantity_total("q6_2", "B") );
+        this.q6_3.init( this.get_quantity("q6_3", "A"), this.get_quantity_total("q6_3", "A"), 
+                        this.get_quantity("q6_3", "B"), this.get_quantity_total("q6_3", "B") );
+    }
+}
+Chart__ReasonToVisit.prototype = new ChartBase();
 
 
 function ChartModerator(){}

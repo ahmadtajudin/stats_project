@@ -45,5 +45,6 @@ require_once 'templates/filters.php';
 ?>
 </div>
 <script>
-    ChartModerator.CHART = new ChartTest();
+    //ChartModerator.CHART = new ChartTest();
+    ChartModerator.CHART = new Chart__ReasonToVisit();
 </script>

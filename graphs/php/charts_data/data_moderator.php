@@ -6,6 +6,8 @@
  */
 class DataModerator
 {
+    protected $data_xml_total = "";
+
     public function DataModerator()
     {
     } 

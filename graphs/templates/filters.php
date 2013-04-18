@@ -84,8 +84,8 @@ class ChartFilters
                 </div>
                 <div class="floatLeft">
                     <div>
-                        <select id="dealers_options" class="filter_global_select">
-                            <option value="0">Όλα</option>
+                        <select <?php $this->add_name_id("dealers_options", $filter_type); ?> class="filter_global_select">
+                            <option value="-1">Όλα</option>
                             <?php
                             if($filter_type == self::GROUP_A)
                             {
@@ -107,8 +107,8 @@ class ChartFilters
                         </select>
                     </div>
                     <div>
-                        <select id="chains_options" class="filter_global_select">
-                            <option value="0">Όλα</option>
+                        <select <?php $this->add_name_id("chains_options", $filter_type); ?> class="filter_global_select">
+                            <option value="-1">Όλα</option>
                             <?php
                             if($filter_type == self::GROUP_A)
                             {
@@ -130,8 +130,8 @@ class ChartFilters
                         </select>
                     </div>
                     <div>
-                        <select id="areas_options" class="filter_global_select">
-                            <option value="0">Όλα</option>
+                        <select <?php $this->add_name_id("areas_options", $filter_type); ?> class="filter_global_select">
+                            <option value="-1">Όλα</option>
                             <?php
                             if($filter_type == self::GROUP_A)
                             {
@@ -153,8 +153,8 @@ class ChartFilters
                         </select>
                     </div>
                     <div>
-                        <select id="years_options" class="filter_global_select">
-                            <option value="0">Όλα</option>
+                        <select <?php $this->add_name_id("years_options", $filter_type); ?> class="filter_global_select">
+                            <option value="-1">Όλα</option>
                             <?php
                             for($i=0;$i<count(ChartData::$all_years);$i++)
                             {
@@ -166,8 +166,8 @@ class ChartFilters
                             }
                             ?>
                         </select>
-                        <select id="months_periods_options" class="filter_global_select">
-                            <option value="0">Όλα</option>
+                        <select <?php $this->add_name_id("months_periods_options", $filter_type); ?> class="filter_global_select">
+                            <option value="-1">Όλα</option>
                             <?php
                             for($i=0;$i<count(ChartData::$all_months_periods);$i++)
                             {
@@ -199,6 +199,10 @@ class ChartFilters
         </div>
         <?php
     }
+    private function add_name_id($name_form, $filter_type)
+    {
+        print 'id="'.$name_form.'__'.$filter_type.'" name="'.$name_form.'__'.$filter_type.'"';
+    }
 }
 ChartFilters::$FILTER = new ChartFilters();
 ?>
@@ -227,11 +231,28 @@ function FiltersModerator()
     {
         $(".filter_global_select").prop("selectedIndex", 0);
     }
+    
+    /*
+     * It is adding all variables from #charts_filter_holder, to object
+     * and that object pass data to server
+     */
+    this.add_variables_to_object = function(object_ref)
+    {
+        for(var i=0;i<$("#charts_filter_holder").find("select").length;i++)
+        {
+            var select = $("#charts_filter_holder").find("select").get(i);
+            object_ref[$(select).attr("name")] = $(select).val();
+        }
+    }
 }
 FiltersModerator.FM = new FiltersModerator();
 
 $("#reset_button").click(function(e)
 {
     FiltersModerator.FM.reset();
+});
+$(".filter_global_select").change(function(e)
+{
+    ChartModerator.CHART.load_data(e);
 });
 </script>

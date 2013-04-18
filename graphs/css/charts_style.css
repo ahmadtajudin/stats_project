@@ -8,3 +8,6 @@
 .floatLeft{float:left;}
 .floatRight{float:right;}
 .clearBoth{clear:both;}
+
+.posAbs{position:absolute;}
+.posRel{position:relative;}
