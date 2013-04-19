@@ -22,11 +22,12 @@ class CHART_Dealer
      */
     public static $dealers_list_for_using;
     
-    public $id, $dealer_name, $chain;
+    public $id, $dealer_code, $dealer_name, $chain;
     
     public function  CHART_Dealer($row____data)
     {
         $this->id = $row____data["id"];
+        $this->dealer_code = $row____data["dealer_code"];
         $this->dealer_name = $row____data["dealer_name"];
         $this->chain = $row____data["chain"];
     }

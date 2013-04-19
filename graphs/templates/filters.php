@@ -49,10 +49,12 @@ class ChartFilters
                     }
                     ?>
                 </div>
+                <?php if($filter_type == self::GROUP_B){ ?>
                 <div class="floatLeft">
-                    Ενεργοποίηση <input type="radio" />
-                    Απενεργοποίηση σύγκρισης <input type="radio" />
+                    Ενεργοποίηση <input value="1" name="show_or_hider_line_B" class="show_or_hider_line_B" type="radio" />
+                    Απενεργοποίηση σύγκρισης <input value="0" name="show_or_hider_line_B" class="show_or_hider_line_B" type="radio" />
                 </div>
+                <?php } ?>
                 <div class="clearBoth"></div>
             </div>
             
@@ -100,7 +102,7 @@ class ChartFilters
                                 {
                                     $dealer = new CHART_Dealer(CHART_Dealer::$dealers_list_for_using[$i]);
                             ?>
-                            <option value="<?php print $dealer->id; ?>"><?php print $dealer->dealer_name; ?></option>
+                            <option value="<?php print $dealer->dealer_code; ?>"><?php print $dealer->dealer_name; ?></option>
                             <?php
                                 }
                             ?>
@@ -254,5 +256,9 @@ $("#reset_button").click(function(e)
 $(".filter_global_select").change(function(e)
 {
     ChartModerator.CHART.load_data(e);
+});
+$(".show_or_hider_line_B").click(function(e)
+{
+    ChartModerator.CHART.set_visibility_line_B();
 });
 </script>

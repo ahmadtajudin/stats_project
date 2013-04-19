@@ -105,6 +105,8 @@ function SimpleLine_LeftRightQuestions(chart, position)
     this.chart = chart;
     $("#chart_holder_lines").append( $("#template_simple_line_left_right_question").html() );
     this.line_holder = $("#chart_holder_lines").find( ".simple_line_left_right_question" ).last();
+    this.simple_line_left_question = $(this.line_holder).find(".simple_line_left_question").get(0);
+    this.simple_line_right_question = $(this.line_holder).find(".simple_line_right_question").get(0);
     //var top_position = Math.random()*400;
     $(this.line_holder).css("top", this.position.y+"px");
     $($(this.line_holder).find(".line")).width( this.chart.chart_diagram_poz_size.w );
@@ -116,14 +118,33 @@ function SimpleLine_LeftRightQuestions(chart, position)
      */
     this.init = function(above_valueA, under_valueA, above_valueB, under_valueB)
     {
+        if(under_valueA == 0){above_valueA=0;under_valueA=1;}
+        if(under_valueB == 0){above_valueB=0;under_valueB=1;}
         var percentA = above_valueA/under_valueA;
         var percentB = above_valueB/under_valueB;
         var widthA = this.chart.chart_diagram_poz_size.w*percentA;
         var widthB = this.chart.chart_diagram_poz_size.w*percentB;
         $($(this.line_holder).find(".simple_line_left_question .line_color_width")).stop().animate({width:widthA}, 500);
-        $($(this.line_holder).find(".simple_line_left_question")).css("color", "#ff0000");
+        //$($(this.line_holder).find(".simple_line_left_question")).css("color", "#ff0000");
         $($(this.line_holder).find(".simple_line_right_question .line_color_width")).stop().animate({width:widthB}, 500);
-        $($(this.line_holder).find(".simple_line_right_question")).css("color", "#00ff00");
+        //$($(this.line_holder).find(".simple_line_right_question")).css("color", "#00ff00");
+    }
+    this.set_visibility_line_B = function()
+    {
+        var top_position = $(this.simple_line_left_question).height();
+        var top_position_minus = top_position*-1;
+        var top_position_minus_vrz_dva = -1*top_position/2;
+        this.right_question_is_availble = !this.right_question_is_availble;
+        if(this.right_question_is_availble)
+        {
+            $(this.simple_line_left_question).stop().animate({top:top_position_minus+"px"}, 500);
+            $(this.simple_line_right_question).stop().animate({opacity:1, top:"0px"}, 500);
+        }
+        else
+        {
+            $(this.simple_line_left_question).stop().animate({top:top_position_minus_vrz_dva+"px"}, 500);
+            $(this.simple_line_right_question).stop().animate({opacity:0, top:top_position_minus_vrz_dva+"px"}, 500); 
+        }
     }
 }
 SimpleLine_LeftRightQuestions.prototype = new ChartLineBase();
@@ -219,6 +240,14 @@ function ChartBase()
             values_to_x_coordinate += this.delta_plus;
         }
     }
+    
+    /*
+     * 
+     * @type Array
+     * Refference to all lines for the charts.
+     */
+    this.lines = [];
+    
     /*
      * This function is for init line in y position, in height
      * And that line will be using in future for showing the result 
@@ -228,21 +257,19 @@ function ChartBase()
      * an array.With for loop should setup the results.
      * On start they will have value 0
      */
-    this.simple_horizontal_lines_reference = [];
     this.add_simple_horizontal_line = function(id_line)
     {
-        this.simple_horizontal_lines_reference.push( new ChartSimpleLineHorizontal( id_line ) );
+        this.lines.push( new ChartSimpleLineHorizontal( id_line ) );
     }
     /*
      * 
      * @returns {undefined}
      * Functions for adding x2, group A,B lines.
      */
-    this.simple_left_right_questions_lines_reference = [];
     this.add_simple_left_right_questions_line = function( position )
     {
         var new_line = new SimpleLine_LeftRightQuestions( this, position );
-        this.simple_left_right_questions_lines_reference.push( new_line );
+        this.lines.push( new_line );
         return new_line;
     }
     
@@ -282,6 +309,19 @@ function ChartBase()
     {
         var quantity_xml = $($(this.data_xml).find("group_"+data_type_A_or_B+"_data")).find("quantity").get(0);
         return parseFloat( $(quantity_xml).find("quantity_total").find(column_name).text() ); 
+    }
+    
+    /*
+     * 
+     * @returns {undefined}
+     * Rigth line visible or not visible.
+     */
+    this.set_visibility_line_B = function()
+    {
+        for(var i=0;i<this.lines.length;i++)
+        {
+            this.lines[i].set_visibility_line_B();
+        }
     }
 }
 

@@ -105,6 +105,7 @@ class ChartData extends DataModerator
     {
         $sql_select_quantity_total = "SELECT COUNT(".$column_variable.") AS ___COUNT___ FROM data WHERE ".
                 $this->area_year_month_dealercode_chain__SQL_condition;
+        //print "[".$sql_select_quantity_total."]";
         $quantity = DB_DETAILS::ADD_ACTION($sql_select_quantity_total, DB_DETAILS::$TYPE_SELECT);
         return "<".$column_variable.">".$quantity[0]["___COUNT___"]."</".$column_variable.">";
     }
