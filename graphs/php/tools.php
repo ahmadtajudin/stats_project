@@ -15,6 +15,8 @@ require_once 'user.php';
 require_once 'dealer.php';
 require_once 'chain.php';
 require_once 'area.php';
+require_once 'month.php';
+require_once 'year.php';
 
 CHART_User::init_logged_user();
 /*

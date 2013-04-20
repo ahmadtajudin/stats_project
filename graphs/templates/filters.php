@@ -31,28 +31,28 @@ class ChartFilters
     public function filter($filter_type)
     {
         ?>
-        <div class="floatLeft">
+        <div class="floatLeft <?php if($filter_type==self::GROUP_B)print "marginLeft50px"; ?>">
             <div>
-                <div class="floatLeft">
+                
                     <?php
                     if($filter_type == self::GROUP_A)
                     {
                         ?>
-                    Group A
+                <div class="floatLeft color_orange"><b>Group A</b></div>
                     <?php
                     }
                     else
                     {
                         ?>
-                    Group B
+                <div class="floatLeft color_blue"><b>Group B</b></div>
                     <?php
                     }
                     ?>
-                </div>
+                
                 <?php if($filter_type == self::GROUP_B){ ?>
-                <div class="floatLeft">
+                <div class="floatLeft marginLeft50px">
                     Ενεργοποίηση <input value="1" name="show_or_hider_line_B" class="show_or_hider_line_B" type="radio" />
-                    Απενεργοποίηση σύγκρισης <input value="0" name="show_or_hider_line_B" class="show_or_hider_line_B" type="radio" />
+                    Απενεργοποίηση σύγκρισης <input value="0" name="show_or_hider_line_B" class="show_or_hider_line_B" type="radio" checked="checked" />
                 </div>
                 <?php } ?>
                 <div class="clearBoth"></div>

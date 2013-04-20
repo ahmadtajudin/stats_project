@@ -41,7 +41,7 @@ function ChartLineBase()
      * in another case should be invisible
      * @type Boolean
      */
-    this.right_question_is_availble = true;
+    this.right_question_is_visible = function(){return $("input[name=show_or_hider_line_B]:checked").val()=="1";}
     /*
      * this.id_or_class_reference should have each object
      * children of this class.this.id_or_class_reference is #+the id of the created div.
@@ -99,7 +99,7 @@ function ChartSimpleLineHorizontal(id_or_class_reference)
 }
 ChartSimpleLineHorizontal.prototype = new ChartLineBase();
 
-function SimpleLine_LeftRightQuestions(chart, position)
+function SimpleLine_LeftRightQuestions(chart, position, label_txt)
 {
     this.position = position;
     this.chart = chart;
@@ -107,9 +107,14 @@ function SimpleLine_LeftRightQuestions(chart, position)
     this.line_holder = $("#chart_holder_lines").find( ".simple_line_left_right_question" ).last();
     this.simple_line_left_question = $(this.line_holder).find(".simple_line_left_question").get(0);
     this.simple_line_right_question = $(this.line_holder).find(".simple_line_right_question").get(0);
+    this.line_percent_left = $(this.simple_line_left_question).find(".line_percent").get(0);
+    this.line_percent_right = $(this.simple_line_right_question).find(".line_percent").get(0);
     //var top_position = Math.random()*400;
     $(this.line_holder).css("top", this.position.y+"px");
     $($(this.line_holder).find(".line")).width( this.chart.chart_diagram_poz_size.w );
+    $(this.line_holder).find(".label").html( label_txt );
+    var label_top_position = -1*$(this.line_holder).find(".label").height()/2;
+    $(this.line_holder).find(".label").css("top", label_top_position+"px");
     /*
      * 
      * @type ChartLineBase
@@ -121,30 +126,52 @@ function SimpleLine_LeftRightQuestions(chart, position)
         if(under_valueA == 0){above_valueA=0;under_valueA=1;}
         if(under_valueB == 0){above_valueB=0;under_valueB=1;}
         var percentA = above_valueA/under_valueA;
+        var percentA100 = Math.round( percentA*100 );
         var percentB = above_valueB/under_valueB;
+        var percentB100 = Math.round( percentB*100 );
         var widthA = this.chart.chart_diagram_poz_size.w*percentA;
         var widthB = this.chart.chart_diagram_poz_size.w*percentB;
         $($(this.line_holder).find(".simple_line_left_question .line_color_width")).stop().animate({width:widthA}, 500);
         //$($(this.line_holder).find(".simple_line_left_question")).css("color", "#ff0000");
         $($(this.line_holder).find(".simple_line_right_question .line_color_width")).stop().animate({width:widthB}, 500);
         //$($(this.line_holder).find(".simple_line_right_question")).css("color", "#00ff00");
+        $(this.line_percent_left).html( percentA100+"%" );
+        $(this.line_percent_right).html( percentB100+"%" );
     }
     this.set_visibility_line_B = function()
     {
         var top_position = $(this.simple_line_left_question).height();
         var top_position_minus = top_position*-1;
         var top_position_minus_vrz_dva = -1*top_position/2;
-        this.right_question_is_availble = !this.right_question_is_availble;
-        if(this.right_question_is_availble)
+        if(this.right_question_is_visible())
         {
+            $(this.simple_line_right_question).removeClass("displayNone");
             $(this.simple_line_left_question).stop().animate({top:top_position_minus+"px"}, 500);
             $(this.simple_line_right_question).stop().animate({opacity:1, top:"0px"}, 500);
+            $("#chart_left_right_data_filter_above_the_cahrt_info_right").stop().animate({opacity:1}, 500);
         }
         else
         {
             $(this.simple_line_left_question).stop().animate({top:top_position_minus_vrz_dva+"px"}, 500);
-            $(this.simple_line_right_question).stop().animate({opacity:0, top:top_position_minus_vrz_dva+"px"}, 500); 
+            $(this.simple_line_right_question).stop().animate({opacity:0, top:top_position_minus_vrz_dva+"px"}, 500, function(e)
+            {
+                $(this).addClass("displayNone");
+            }); 
+            $("#chart_left_right_data_filter_above_the_cahrt_info_right").stop().animate({opacity:0}, 500);
         }
+    }
+    if(!this.right_question_is_visible())
+    {
+        var top_position = $(this.simple_line_left_question).height();
+        var top_position_minus = top_position*-1;
+        var top_position_minus_vrz_dva = -1*top_position/2;
+        $($(this.simple_line_left_question).find(".line_color_width").get(0)).width(0);
+        $($(this.simple_line_right_question).find(".line_color_width").get(0)).width(0);
+        $(this.simple_line_left_question).css("top", top_position_minus_vrz_dva+"px");
+        $(this.simple_line_right_question).css("top", top_position_minus_vrz_dva+"px");
+        $(this.simple_line_right_question).css("opacity", 0);
+        $(this.line_percent_left).html( "" );
+        $(this.line_percent_right).html( "" );
     }
 }
 SimpleLine_LeftRightQuestions.prototype = new ChartLineBase();
@@ -266,9 +293,9 @@ function ChartBase()
      * @returns {undefined}
      * Functions for adding x2, group A,B lines.
      */
-    this.add_simple_left_right_questions_line = function( position )
+    this.add_simple_left_right_questions_line = function( position, label_txt )
     {
-        var new_line = new SimpleLine_LeftRightQuestions( this, position );
+        var new_line = new SimpleLine_LeftRightQuestions( this, position, label_txt );
         this.lines.push( new_line );
         return new_line;
     }
@@ -351,9 +378,9 @@ function Chart__ReasonToVisit()
             new Rectangle(0,0,900,550),
             new Rectangle(140,170,665,314)
     );
-    this.q6_1 = this.add_simple_left_right_questions_line( new Point(0, 55) );
-    this.q6_2 = this.add_simple_left_right_questions_line( new Point(0, 160) );
-    this.q6_3 = this.add_simple_left_right_questions_line( new Point(0, 265) );
+    this.q6_1 = this.add_simple_left_right_questions_line( new Point(0, 55), "Service" );
+    this.q6_2 = this.add_simple_left_right_questions_line( new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς");
+    this.q6_3 = this.add_simple_left_right_questions_line( new Point(0, 265), "Επισκευή εντός εγγύησης" );
     
     this.show_data_to_diagram = function(  )
     {

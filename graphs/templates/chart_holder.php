@@ -63,7 +63,9 @@
         /*
         border:solid 1px #ff0000;
         */
+        /*
         overflow: hidden;
+        */
     }
     #chart_holder_lines
     {
@@ -74,18 +76,40 @@
         background-color:#00ff00;height: 30px; width: 200px; margin-top: 30px;
     }
     
+    #chart_top_left_title
+    {
+        position:absolute;
+        left:20px;
+        top:20px;
+    }
+    #chart_left_right_data_filter_above_the_cahrt
+    {
+        position:absolute;
+        left:180px;
+        top:50px;
+    }
+    #chart_left_right_data_filter_above_the_cahrt__date_info
+    {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    .marginLeft50px
+    {
+        margin-left: 50px;
+    }
+    
 </style>
 
 <div id="chart_main_holder">
-    <div>ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ</div>
-    <div>
+    <div id="chart_top_left_title">ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ</div>
+    <div id="chart_left_right_data_filter_above_the_cahrt">
         <div>
-            <div class="floatLeft">
+            <div id="chart_left_right_data_filter_above_the_cahrt_info_left" class="floatLeft">
                 <div>
                     <div class="floatLeft">
                         <img src="graphs/images/group_a_rectangle.jpg" />
                     </div>
-                    <div class="floatLeft">
+                    <div class="floatLeft color_orange">
                         <div>Αντιπρόσωποι:<b>Όλα</b></div>
                         <div>Αλυσίδα:<b>Όλα</b></div>
                         <div>Περιοχή:<b>Όλα</b></div>
@@ -93,12 +117,12 @@
                     </div>
                 </div>
             </div>
-            <div class="floatLeft">
+            <div id="chart_left_right_data_filter_above_the_cahrt_info_right" class="floatLeft marginLeft50px">
                 <div>
                     <div class="floatLeft">
                         <img src="graphs/images/group_b_rectangle.jpg" />
                     </div>
-                    <div class="floatLeft">
+                    <div class="floatLeft color_blue">
                         <div>Αντιπρόσωποι:<b>Όλα</b></div>
                         <div>Αλυσίδα:<b>Όλα</b></div>
                         <div>Περιοχή:<b>Όλα</b></div>
@@ -108,7 +132,14 @@
             </div>
             <div class="clearBoth"></div>
         </div>
-        <div>"Τελευταία ενσωμάτωση δεδομένων: month.. year...." </div>
+        <?php
+        Chart_Year::init_last_date_changing();
+        //print_r(Chart_Year::$last_date_changing_data);
+        ?>
+        <div id="chart_left_right_data_filter_above_the_cahrt__date_info">
+            Τελευταία ενσωμάτωση δεδομένων: 
+                <?php print Chart_Month::$months_labels_el[Chart_Year::$last_date_changing_data["Months"]-1]; ?> <?php print Chart_Year::$last_date_changing_data["Year"]; ?>
+        </div>
     </div>
     
     <div id="charts__holder">
@@ -136,9 +167,12 @@
     </div>
     
 </div>
+<script>
+    $("#chart_left_right_data_filter_above_the_cahrt_info_right").css("opacity", 0);
+</script>
 
 <!--Templates-->
-<div style="display: none;">
+<div class="displayNone">
     <div id="chart_bg_blue_template">
         <div class="chart_bg_blue chart_bg_parce"></div>
     </div>
@@ -200,8 +234,9 @@
         .simple_line_left_right_question .label
         {
             position:absolute;
-            left:100px;
-            width:100px;
+            left: -105px;
+            width: 100px;
+            text-align: right;
         }
     </style>
     <div id="template_simple_line_left_right_question" class="displayNone">
