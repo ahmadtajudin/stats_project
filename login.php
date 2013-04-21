@@ -2,8 +2,10 @@
 session_start();
 require_once('./php-tools/db_actions.php');
 require_once('./php-tools/tools.php');
-if (isset($_SESSION[Tools::$LOGGED_SSNAME]) || $_SESSION[Tools::$LOGGED_SSNAME] == Tools::$LOGGED_SSID) {
-    header('Location: index.php');
+if (isset($_SESSION[Tools::$LOGGED_SSNAME])) {
+    if($_SESSION[Tools::$LOGGED_SSNAME] == Tools::$LOGGED_SSID){
+        header('Location: index.php');
+    }
 }
 ?>
 <!DOCTYPE html>

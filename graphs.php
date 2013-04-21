@@ -26,6 +26,7 @@
             <div class="span10">
                 <div class="chart-container">
                     <!-- chart content goes here -->
+                    <?php require_once './graphs/graphs_holder.php'; ?>
                 </div>
             </div>
 

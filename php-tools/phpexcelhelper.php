@@ -2,7 +2,7 @@
 /*
  * Excel file helper class
  * @verion 1.0.0.0
- * @author Pazarkoski Riste
+ * @author Anonimus
  * @license GNU Public License
  */
 require_once('PHPExcel.php');
@@ -53,6 +53,7 @@ class PhpExcelHelper {
     public static function importData($excel_file_path) {
         //First load file
         $data = self::load($excel_file_path);
+        return $data;
     }
     /*     * *********************************************************************************************** 
      *  @method array get column names of the excel file 

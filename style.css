@@ -21,10 +21,15 @@ div.full-row{
 
 .black-bg{
     background-color: #282828;
+    display: block;
+    clear: both;
+    min-height: 168px;
 }
 #main-menu{
     min-height: 53px;
     background: #5092dc url(images/menu-bg.png) repeat-x;
+    display: block;
+    clear: both;
 }
 #main-menu ul{
     list-style: none;
@@ -50,6 +55,8 @@ div.content-container{
     width:100%;
     min-height:400px;
     background: #f2f2f2;
+    display: block;
+    clear: both;
 }
 .fotter-main{
     border-top:4px #d9d9d9 solid;
@@ -156,8 +163,6 @@ table.table{
 div.chart-container{
     margin:10px 0 10px 0;
     width:100%;
-    min-height: 700px;
-    background: #80bcff;
 }
 .bs-docs-sidenav {
     width: 100%;
@@ -245,4 +250,16 @@ div.chart-container{
     padding: 0 0 10px 0;
     
     border-bottom:1px #e5e5e5 solid;
+}
+.right-box a{
+    background: #0088cc;
+    margin-top: 15px;
+}
+div.modal-body .overlay-layer{
+    width: 558px;
+    height: 245px;
+    background: #fff url(images/loader.gif) center center no-repeat;
+    position: absolute;
+    left:0;
+    top:0;
 }

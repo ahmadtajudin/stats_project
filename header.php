@@ -48,3 +48,4 @@ Tools::redirectUserByPermissions();
             </div>
             <div class="clearfix"></div>
             <div class="content-container">
+                <div class="clearfix"></div>

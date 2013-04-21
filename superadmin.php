@@ -55,7 +55,7 @@
                 unset($_SESSION[Tools::$USER_MESSAGE]);
             }
             ?>
-            <form class="form-horizontal" action="php-tools/tools.php" method="post" id="add-excel-data-form">
+            <form class="form-horizontal" action="php-tools/tools.php" method="post" id="add-excel-data-form" enctype="multipart/form-data">
                 <div class="control-group">
                     <label class="control-label" for="inputUsername">Επιλέξτε πίνακα</label>
                     <div class="controls">
@@ -84,13 +84,16 @@
         </div>
     </div>
     <div class="span3">
-
+        <div class="toggle-state right-box"><a href="#">Διαχείριση χρηστών</a></div>
+        <ul class="nav nav-list bs-docs-sidenav show-hide-el">
+            <li><i class="icon-chevron-right"></i><a href="users.php">Διαχείριση χρηστών</a></li>
+        </ul>
     </div>
 
 </div>
 <script type="text/javascript">
     $(function() {
-        // validate signup form on keyup and submit
+        // validate add user form
         $("#add-user-form").validate({
             rules: {
                 username: "required",
@@ -105,6 +108,19 @@
                 username: "Enter your username",
                 password: "Provide your password",
                 confirm_password: "Please enter same password"
+            },
+            success: function(label) {
+                label.remove();
+            }
+        });
+
+        // validate import data form
+        $("#add-excel-data-form").validate({
+            rules: {
+                table_name: "required"
+            },
+            messages: {
+                table_name: "Please select database table for import"
             },
             success: function(label) {
                 label.remove();

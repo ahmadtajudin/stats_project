@@ -16,9 +16,9 @@ class Db_Actions {
     //@var string $user database user
     public static $user = "root";
     //@var string $password database password
-    public static $password = "";
+    public static $password = "toreador";
     //@var string $database  mysql database name
-    public static $database = "panos_eglobal_charts";
+    public static $database = "stats_charts";
     ////////////////////////////////////////////////////////////////////
     //@var string $passwordHashEncryption password hash type
     public static $passwordHashEncryption = "SHA1";
@@ -114,8 +114,13 @@ class Db_Actions {
         while ($row = self::$lastQuery->fetch_assoc()) {
             array_push(self::$queryResult, $row);
         }
-        foreach (self::$queryResult[0] as $key => $value) {
-            $resultObject->$key = $value;
+        if (count(self::$queryResult) > 0) {
+            foreach (self::$queryResult[0] as $key => $value) {
+                $resultObject->$key = $value;
+            }
+        }
+        else {
+            $resultObject->empty_result = 1;
         }
         mysqli_free_result(self::$lastQuery);
         return $resultObject;
@@ -286,7 +291,9 @@ class Db_Actions {
                             case "double":
                                 //Check if field is of type password
                                 if ($fieldName == "password") {
-                                    $queryString .= $fieldName . "=" . self::$passwordHashEncryption . "('" . self::DbSanitizeData($fieldValue) . "'), ";
+                                    if(!empty($fieldValue)){
+                                        $queryString .= $fieldName . "=" . self::$passwordHashEncryption . "('" . self::DbSanitizeData($fieldValue) . "'), ";
+                                    }
                                 }
                                 else {
                                     $queryString .= $fieldName . "=" . self::DbSanitizeData($fieldValue) . ", ";

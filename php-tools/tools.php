@@ -140,6 +140,54 @@ class Tools {
         <td>&nbsp;</td>
         <?php
     }
+    ///////////////////////////////////////////////////////////////////////
+    /* @method void Import data in user, daelars or passby tables from excel file */
+    public static function ImportUserDataFromExcelFile() {
+       
+        $uploader = new Uploader();
+        $uploader->max_file_size = 2000000; //2MB
+        $uploader->allowed_extensions = array('xlsx');
+        $uploader->temp_path = "../temp";
+        $uploader->upload_path = "../uploads";
+        $fileName = $uploader->uploadFile("excel_file_data");
+        if($fileName !== false){
+            
+            //process uploaded excel file
+            //Load excel data
+            $data = PhpExcelHelper::importData("../uploads/".$fileName);
+           
+            //Column Names
+            $columns = PhpExcelHelper::getColumnsNames();
+            //Build the mysql query
+            //Create mysql column names
+            $database_table = Db_Actions::DbSanitizeData($_POST['table_name']);
+            $query = "INSERT INTO ". $database_table . " (";
+            for($i=0; $i< count($columns); $i++){
+                $query .= $columns[$i] . ($i < count($columns) - 1 ? "," : "");
+            }
+            $query .= ") VALUES";
+            //Create query with all the data
+            for($j=0; $j< count($data); $j++){
+                if($j == 0){ continue; } // Skip first row, as that row contains our column names
+                
+                $query .= "(";
+                for($k=0; $k< count($columns); $k++){
+                    $curr_row = trim($data[$j][$k]);
+                    $query .= ( empty($curr_row) ? "'0'" : "'".$curr_row."'" ) . ($k < count($columns) - 1 ? "," : "");
+                }
+                $query .= ")" . ($j < count($data) - 1 ? "," : "");
+            }
+            $lastID = Db_Actions::DbInsert($query);
+            
+            $_SESSION[Tools::$USER_MESSAGE] = "Data succesfully imported.";
+            ?><script type="text/javascript">window.location = "../superadmin.php";</script><?php
+        }
+        else{
+            $warnings = $uploader->displayErrors();
+            $_SESSION[Tools::$USER_MESSAGE] = $warnings;
+            ?><script type="text/javascript">window.location = "../superadmin.php";</script><?php
+        }
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -160,5 +208,14 @@ if (isset($_GET['logout'])) {
 if (isset($_SESSION[Tools::$LOGGED_USER_DATA])) {
     global $userData;
     $userData = $_SESSION[Tools::$LOGGED_USER_DATA];
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//Import data from excel file
+if (isset($_POST['add_excel_data'])) {
+    session_start();
+    require_once("db_actions.php");
+    require_once("uploader.php");
+    require_once("phpexcelhelper.php");
+    Tools::ImportUserDataFromExcelFile();
 }
 ?>
