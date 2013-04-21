@@ -16,9 +16,9 @@ class Db_Actions {
     //@var string $user database user
     public static $user = "root";
     //@var string $password database password
-    public static $password = "toreador";
+    public static $password = "";
     //@var string $database  mysql database name
-    public static $database = "stats_charts";
+    public static $database = "panos_eglobal_charts";
     ////////////////////////////////////////////////////////////////////
     //@var string $passwordHashEncryption password hash type
     public static $passwordHashEncryption = "SHA1";
