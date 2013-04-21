@@ -159,5 +159,21 @@ class ChartData extends DataModerator
         self::$all_months_periods = 
         DB_DETAILS::ADD_ACTION("SELECT * FROM months", DB_DETAILS::$TYPE_SELECT);
     }
+    
+    /*
+     * get total passby and total interviews
+     */
+    protected function get_data_xml_total_passby_and_interviews($column_init_for_intervews)
+    {
+        $total_pass_by = DB_DETAILS::ADD_ACTION
+                (
+                "SELECT SUM(passby) AS totalPassBy FROM passby WHERE ".$this->area_year_month_dealercode_chain__SQL_condition,
+                DB_DETAILS::$TYPE_SELECT);
+        $sql_select_total_interviews = "SELECT COUNT(".$column_init_for_intervews.") AS ___COUNT___ FROM data WHERE ".
+                $this->area_year_month_dealercode_chain__SQL_condition." AND ".$column_init_for_intervews."<>''";
+        $total_interviews = DB_DETAILS::ADD_ACTION($sql_select_total_interviews, DB_DETAILS::$TYPE_SELECT);
+        return "<total_pass_by>".$total_pass_by[0]["totalPassBy"]."</total_pass_by><total_interviews>".
+                $total_interviews[0]["___COUNT___"]."</total_interviews>";
+    }
 }
 ?>

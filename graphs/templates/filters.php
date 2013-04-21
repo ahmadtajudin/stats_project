@@ -67,9 +67,9 @@ class ChartFilters
                     <div>Σύνολο συνεντεύξεων:</div>
                     <div>Σύνολο διελέυσεων:</div>
                 </div>
-                <div class="floatLeft">
-                    <div>8443</div>
-                    <div>134872</div>
+                <div class="floatLeft <?php if($filter_type==self::GROUP_A)print "color_orange";else print "color_blue"; ?> marginLeft10px">
+                    <div><b <?php $this->add_name_id("total_interviews", $filter_type); ?>>-</b></div>
+                    <div><b <?php $this->add_name_id("total_passby", $filter_type); ?>>-</b></div>
                 </div>
                 <div class="clearBoth"></div>
             </div>
@@ -248,6 +248,8 @@ function FiltersModerator()
     }
 }
 FiltersModerator.FM = new FiltersModerator();
+FiltersModerator.TYPE_ORANGE = "A";
+FiltersModerator.TYPE___BLUE = "B";
 
 $("#reset_button").click(function(e)
 {

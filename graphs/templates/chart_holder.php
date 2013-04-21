@@ -93,10 +93,6 @@
         margin-top: 10px;
         font-weight: bold;
     }
-    .marginLeft50px
-    {
-        margin-left: 50px;
-    }
     
 </style>
 
@@ -109,7 +105,7 @@
                     <div class="floatLeft">
                         <img src="graphs/images/group_a_rectangle.jpg" />
                     </div>
-                    <div class="floatLeft color_orange">
+                    <div class="floatLeft color_orange marginLeft10px">
                         <div>Αντιπρόσωποι:<b>Όλα</b></div>
                         <div>Αλυσίδα:<b>Όλα</b></div>
                         <div>Περιοχή:<b>Όλα</b></div>
@@ -122,7 +118,7 @@
                     <div class="floatLeft">
                         <img src="graphs/images/group_b_rectangle.jpg" />
                     </div>
-                    <div class="floatLeft color_blue">
+                    <div class="floatLeft color_blue marginLeft10px">
                         <div>Αντιπρόσωποι:<b>Όλα</b></div>
                         <div>Αλυσίδα:<b>Όλα</b></div>
                         <div>Περιοχή:<b>Όλα</b></div>

@@ -1,3 +1,29 @@
+function Eventor()
+{
+    this.events = [];
+    this.add_event = function(type, f)
+    {
+        this.set_events_array(type);
+        this.events[type].push(f);
+    }
+    this.remove_event = function(type, f)
+    {
+    }
+    this.dispatch_event = function(type, data)
+    {
+        this.set_events_array(type);
+        for (var i = 0; i < this.events[type].length; i++)
+        {
+            this.events[type][i](data);
+        }
+    }
+    this.set_events_array = function(type)
+    {
+        if (this.events[type] == null)
+            this.events[type] = [];
+    }
+} 
+
 /* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -320,6 +346,8 @@ function ChartBase()
             console.log(data);
             ChartModerator.CHART.data_xml = $.parseXML( data );
             ChartModerator.CHART.show_data_to_diagram(  );
+            ChartModerator.CHART.show_data_to_filter(  );
+            ChartModerator.CHART.dispatch_event(ChartBase.ON_CHART_DATA_LOAD, {});
         });
     }
     /*
@@ -350,7 +378,30 @@ function ChartBase()
             this.lines[i].set_visibility_line_B();
         }
     }
+    /*
+     * 
+     * @returns {undefined}
+     * Standard function for all charts
+     */
+    this.show_data_to_filter = function()
+    {
+        //total_interviews, total_passby
+        $("#total_interviews__A").html( this.get_total_interviews(FiltersModerator.TYPE_ORANGE) );
+        $("#total_interviews__B").html( this.get_total_interviews(FiltersModerator.TYPE___BLUE) );
+        $("#total_passby__A").html( this.get_total_passby(FiltersModerator.TYPE_ORANGE) );
+        $("#total_passby__B").html( this.get_total_passby(FiltersModerator.TYPE___BLUE) );
+    }
+    this.get_total_interviews = function(filter_type)
+    {
+        return $(this.data_xml).find("group_"+filter_type+"_data").find("total_interviews").text();
+    }
+    this.get_total_passby = function(filter_type)
+    {
+        return $(this.data_xml).find("group_"+filter_type+"_data").find("total_pass_by").text(); 
+    }
 }
+ChartBase.prototype = new Eventor();
+ChartBase.ON_CHART_DATA_LOAD = "ON_CHART_DATA_LOAD";
 
 function ChartTest()
 {

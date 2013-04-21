@@ -42,6 +42,7 @@ class ReasonToVisit extends ChartData
                     array("column"=>"q6_3", "value"=>"1")
                     ), 
         "quantity");
+        $data_for_back .= $this->get_data_xml_total_passby_and_interviews("q6_1");
         $data_for_back .= "</".$group_data_reference.">";
         return $data_for_back;
     }
