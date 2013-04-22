@@ -35,9 +35,10 @@ class CHART_User
     {
         /*
          * Just for testing
+         * Delete if you like to work this online
          */
-        $_SESSION[self::SESSION_LOGGED_USER_REFERENCE] = new ArrayObject();
-        $_SESSION[self::SESSION_LOGGED_USER_REFERENCE]->id = "281";//Admin
+        //$_SESSION[self::SESSION_LOGGED_USER_REFERENCE] = new ArrayObject();
+        //$_SESSION[self::SESSION_LOGGED_USER_REFERENCE]->id = "281";//Admin
         //$_SESSION[self::SESSION_LOGGED_USER_REFERENCE] = array("id"=>"283");//Client
         //$_SESSION[self::SESSION_LOGGED_USER_REFERENCE] = array("id"=>"192");//Dealer
         /*

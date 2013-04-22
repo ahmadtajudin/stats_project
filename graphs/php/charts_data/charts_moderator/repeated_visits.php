@@ -3,11 +3,10 @@
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
- * Reason to visit, or ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ.
  */
-class ReasonToVisit extends ChartData
+class RepeatedVisits extends ChartData
 {
-    public function ReasonToVisit()
+    public function RepeatedVisits()
     {
         parent::__construct();
         
@@ -28,18 +27,20 @@ class ReasonToVisit extends ChartData
         (
                 array
                     (
-                    array("column"=>"q6_1", "value"=>"1", "column_xml_additional_reference"=>""), 
-                    array("column"=>"q6_2", "value"=>"1", "column_xml_additional_reference"=>""), 
-                    array("column"=>"q6_3", "value"=>"1", "column_xml_additional_reference"=>"")
+                    array("column"=>"Q17Α", "value"=>"0", "column_xml_additional_reference"=>"_0"), 
+                    array("column"=>"Q17Α", "value"=>"1", "column_xml_additional_reference"=>"_1"), 
+                    array("column"=>"Q17Α", "value"=>"2", "column_xml_additional_reference"=>"_2"), 
+                    array("column"=>"Q17Α", "value"=>"3", "column_xml_additional_reference"=>"_3"), 
+                    array("column"=>"Q17Α", "value"=>"4", "column_xml_additional_reference"=>"_4")
                     ), 
         "quantity");
-        $data_for_back .= $this->get_data_xml_total_passby_and_interviews("q6_1");
+        $data_for_back .= $this->get_data_xml_total_passby_and_interviews("Q17Α");
         $data_for_back .= "</".$group_data_reference.">";
         return $data_for_back;
     }
 }
-if(isset($_POST["ReasonToVisit"]))
+if(isset($_POST["RepeatedVisits"]))
 {
-    new ReasonToVisit();
+    new RepeatedVisits();
 }
 ?>

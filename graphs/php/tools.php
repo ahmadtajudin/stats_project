@@ -23,6 +23,7 @@ CHART_User::init_logged_user();
  * Loading library for data passing to the charts.
  */
 require_once 'charts_data/charts_moderator/reason_to_visit.php';
+require_once 'charts_data/charts_moderator/repeated_visits.php';
 
 
 ?>

@@ -51,22 +51,7 @@ require_once 'templates/filters.php';
     switch($_GET["chart"])
     {
         case "1":{ ?> ChartModerator.CHART = new Chart__ReasonToVisit(); <?php }break;
-        case "2":
-        {
-
-        }break;
-        case "3":
-        {
-
-        }break;
-        case "4":
-        {
-
-        }break;
-        case "5":
-        {
-
-        }break;
+        case "2":{ ?> ChartModerator.CHART = new Chart__RepeatedVisits(); <?php }break;
     }
     ?>
 </script>

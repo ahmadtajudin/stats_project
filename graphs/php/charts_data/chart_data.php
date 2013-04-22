@@ -93,21 +93,21 @@ class ChartData extends DataModerator
      * and
      * selected by total count "get_quantity_total"
      */
-    protected function get_quantity_xml_line( $column_variable, $value_column )
+    protected function get_quantity_xml_line( $column_variable, $value_column, $column_variable_addtional_reference )
     {
         $sql_select_quantity = "SELECT COUNT(".$column_variable.") AS ___COUNT___ FROM data WHERE " . 
                 $this->area_year_month_dealercode_chain__SQL_condition . " AND ".$column_variable."='".$value_column."'";
         //print $sql_select_quantity;
         $quantity = DB_DETAILS::ADD_ACTION($sql_select_quantity, DB_DETAILS::$TYPE_SELECT);
-        return "<".$column_variable.">".$quantity[0]["___COUNT___"]."</".$column_variable.">";
+        return "<".$column_variable.$column_variable_addtional_reference.">".$quantity[0]["___COUNT___"]."</".$column_variable.$column_variable_addtional_reference.">";
     }
-    protected function get_quantity_total_xml_line( $column_variable )
+    protected function get_quantity_total_xml_line( $column_variable, $column_variable_addtional_reference )
     {
         $sql_select_quantity_total = "SELECT COUNT(".$column_variable.") AS ___COUNT___ FROM data WHERE ".
                 $this->area_year_month_dealercode_chain__SQL_condition;
         //print "[".$sql_select_quantity_total."]";
         $quantity = DB_DETAILS::ADD_ACTION($sql_select_quantity_total, DB_DETAILS::$TYPE_SELECT);
-        return "<".$column_variable.">".$quantity[0]["___COUNT___"]."</".$column_variable.">";
+        return "<".$column_variable.$column_variable_addtional_reference.">".$quantity[0]["___COUNT___"]."</".$column_variable.$column_variable_addtional_reference.">";
     }
     protected function get_quantity_xml_data_for_array($array_variables, $xml_data_holder_name="quantity")
     {
@@ -115,13 +115,14 @@ class ChartData extends DataModerator
         $data_quantity .= "<quantity>";
         for($i=0;$i<count($array_variables);$i++)
         {
-            $data_quantity .= $this->get_quantity_xml_line($array_variables[$i]["column"], $array_variables[$i]["value"]);
+            $data_quantity .= $this->get_quantity_xml_line($array_variables[$i]["column"], $array_variables[$i]["value"], 
+                                $array_variables[$i]["column_xml_additional_reference"]);
         }
         $data_quantity .= "</quantity>";
         $data_quantity .= "<quantity_total>";
         for($i=0;$i<count($array_variables);$i++)
         {
-            $data_quantity .= $this->get_quantity_total_xml_line($array_variables[$i]["column"]);
+            $data_quantity .= $this->get_quantity_total_xml_line($array_variables[$i]["column"], $array_variables[$i]["column_xml_additional_reference"]);
         }
         $data_quantity .= "</quantity_total>";
         $data_quantity .= "</".$xml_data_holder_name.">";
