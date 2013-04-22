@@ -101,13 +101,13 @@ class Tools {
         $data = Db_Actions::DbSelectLastRow("data");
         ?>
         <td>data</td>
-        <td><?php echo $data->id; ?></td>
-        <td><?php echo $data->serial; ?></td>
-        <td><?php echo $data->dealerCode; ?></td>
-        <td><?php echo $data->Area; ?></td>
-        <td><?php echo $data->Chains; ?></td>
-        <td><?php echo $data->Months; ?></td>
-        <td><?php echo $data->Year; ?></td>
+        <td><?php if(isset($data->id)) echo $data->id; ?></td>
+        <td><?php if(isset($data->serial)) echo $data->serial; ?></td>
+        <td><?php if(isset($data->dealerCode)) echo $data->dealerCode; ?></td>
+        <td><?php if(isset($data->Area)) echo $data->Area; ?></td>
+        <td><?php if(isset($data->Chains)) echo $data->Chains; ?></td>
+        <td><?php if(isset($data->Months)) echo $data->Months; ?></td>
+        <td><?php if(isset($data->Year)) echo $data->Year; ?></td>
         <?php
     }
     ///////////////////////////////////////////////////////////
@@ -116,13 +116,13 @@ class Tools {
         $data = Db_Actions::DbSelectLastRow("passby");
         ?>
         <td>passby</td>
-        <td><?php echo $data->id; ?></td>
-        <td><?php echo $data->Months; ?></td>
-        <td><?php echo $data->year; ?></td>
-        <td><?php echo $data->passby; ?></td>
-        <td><?php echo $data->dealerCode; ?></td>
-        <td><?php echo $data->Months; ?></td>
-        <td><?php echo $data->Year; ?></td>
+        <td><?php if(isset($data->id)) echo $data->id; ?></td>
+        <td><?php if(isset($data->Months)) echo $data->Months; ?></td>
+        <td><?php if(isset($data->year)) echo $data->year; ?></td>
+        <td><?php if(isset($data->passby)) echo $data->passby; ?></td>
+        <td><?php if(isset($data->dealerCode)) echo $data->dealerCode; ?></td>
+        <td><?php if(isset($data->Months)) echo $data->Months; ?></td>
+        <td><?php if(isset($data->Year)) echo $data->Year; ?></td>
         <?php
     }
     ///////////////////////////////////////////////////////////
@@ -131,11 +131,11 @@ class Tools {
         $data = Db_Actions::DbSelectLastRow("dealers");
         ?>
         <td>dealers</td>
-        <td><?php echo $data->id; ?></td>
-        <td><?php echo $data->dealer_code; ?></td>
-        <td><?php echo $data->dealer_name; ?></td>
-        <td><?php echo $data->dealer_area; ?></td>
-        <td><?php echo $data->chain; ?></td>
+        <td><?php if(isset($data->id)) echo $data->id; ?></td>
+        <td><?php if(isset($data->dealer_code)) echo $data->dealer_code; ?></td>
+        <td><?php if(isset($data->dealer_name)) echo $data->dealer_name; ?></td>
+        <td><?php if(isset($data->dealer_area)) echo $data->dealer_area; ?></td>
+        <td><?php if(isset($data->chain)) echo $data->chain; ?></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <?php
