@@ -19,11 +19,14 @@ class ChartFilters
     public function header()
     {
         ?>
-        <div>
+        <div class="marginBottom15px">
             <div class="floatLeft">
+                <!--
                 <input type="button" value="Εκτύπωση" />
+                -->
+                <button class="btn btn-inverse" type="button">Εκτύπωση</button>
             </div>
-            <div class="floatLeft">ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ</div>
+            <div class="floatLeft marginLeft10px"><b id="filter_chart_label"></b></div>
             <div class="clearBoth"></div>
         </div>
         <?php
@@ -32,7 +35,7 @@ class ChartFilters
     {
         ?>
         <div class="floatLeft <?php if($filter_type==self::GROUP_B)print "marginLeft50px"; ?>">
-            <div>
+            <div class="marginBottom5px">
                 
                     <?php
                     if($filter_type == self::GROUP_A)
@@ -62,7 +65,7 @@ class ChartFilters
             Total interviews+total passby values
             start
             -->
-            <div>
+            <div class="marginBottom15px">
                 <div class="floatLeft">
                     <div>Σύνολο συνεντεύξεων:</div>
                     <div>Σύνολο διελέυσεων:</div>
@@ -77,8 +80,8 @@ class ChartFilters
             Total interviews+total passby values
             end
             -->
-            <div>
-                <div class="floatLeft">
+            <div class="marginBottom15px">
+                <div class="floatLeft labels_select_for_boxes">
                     <div>Αντιπρόσωποι:</div>
                     <div>Αλυσίδα:</div>
                     <div>Περιοχή:</div>
@@ -189,12 +192,18 @@ class ChartFilters
             <?php if($filter_type == self::GROUP_A){ ?>
             <!--Set start values button-->
             <div>
+                <!--
                 <input id="reset_button" type="button" value="Επαναφορά φίλτρων" />
+                -->
+                <button class="btn btn-inverse" type="button">Επαναφορά φίλτρων</button>
             </div>
             <?php }else if($filter_type == self::GROUP_B){ ?>
             <!--Draw chart button-->
             <div>
+                <!--
                 <input type="button" value="Σχεδίαση γραφήματος" />
+                -->
+                <button class="btn btn-inverse" type="button">Σχεδίαση γραφήματος</button>
             </div>
             <?php } ?>
             
@@ -212,7 +221,15 @@ ChartFilters::$FILTER = new ChartFilters();
     #charts_filter_holder
     {
         background-color:#cccccc; 
-        padding: 50px 20px 50px 20px;
+        padding: 30px 50px 30px 50px;
+    }
+    .filter_global_select
+    {
+        margin:0px;
+    }
+    .labels_select_for_boxes div
+    {
+        line-height: 29px;
     }
 </style>
 <div id="charts_filter_holder">

@@ -138,9 +138,9 @@ function SimpleLine_LeftRightQuestions(chart, position, label_txt)
     //var top_position = Math.random()*400;
     $(this.line_holder).css("top", this.position.y+"px");
     $($(this.line_holder).find(".line")).width( this.chart.chart_diagram_poz_size.w );
-    $(this.line_holder).find(".label").html( label_txt );
-    var label_top_position = -1*$(this.line_holder).find(".label").height()/2;
-    $(this.line_holder).find(".label").css("top", label_top_position+"px");
+    $(this.line_holder).find(".chart_label").html( label_txt );
+    var label_top_position = -1*$(this.line_holder).find(".chart_label").height()/2;
+    $(this.line_holder).find(".chart_label").css("top", label_top_position+"px");
     /*
      * 
      * @type ChartLineBase
@@ -235,6 +235,8 @@ function ChartBase()
         this.data_type_chart = range.data_type_chart;
         this.chart_poz_size = chart_poz_size;
         this.chart_diagram_poz_size = chart_diagram_poz_size;
+        $("#filter_chart_label").html(range.chart_label);
+        $("#chart_top_left_title").html(range.chart_label);
         //ResizerPozicioner.resize("#chart_main_holder", this.chart_poz_size);
         //$("#chart_main_holder").width( this.chart_poz_size.w );
         $("#chart_main_holder").height( this.chart_poz_size.h );
@@ -425,7 +427,7 @@ function Chart__ReasonToVisit()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"ReasonToVisit"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"ReasonToVisit", chart_label:"ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ"},
             new Rectangle(0,0,900,550),
             new Rectangle(140,170,665,314)
     );

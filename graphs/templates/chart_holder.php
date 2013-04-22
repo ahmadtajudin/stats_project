@@ -97,7 +97,7 @@
 </style>
 
 <div id="chart_main_holder">
-    <div id="chart_top_left_title">ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ</div>
+    <div id="chart_top_left_title"></div>
     <div id="chart_left_right_data_filter_above_the_cahrt">
         <div>
             <div id="chart_left_right_data_filter_above_the_cahrt_info_left" class="floatLeft">
@@ -227,7 +227,7 @@
             height: 30px;
             width:200px;
         }
-        .simple_line_left_right_question .label
+        .simple_line_left_right_question .chart_label
         {
             position:absolute;
             left: -105px;
@@ -238,7 +238,7 @@
     <div id="template_simple_line_left_right_question" class="displayNone">
         <div class="simple_line_left_right_question">
             <div class="posRel">
-                <div class="label">
+                <div class="chart_label">
                     Line1<br/>Line2<br/>Line3
                 </div>
                 <div class="simple_line_left_question line">

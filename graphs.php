@@ -6,7 +6,7 @@
                 <!-- Link or button to toggle dropdown -->
                 <div class="toggle-state"><a href="#">Choose Chart</a></div>
                 <ul class="nav nav-list bs-docs-sidenav show-hide-el">
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=1">Chart 1</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=1">ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ</a></li>
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=2">Chart 2</a></li>
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=3">Chart 3</a></li>
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=4">Chart 4</a></li>

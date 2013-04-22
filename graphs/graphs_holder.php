@@ -44,7 +44,29 @@ require_once 'templates/chart_holder.php';
 require_once 'templates/filters.php';
 ?>
 </div>
+<?php if(!isset($_GET["chart"])){$_GET["chart"] = "1";} ?>
 <script>
     //ChartModerator.CHART = new ChartTest();
-    ChartModerator.CHART = new Chart__ReasonToVisit();
+    <?php
+    switch($_GET["chart"])
+    {
+        case "1":{ ?> ChartModerator.CHART = new Chart__ReasonToVisit(); <?php }break;
+        case "2":
+        {
+
+        }break;
+        case "3":
+        {
+
+        }break;
+        case "4":
+        {
+
+        }break;
+        case "5":
+        {
+
+        }break;
+    }
+    ?>
 </script>
