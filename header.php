@@ -29,9 +29,6 @@ Tools::redirectUserByPermissions();
         <![endif]-->
     </head>
     <body>
-        <?php
-        print_r($userData);
-        ?>
         <div class="main-container">
             <div class="full-row black-bg">
                 <header id="top-header" class="container row-center">

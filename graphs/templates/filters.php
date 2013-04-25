@@ -263,6 +263,33 @@ function FiltersModerator()
             object_ref[$(select).attr("name")] = $(select).val();
         }
     }
+   
+    /*
+     * Above charts there are labels, they should show the info about selected values
+     * into the filter.
+     * 
+                        <div>Αντιπρόσωποι:<b id="dealer_selected_info_A">Όλα</b></div>
+                        <div>Αλυσίδα:<b id="chain_selected_info_A">Όλα</b></div>
+                        <div>Περιοχή:<b id="area_selected_A">Όλα</b></div>
+                        <div>Περίοδος:<b id="period_selected_A">Όλα</b></div>
+     */
+    this.show_filter_selected_to_the_top_label = function()
+    {
+        this.show_filter_selected_to_the_top_label_by_group( FiltersModerator.TYPE_ORANGE );
+        this.show_filter_selected_to_the_top_label_by_group( FiltersModerator.TYPE___BLUE );
+    }
+    this.show_filter_selected_to_the_top_label_by_group = function(group_type)
+    {
+        $("#dealer_selected_info_"+group_type).html( $("#dealers_options__"+group_type+" option:selected").text() );
+        $("#chain_selected_info_"+group_type).html( $("#chains_options__"+group_type+" option:selected").text() );
+        $("#area_selected_"+group_type).html( $("#areas_options__"+group_type+" option:selected").text() );
+        $("#period_selected_"+group_type).html
+        ( 
+                $("#years_options__"+group_type+" option:selected").text()
+                    +
+                $("#months_periods_options__"+group_type+" option:selected").text()
+        );
+    }
 }
 FiltersModerator.FM = new FiltersModerator();
 FiltersModerator.TYPE_ORANGE = "A";
@@ -275,6 +302,7 @@ $("#reset_button").click(function(e)
 $(".filter_global_select").change(function(e)
 {
     ChartModerator.CHART.load_data(e);
+    FiltersModerator.FM.show_filter_selected_to_the_top_label();
 });
 $(".show_or_hider_line_B").click(function(e)
 {

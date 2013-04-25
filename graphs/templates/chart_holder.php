@@ -106,10 +106,10 @@
                         <img src="graphs/images/group_a_rectangle.jpg" />
                     </div>
                     <div class="floatLeft color_orange marginLeft10px">
-                        <div>Αντιπρόσωποι:<b>Όλα</b></div>
-                        <div>Αλυσίδα:<b>Όλα</b></div>
-                        <div>Περιοχή:<b>Όλα</b></div>
-                        <div>Περίοδος:<b>Όλα</b></div>
+                        <div>Αντιπρόσωποι:<b id="dealer_selected_info_A">Όλα</b></div>
+                        <div>Αλυσίδα:<b id="chain_selected_info_A">Όλα</b></div>
+                        <div>Περιοχή:<b id="area_selected_A">Όλα</b></div>
+                        <div>Περίοδος:<b id="period_selected_A">Όλα</b></div>
                     </div>
                 </div>
             </div>
@@ -119,10 +119,10 @@
                         <img src="graphs/images/group_b_rectangle.jpg" />
                     </div>
                     <div class="floatLeft color_blue marginLeft10px">
-                        <div>Αντιπρόσωποι:<b>Όλα</b></div>
-                        <div>Αλυσίδα:<b>Όλα</b></div>
-                        <div>Περιοχή:<b>Όλα</b></div>
-                        <div>Περίοδος:<b>Όλα</b></div>
+                        <div>Αντιπρόσωποι:<b id="dealer_selected_info_B">Όλα</b></div>
+                        <div>Αλυσίδα:<b id="chain_selected_info_B">Όλα</b></div>
+                        <div>Περιοχή:<b id="area_selected_B">Όλα</b></div>
+                        <div>Περίοδος:<b id="period_selected_B">Όλα</b></div>
                     </div>
                 </div>
             </div>
