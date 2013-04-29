@@ -133,8 +133,12 @@ class ChartData extends DataModerator
      * function for sending the variables XML back to client
      * It is using in constructor of each data moderator for charts
      */
-    protected function print_back_to_client()
+    protected function print_back_to_client( $chart_moderator )
     {
+        $this->data_xml_total .= "<root>";
+        $this->data_xml_total .= $chart_moderator->get_data_for_group( self::GROUP_A );
+        $this->data_xml_total .= $chart_moderator->get_data_for_group( self::GROUP_B );
+        $this->data_xml_total .= "</root>";
         /*
         DB_DETAILS::$VARs["data"] = $this->data_xml_total;
         DB_DETAILS::PRINT_VARS();*/

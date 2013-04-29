@@ -9,15 +9,9 @@ class RepeatedVisits extends ChartData
     public function RepeatedVisits()
     {
         parent::__construct();
-        
-        $this->data_xml_total .= "<root>";
-        $this->data_xml_total .= $this->get_data_for_group( ChartData::GROUP_A );
-        $this->data_xml_total .= $this->get_data_for_group( ChartData::GROUP_B );
-        $this->data_xml_total .= "</root>";
-        
-        $this->print_back_to_client();
+        $this->print_back_to_client( $this );
     }
-    private function get_data_for_group( $group_type_left_or_right )
+    public function get_data_for_group( $group_type_left_or_right )
     {
         $this->area_year_month_dealercode_chain__SQL_condition_init( $group_type_left_or_right );
         

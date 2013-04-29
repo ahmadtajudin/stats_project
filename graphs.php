@@ -8,19 +8,16 @@
                 <ul class="nav nav-list bs-docs-sidenav show-hide-el">
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=1">ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ</a></li>
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=2">ΕΠΑΝΑΛΗΨΗ ΕΠΙΣΚΕΨΗΣ</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=3">Chart 3</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=4">Chart 4</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=1">Chart 5</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=2">Chart 6</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=3">Chart 7</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=4">Chart 8</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=1">Chart 9</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=2">Chart 10</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=3">Chart 11</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=4">Chart 12</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=1">Chart 13</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=2">Chart 14</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=3">Chart 15</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=3">ΓΕΝΙΚΈΣ ΕΝΤΥΠΏΣΕΙΣ</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=4">ΕΓΚΑΤΑΣΤΆΣΕΙΣ</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=5">ΠΡΟΣΩΠΙΚΌ</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=6">ΘΈΜΑΤΑ ΧΡΌΝΟΥ</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=7">ΠΟΙΌΤΗΤΑ</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=8">ΣΕ ΠΕΡΊΠΤΩΣΗ ΠΟΥ ΧΡΕΙΆΣΤΗΚΕ ΝΑ ΕΠΙΣΤΡΈΨΕΤΕ ΣΤΗΝ ΑΝΤΙΠΡΟΣΩΠΕΊΑ ΓΙΑ ΕΠΙΠΛΈΟΝ ΕΡΓΑΣΊΑΣ</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=9">ΚΌΣΤΗ</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=10">FOLLOW UP</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=11">ΣΤΟ ΜΈΛΛΟΝ</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=12">ΚΛΕΊΣΙΜΟ ΚΛΉΣΗΣ</a></li>
                 </ul>
             </div>
             <div class="span10">

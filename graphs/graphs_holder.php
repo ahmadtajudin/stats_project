@@ -52,6 +52,16 @@ require_once 'templates/filters.php';
     {
         case "1":{ ?> ChartModerator.CHART = new Chart__ReasonToVisit(); <?php }break;
         case "2":{ ?> ChartModerator.CHART = new Chart__RepeatedVisits(); <?php }break;
+        case "3":{ ?> ChartModerator.CHART = new Chart__GeneralImpresions(); <?php }break;
+        case "4":{ ?> ChartModerator.CHART = new Chart__Objects(); <?php }break;
+        case "5":{ ?> ChartModerator.CHART = new Chart__Personal(); <?php }break;
+        case "6":{ ?> ChartModerator.CHART = new Chart__QuestionsOnTime(); <?php }break;
+        case "7":{ ?> ChartModerator.CHART = new Chart__Quantity(); <?php }break;
+        case "8":{ ?> ChartModerator.CHART = new Chart__InCaseWhenBackForAdditionalWork(); <?php }break;
+        case "9":{ ?> ChartModerator.CHART = new Chart__Costs(); <?php }break;
+        case "10":{ ?> ChartModerator.CHART = new Chart__FollowUp(); <?php }break;
+        case "11":{ ?> ChartModerator.CHART = new Chart__InFuture(); <?php }break;
+        case "12":{ ?> ChartModerator.CHART = new Chart__CloseCall(); <?php }break;
     }
     ?>
 </script>

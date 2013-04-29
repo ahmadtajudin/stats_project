@@ -481,6 +481,371 @@ function Chart__RepeatedVisits()
 Chart__RepeatedVisits.prototype = new ChartBase();
 
 
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * Γενικές Εντυπώσεις
+ * Генерални Импресии
+ * General Impresions
+ * q7. Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο;
+ (Q7. Генерално, колку се задоволни бевте со вашето искуство во овој овластени работилница?)
+ * q8.Με βάση την εμπειρία σας από το συγκεκριμένο συνεργείο πόσο πιθανό θα ήταν να συστήσετε το συγκεκριμένο συνεργείο σε κάποιον φίλο σας /γνωστό σας / συγγενή σας
+ * (q8.Me вашето искуство на оваа работилница како најверојатно би им препорачале оваа работилница на пријател / познаник / роднина)
+ */
+function Chart__GeneralImpresions()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"GeneralImpresions", chart_label:"ΓΕΝΙΚΈΣ ΕΝΤΥΠΏΣΕΙΣ"},
+            new Rectangle(0,0,900,550),
+            new Rectangle(140,170,665,314)
+    );
+    this.q7 = this.add_simple_left_right_questions_line( new Point(0, 105), "q7 need label" );
+    this.q8 = this.add_simple_left_right_questions_line( new Point(0, 210), "q8 need label" );
+    
+    this.show_data_to_diagram = function(  )
+    {
+        this.q7.init( this.get_quantity("q7", "A"), this.get_quantity_total("q7", "A"), 
+                        this.get_quantity("q7", "B"), this.get_quantity_total("q7", "B") );
+        this.q8.init( this.get_quantity("q8", "A"), this.get_quantity_total("q8", "A"), 
+                        this.get_quantity("q8", "B"), this.get_quantity_total("q8", "B") );
+    }
+}
+Chart__GeneralImpresions.prototype = new ChartBase();
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * Εγκαταστάσεις(Објекти)
+ * b1 Πως θα αξιολογούσατε τις εγκαταστάσεις του συγκεκριμένου συνεργείου. 
+ (б1 Како вие ја оценувате објекти на оваа работилница.)
+ * 
+ * Διερευνητικές Ερωτήσεις(прелиминарни прашања)
+ * b2. Πώς θα αξιολογούσατε την εμφάνιση του τμήματος Service;(Б2. Како вие ја оценувате изгледот на делот служба;)
+ * b3. Την άνεση του χώρου αναμονής (π.χ. καθίσματα, μηχανές καφέ, κλπ….)(Б3. Удобноста на чекање област (на пример, седишта, кафе машини, итн ....))
+ * b4. Τη γενική καθαριότητα της αντιπροσωπείας;(b4. Општата чистотата на делегацијата?)
+ * b5. Την ευκολία στάθμευσης;(b5. Леснотијата на паркинг?)
+ */
+function Chart__Objects()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Objects", chart_label:"ΕΓΚΑΤΑΣΤΆΣΕΙΣ"},
+            new Rectangle(0,0,860,650),
+            new Rectangle(170,180,665,430)
+    );
+    this.b1 = this.add_simple_left_right_questions_line( new Point(0, 43), "b1 need label" );
+    this.b2 = this.add_simple_left_right_questions_line( new Point(0, 125), "b2 need label" );
+    this.b3 = this.add_simple_left_right_questions_line( new Point(0, 206), "b3 need label" );
+    this.b4 = this.add_simple_left_right_questions_line( new Point(0, 292), "b4 need label" );
+    this.b5 = this.add_simple_left_right_questions_line( new Point(0, 376), "b5 need label" );
+    
+    this.show_data_to_diagram = function(  )
+    {
+        this.b1.init( this.get_quantity("b1", "A"), this.get_quantity_total("b1", "A"), 
+                          this.get_quantity("b1", "B"), this.get_quantity_total("b1", "B") );
+        this.b2.init( this.get_quantity("b2", "A"), this.get_quantity_total("b2", "A"), 
+                          this.get_quantity("b2", "B"), this.get_quantity_total("b2", "B") );
+        this.b3.init( this.get_quantity("b3", "A"), this.get_quantity_total("b3", "A"), 
+                          this.get_quantity("b3", "B"), this.get_quantity_total("b3", "B") );
+        this.b4.init( this.get_quantity("b4", "A"), this.get_quantity_total("b4", "A"), 
+                          this.get_quantity("b4", "B"), this.get_quantity_total("b4", "B") );
+        this.b5.init( this.get_quantity("b5", "A"), this.get_quantity_total("b5", "A"), 
+                          this.get_quantity("b5", "B"), this.get_quantity_total("b5", "B") );
+    }
+}
+Chart__Objects.prototype = new ChartBase();
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * Προσωπικό(Personal)
+ * c1) Πως θα αξιολογούσατε το προσωπικό του συγκεκριμένου συνεργείου(Ц1) Како вие ја оценувате персоналот на оваа работилница)
+ * c2) Αισθανθήκατε ότι σας αντιμετώπισαν σαν ένα σημαντικό πελάτη; (В2) Вие сте почувствувале дека сте ме третира како важен клиент?)
+ * 
+ * Διερευνητικές Ερωτήσεις(прелиминарни прашања)
+ * c3. Πώς θα αξιολογούσατε την φιλικότητα του προσωπικού;(C3. Како вие ја оценувате стил на персоналот?)
+ * c4. Πώς θα αξιολογούσατε την εξυπηρέτηση του προσωπικού;(C4. Како вие ја оценувате услугата персоналот?)
+ * c5. Την ειλικρίνεια και την αξιοπιστία τους;(c5. Чесност и кредибилитет?)
+ * c6. Τον χειρισμό των τηλεφωνικών ερωτήσεων;(C6. Ракување на телефонски прашања?)
+ * c7. Την προθυμία να ακούσουν και να κατανοήσουν τα προβλήματα;(C7. Подготвеност да се слуша и да се разбере проблеми?)
+ * c8. Την επεξήγηση της εργασίας που πρέπει να γίνει;(В8. Објаснување на работа да се направи?)
+ * c9. Την ικανότητα τους να διαγνώσουν προβλήματα;(C9. Нивната способност да дијагностицирање на проблемите?)
+ */
+function Chart__Personal()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Personal", chart_label:"ΠΡΟΣΩΠΙΚΌ"},
+            new Rectangle(0,0,860,950),
+            new Rectangle(170,180,665,730)
+    );
+    this.c1 = this.add_simple_left_right_questions_line( new Point(0, 43), "c1 need label" );
+    this.c2 = this.add_simple_left_right_questions_line( new Point(0, 125), "c2 need label" );
+    this.c3 = this.add_simple_left_right_questions_line( new Point(0, 206), "c3 need label" );
+    this.c4 = this.add_simple_left_right_questions_line( new Point(0, 292), "c4 need label" );
+    this.c5 = this.add_simple_left_right_questions_line( new Point(0, 376), "c5 need label" ); 
+    this.c6 = this.add_simple_left_right_questions_line( new Point(0, 456), "c6 need label" ); 
+    this.c7 = this.add_simple_left_right_questions_line( new Point(0, 526), "c7 need label" ); 
+    this.c8 = this.add_simple_left_right_questions_line( new Point(0, 606), "c8 need label" ); 
+    this.c9 = this.add_simple_left_right_questions_line( new Point(0, 686), "c9 need label" ); 
+    
+    this.show_data_to_diagram = function(  )
+    {
+        for(var i=1;i<=9;i++)
+        this["c"+i].init( this.get_quantity("c"+i, "A"), this.get_quantity_total("c"+i, "A"), 
+                          this.get_quantity("c"+i, "B"), this.get_quantity_total("c"+i, "B") );
+    }
+}
+Chart__Personal.prototype = new ChartBase();
+
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * Θέματα Χρόνου(Questions on time)
+ * 
+ * d1) Τύχατε της προσοχή του προσωπικού (σας είχε το προσωπικό στο νού του)καθ’ όλη την διάρκεια της επίσκεψης σας; 
+ * (D1) ја зема вниманието на персонал (имавме кадар во неговиот ум) во текот на времетраењето на Вашата посета?)
+ * 
+ * Διερευνητικές Ερωτήσεις(Preliminarni prasanja)
+ * d2. Πώς θα αξιολογούσατε την ευκολία να κλείσετε ραντεβού;(D2. Како вие ја оценувате леснотијата да се резервира закажете состанок?)
+ * d3. Την προσοχή που σας δόθηκε κατά την άφιξή σας;(Д3. Внимание се посветува и на Ваше пристигнување?)
+ * d4. Τον χρόνο αναμονής όταν πήρανε το όχημά σας;(d4. Време на чекање, кога тие се на вашето возило?)
+ * d5. Την ικανότητα τους να ανταποκριθούν στο χρονοδιάγραμμα που σας είχαν δώσει αρχικά;(d5. Нивната способност да ги задоволи распоред дека сте имале првично дадена?)
+ * d6. τον συνολικό χρόνο που απαιτήθηκε ώστε να ολοκληρωθεί το service του οχήματός σας;(d6. вкупното време потребно да се заврши во служба на вашето возило?)
+ * d7. Την ευελιξία της αντιπροσωπείας να σας κλείσει το ραντεβού που θέλατε;(D7. Флексибилност на делегацијата ќе книга вашето назначување што сакавте?)
+ * d8. Την ευκολία ωραρίου;(D8. Леснотијата часа?)
+ */
+function Chart__QuestionsOnTime()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"QuestionsOnTime", chart_label:"ΘΈΜΑΤΑ ΧΡΌΝΟΥ"},
+            new Rectangle(0,0,860,870),
+            new Rectangle(170,180,665,650)
+    );
+    this.d1 = this.add_simple_left_right_questions_line( new Point(0, 43), "d1 need label" );
+    this.d2 = this.add_simple_left_right_questions_line( new Point(0, 125), "d2 need label" );
+    this.d3 = this.add_simple_left_right_questions_line( new Point(0, 206), "d3 need label" );
+    this.d4 = this.add_simple_left_right_questions_line( new Point(0, 292), "d4 need label" );
+    this.d5 = this.add_simple_left_right_questions_line( new Point(0, 376), "d5 need label" ); 
+    this.d6 = this.add_simple_left_right_questions_line( new Point(0, 456), "d6 need label" ); 
+    this.d7 = this.add_simple_left_right_questions_line( new Point(0, 526), "d7 need label" ); 
+    this.d8 = this.add_simple_left_right_questions_line( new Point(0, 606), "d8 need label" ); 
+    
+    this.show_data_to_diagram = function(  )
+    {
+        for(var i=1;i<=8;i++)
+        this["d"+i].init( this.get_quantity("d"+i, "A"), this.get_quantity_total("d"+i, "A"), 
+                          this.get_quantity("d"+i, "B"), this.get_quantity_total("d"+i, "B") );
+    }
+}
+Chart__QuestionsOnTime.prototype = new ChartBase();
+
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * ΠΟΙΌΤΗΤΑ(Quality)
+ * e1) Παρακαλώ αξιολογήστε την εμπιστοσύνη σας στις εργασίες που πραγματοποιήθηκαν στο αυτοκίνητο σας κατά τη διάρκεια του τελευταίου service.
+ * (Е1) Ве молиме дадете вашата доверба во работата на вашиот автомобил во текот на последните услуга.)
+ * e2) Σε ποιο βαθμό ολοκληρώθηκαν οι εργασίες που ζητήσατε;(Е2) До кој степен делата ќе побара?)
+ * 
+ * Διερευνητικές Ερωτήσεις(прелиминарни прашања)
+ * e3. Πώς θα αξιολογούσατε την καθαριότητα του οχήματός σας μετά  το service ή  την επισκευή;
+ * (Е3. Како вие ја оценувате чистотата на вашето возило по услуга или поправка?)
+ * e4. Παρακαλώ βαθμολογήστε την εμπιστοσύνη σας στην τεχνική κατάρτιση της αντιπροσωπείας:
+ * (е4. Ве молиме дадете вашата доверба во техничка обука на делегацијата:)
+ */
+function Chart__Quantity()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Quality", chart_label:"ΠΟΙΌΤΗΤΑ"},
+            new Rectangle(0,0,860,600),
+            new Rectangle(170,180,665,360)
+    );
+    this.e1 = this.add_simple_left_right_questions_line( new Point(0, 43), "e1 need label" );
+    this.e2 = this.add_simple_left_right_questions_line( new Point(0, 125), "e2 need label" );
+    this.e3 = this.add_simple_left_right_questions_line( new Point(0, 206), "e3 need label" );
+    this.e4 = this.add_simple_left_right_questions_line( new Point(0, 292), "e4 need label" );
+    
+    this.show_data_to_diagram = function(  )
+    {
+        for(var i=1;i<=4;i++)
+        this["e"+i].init( this.get_quantity("e"+i, "A"), this.get_quantity_total("e"+i, "A"), 
+                          this.get_quantity("e"+i, "B"), this.get_quantity_total("e"+i, "B") );
+    }  
+}
+Chart__Quantity.prototype = new ChartBase();
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * ΣΕ ΠΕΡΊΠΤΩΣΗ ΠΟΥ ΧΡΕΙΆΣΤΗΚΕ ΝΑ ΕΠΙΣΤΡΈΨΕΤΕ ΣΤΗΝ ΑΝΤΙΠΡΟΣΩΠΕΊΑ ΓΙΑ ΕΠΙΠΛΈΟΝ ΕΡΓΑΣΊΑΣ
+ * (Во случај ми требаше да се вратат на делегацијата дополнителна работа)
+ * одговори:
+ * e61 Δεν ήταν αρκετός ο χρόνος / το πρόγραμμα ήταν γεμάτο(E61 не беше доволно време / програмата беше полн)
+ * e62 Δεν μπορούσαν να βρουν το πρόβλημα(E62 Тие не можеа да се најдат на проблемот)
+ * e63 Δεν ήταν διαθέσιμα τα ανταλλακτικά(E63 не беше достапен резервни)
+ * e64 Τα ανταλλακτικά που χρησιμοποιήθηκαν ήταν ελαττωματικά(на E64 деловите употребени биле неисправни)
+ * e65 Το τμήμα του service δεν μπόρεσε να βρει το πρόβλημα την πρώτη φορά(E65 На дел од услугата не може да се најде на проблемот прв пат)
+ * e66 Το τμήμα του service επιχείρησε την επισκευή αλλά δεν διόρθωσε το πρόβλημα(E66 На дел од услугата обиде да се поправи, но не го поправите проблемот)
+ * e67 Το πρόβλημα διορθώθηκε αλλά παρουσιάστηκε άλλο πρόβλημα(e67 Проблемот коригира, но има уште еден проблем)
+ * e68 Άλλος λόγος(E68 Друга причина)
+ */
+function Chart__InCaseWhenBackForAdditionalWork()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"InCaseWhenBackForAdditionalWork", 
+        chart_label:"ΣΕ ΠΕΡΊΠΤΩΣΗ ΠΟΥ ΧΡΕΙΆΣΤΗΚΕ ΝΑ ΕΠΙΣΤΡΈΨΕΤΕ ΣΤΗΝ ΑΝΤΙΠΡΟΣΩΠΕΊΑ ΓΙΑ ΕΠΙΠΛΈΟΝ ΕΡΓΑΣΊΑΣ"},
+            new Rectangle(0,0,860,950),
+            new Rectangle(170,180,665,670)
+    );
+    this.e61 = this.add_simple_left_right_questions_line( new Point(0, 43), "e61 need label" );
+    this.e62 = this.add_simple_left_right_questions_line( new Point(0, 125), "e62 need label" );
+    this.e63 = this.add_simple_left_right_questions_line( new Point(0, 206), "e63 need label" );
+    this.e64 = this.add_simple_left_right_questions_line( new Point(0, 292), "e64 need label" );
+    this.e65 = this.add_simple_left_right_questions_line( new Point(0, 372), "e65 need label" );
+    this.e66 = this.add_simple_left_right_questions_line( new Point(0, 452), "e66 need label" );
+    this.e67 = this.add_simple_left_right_questions_line( new Point(0, 532), "e67 need label" );
+    this.e68 = this.add_simple_left_right_questions_line( new Point(0, 612), "e68 need label" );
+    
+    this.show_data_to_diagram = function(  )
+    {
+        for(var i=1;i<=8;i++)
+        this["e6"+i].init( this.get_quantity("e6"+i, "A"), this.get_quantity_total("e6"+i, "A"), 
+                          this.get_quantity("e6"+i, "B"), this.get_quantity_total("e6"+i, "B") );
+    }   
+}
+Chart__InCaseWhenBackForAdditionalWork.prototype = new ChartBase();
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * ΚΌΣΤΗ(Trosoci)
+ * Ζ1) Από άποψη κόστους, παρακαλώ αξιολογήστε την υπηρεσία που λάβατε(Z1) Во однос на цената, ве молиме стапка на услуга, која доби)
+ * 
+ * Διερευνητικές Ερωτήσεις(прелиминарни прашања)
+ * Ζ2. Παροχή σαφών πληροφοριών σχετικά με το κόστος πριν την έναρξη της εργασίας;(Z2. Обезбеди јасни информации за цената пред отпочнување на работа?)
+ * Ζ3. Επεξήγηση των εργασιών που έγιναν;(Z3. Објаснување на работа?)
+ * Ζ4. Πόσο λογικό ήταν το κόστος των εργασιών και των ανταλλακτικών;(Z4. Како разумен беше на трошоците за работа и делови?)
+ * Ζ5. Επεξήγηση των χρεώσεων του service?(Z5. Објаснување на платежна услуга?)
+ * Z6. Επεξήγηση του μελλοντικού προγραμμάτος συντήρησης και επισκευής;(Z6. Објаснување на идната програма за одржување и поправка?)
+ */
+function Chart__Costs()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Costs", chart_label:"ΚΌΣΤΗ"},
+            new Rectangle(0,0,860,800),
+            new Rectangle(170,180,665,520)
+    );
+    this.Z1 = this.add_simple_left_right_questions_line( new Point(0, 43), "Z1 need label" );
+    this.Z2 = this.add_simple_left_right_questions_line( new Point(0, 125), "Z2 need label" );
+    this.Z3 = this.add_simple_left_right_questions_line( new Point(0, 206), "Z3 need label" );
+    this.Z4 = this.add_simple_left_right_questions_line( new Point(0, 292), "Z4 need label" );
+    this.Z5 = this.add_simple_left_right_questions_line( new Point(0, 372), "Z5 need label" );
+    this.Z6 = this.add_simple_left_right_questions_line( new Point(0, 452), "Z6 need label" );
+    
+    this.show_data_to_diagram = function(  )
+    {
+        for(var i=1;i<=6;i++)
+        this["Z"+i].init( this.get_quantity("Z"+i, "A"), this.get_quantity_total("Z"+i, "A"), 
+                          this.get_quantity("Z"+i, "B"), this.get_quantity_total("Z"+i, "B") );
+    } 
+}
+Chart__Costs.prototype = new ChartBase();
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * FOLLOW UP
+ * h1. Πως θα αξιολογούσατε την επικοινωνία που είχατε με την αντιπροσωπεία από το τελευταίο service / επισκευή που είχατε;
+ * (Н1. Како вие ја оценувате комуникација сте имале со делегација од последната услуга / поправка дека сте имале?)
+ * h5. Πώς θα αξιολογούσατε τον τρόπο που αντιμετωπίστηκε το θέμα σας;
+ * (Х5. Како вие ја оценувате начинот на кој ќе се обрати вашиот проблем?)
+ */
+function Chart__FollowUp()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"FollowUp", chart_label:"FOLLOW UP"},
+            new Rectangle(0,0,860,650),
+            new Rectangle(170,180,665,410)
+    );
+    this.h1 = this.add_simple_left_right_questions_line( new Point(0, 120), "h1 need label" );
+    this.h5 = this.add_simple_left_right_questions_line( new Point(0, 250), "h5 need label" );
+    
+    this.show_data_to_diagram = function(  )
+    {
+        this.h1.init( this.get_quantity("h1", "A"), this.get_quantity_total("h1", "A"), 
+                          this.get_quantity("h1", "B"), this.get_quantity_total("h1", "B") );
+        this.h5.init( this.get_quantity("h5", "A"), this.get_quantity_total("h5", "A"), 
+                          this.get_quantity("h5", "B"), this.get_quantity_total("h5", "B") );
+    } 
+}
+Chart__FollowUp.prototype = new ChartBase();
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * ΣΤΟ ΜΈΛΛΟΝ(vo idnina)
+ * u1. Θα πάτε ξανά στο συγκεκριμένο συνεργείο για κάποια μελλοντική εργασία;(U1. Ќе се вратиме на оваа работилница за некои идни работа?)
+ * u2. Θα συνιστούσατε τα αυτοκίνητα της Hyundai στην οικογένειά σας και στους φίλους σας;(U2. Дали ви препорачуваме автомобилите на Hyundai во вашето семејство и пријатели?)
+ * u3. Θα αγοράζατε ξανά ένα αυτοκίνητο Hyundai;(U3. Ќе купи автомобил повторно Хјундаи;)
+ */
+function Chart__InFuture()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"InFuture", chart_label:"ΣΤΟ ΜΈΛΛΟΝ"},
+            new Rectangle(0,0,860,650),
+            new Rectangle(170,180,665,410)
+    );
+    this.u1 = this.add_simple_left_right_questions_line( new Point(0, 100), "u1 need label" );
+    this.u2 = this.add_simple_left_right_questions_line( new Point(0, 200), "u2 need label" );
+    this.u3 = this.add_simple_left_right_questions_line( new Point(0, 300), "u3 need label" );
+    
+    this.show_data_to_diagram = function(  )
+    {
+        for(var i=1;i<=3;i++)
+        this["u"+i].init( this.get_quantity("u"+i, "A"), this.get_quantity_total("u"+i, "A"), 
+                          this.get_quantity("u"+i, "B"), this.get_quantity_total("u"+i, "B") );
+    } 
+}
+Chart__InFuture.prototype = new ChartBase();
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * ΚΛΕΊΣΙΜΟ ΚΛΉΣΗΣ(blisku povik)
+ * i1. Πώς θα αξιολογούσατε την συνολική ποιότητα του αυτοκινήτου σας;(i1. Како вие ја оценувате целокупниот квалитет на вашиот автомобил?)
+ * i2. Θα ήθελα να μου πείτε συνολικά για την μάρκα HYUNDAI σε σχέση με άλλες μάρκες που ξέρετε, θα λέγατε ότι είναι μια άριστη μάρκα
+ * (I2. Јас би рекол мојот Вкупно за брендот HYUNDAI во однос на другите брендови кои знаете, дали би рекле дека е одличен бренд)
+ */
+function Chart__CloseCall()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"CloseCall", chart_label:"ΚΛΕΊΣΙΜΟ ΚΛΉΣΗΣ"},
+            new Rectangle(0,0,860,650),
+            new Rectangle(170,180,665,410)
+    );
+    this.i1 = this.add_simple_left_right_questions_line( new Point(0, 120), "i1 need label" );
+    this.i2 = this.add_simple_left_right_questions_line( new Point(0, 250), "i2 need label" );
+    
+    this.show_data_to_diagram = function(  )
+    {
+        for(var i=1;i<=2;i++)
+        this["i"+i].init( this.get_quantity("i"+i, "A"), this.get_quantity_total("i"+i, "A"), 
+                          this.get_quantity("i"+i, "B"), this.get_quantity_total("i"+i, "B") );
+    } 
+}
+Chart__CloseCall.prototype = new ChartBase();
+
 function ChartModerator(){}
 ChartModerator.CHART = null;
 
