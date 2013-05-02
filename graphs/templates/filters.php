@@ -26,7 +26,7 @@ class ChartFilters
                 -->
                 <button class="btn btn-inverse" type="button">Εκτύπωση</button>
             </div>
-            <div class="floatLeft marginLeft10px"><b id="filter_chart_label"></b></div>
+            <div class="floatLeft marginLeft10px lineHeight30px"><b id="filter_chart_label"></b></div>
             <div class="clearBoth"></div>
         </div>
         <?php
@@ -203,7 +203,9 @@ class ChartFilters
                 <!--
                 <input type="button" value="Σχεδίαση γραφήματος" />
                 -->
+                <!--
                 <button class="btn btn-inverse" type="button">Σχεδίαση γραφήματος</button>
+                -->
             </div>
             <?php } ?>
             

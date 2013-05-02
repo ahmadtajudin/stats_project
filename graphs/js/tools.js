@@ -85,6 +85,34 @@ function ChartLineBase()
         $(this.id_or_class_reference).stop().animate({width:new_width+"px"}, 500);
     }
     
+    /*
+     * 
+     * @returns {undefined}
+     * Function for showing or hidiing right column
+     */
+    this.set_visibility_line_B = function()
+    {
+        var top_position = $(this.line__left).height();
+        var top_position_minus = top_position*-1;
+        var top_position_minus_vrz_dva = -1*top_position/2;
+        if(this.right_question_is_visible())
+        {
+            $(this.line_right).removeClass("displayNone");
+            $(this.line_right).stop().animate({opacity:1, top:top_position_minus+"px"}, 500);
+            $(this.line__left).stop().animate({top:"0px"}, 500);
+            $("#chart_left_right_data_filter_above_the_cahrt_info_right").stop().animate({opacity:1}, 500);
+        }
+        else
+        {
+            $(this.line__left).stop().animate({top:top_position_minus_vrz_dva+"px"}, 500);
+            $(this.line_right).stop().animate({opacity:0, top:top_position_minus_vrz_dva+"px"}, 500, function(e)
+            {
+                $(this).addClass("displayNone");
+            }); 
+            $("#chart_left_right_data_filter_above_the_cahrt_info_right").stop().animate({opacity:0}, 500);
+        }
+    }
+    
     this.resize = function(){}
     
     /*
@@ -131,8 +159,8 @@ function SimpleLine_LeftRightQuestions(chart, position, label_txt)
     this.chart = chart;
     $("#chart_holder_lines").append( $("#template_simple_line_left_right_question").html() );
     this.line_holder = $("#chart_holder_lines").find( ".simple_line_left_right_question" ).last();
-    this.simple_line_left_question = $(this.line_holder).find(".simple_line_left_question").get(0);
-    this.simple_line_right_question = $(this.line_holder).find(".simple_line_right_question").get(0);
+    this.line__left = this.simple_line_left_question = $(this.line_holder).find(".simple_line_left_question").get(0);
+    this.line_right = this.simple_line_right_question = $(this.line_holder).find(".simple_line_right_question").get(0);
     this.line_percent_left = $(this.simple_line_left_question).find(".line_percent").get(0);
     this.line_percent_right = $(this.simple_line_right_question).find(".line_percent").get(0);
     //var top_position = Math.random()*400;
@@ -164,43 +192,143 @@ function SimpleLine_LeftRightQuestions(chart, position, label_txt)
         $(this.line_percent_left).html( percentA100+"%" );
         $(this.line_percent_right).html( percentB100+"%" );
     }
-    this.set_visibility_line_B = function()
+    if (!this.right_question_is_visible())
     {
-        var top_position = $(this.simple_line_left_question).height();
-        var top_position_minus = top_position*-1;
-        var top_position_minus_vrz_dva = -1*top_position/2;
-        if(this.right_question_is_visible())
-        {
-            $(this.simple_line_right_question).removeClass("displayNone");
-            $(this.simple_line_left_question).stop().animate({top:top_position_minus+"px"}, 500);
-            $(this.simple_line_right_question).stop().animate({opacity:1, top:"0px"}, 500);
-            $("#chart_left_right_data_filter_above_the_cahrt_info_right").stop().animate({opacity:1}, 500);
-        }
-        else
-        {
-            $(this.simple_line_left_question).stop().animate({top:top_position_minus_vrz_dva+"px"}, 500);
-            $(this.simple_line_right_question).stop().animate({opacity:0, top:top_position_minus_vrz_dva+"px"}, 500, function(e)
-            {
-                $(this).addClass("displayNone");
-            }); 
-            $("#chart_left_right_data_filter_above_the_cahrt_info_right").stop().animate({opacity:0}, 500);
-        }
-    }
-    if(!this.right_question_is_visible())
-    {
-        var top_position = $(this.simple_line_left_question).height();
-        var top_position_minus = top_position*-1;
-        var top_position_minus_vrz_dva = -1*top_position/2;
-        $($(this.simple_line_left_question).find(".line_color_width").get(0)).width(0);
-        $($(this.simple_line_right_question).find(".line_color_width").get(0)).width(0);
-        $(this.simple_line_left_question).css("top", top_position_minus_vrz_dva+"px");
-        $(this.simple_line_right_question).css("top", top_position_minus_vrz_dva+"px");
-        $(this.simple_line_right_question).css("opacity", 0);
+        var top_position = $(this.line__left).height();
+        var top_position_minus = top_position * -1;
+        var top_position_minus_vrz_dva = -1 * top_position / 2;
+        $(this.line__left).css("top", top_position_minus_vrz_dva + "px");
+        $(this.line_right).css("top", top_position_minus_vrz_dva + "px");
+        $(this.line_right).css("opacity", 0);
         $(this.line_percent_left).html( "" );
         $(this.line_percent_right).html( "" );
+        $($(this.line_holder).find(".simple_line_left_question .line_color_width")).width(0);
+        $($(this.line_holder).find(".simple_line_right_question .line_color_width")).width(0);
     }
 }
 SimpleLine_LeftRightQuestions.prototype = new ChartLineBase();
+
+function xN_AreasLine(chart, position, label_txt, details, column_name, labelLeftRightTexts)
+{
+    this.details = details;
+    this.column_name = column_name;
+    this.count_areas = function()
+    {
+        return Math.abs(this.details.range_from-this.details.range_to)+1;
+    }
+    this.middle_width_part = function()
+    {
+        return Math.floor( this.chart.chart_diagram_poz_size.w/this.count_areas() );
+    }
+    this.position = position;
+    this.chart = chart;
+    $("#chart_holder_lines").append( $("#template_xN_AreasLine").html() );
+    this.line = $("#chart_holder_lines").find(".xN_AreasLine").last();
+    this.line__left = $(this.line).find(".xN_AreasLine_left").last();
+    this.line_right = $(this.line).find(".xN_AreasLine_right").last();
+    $(this.line).css("top", this.position.y+"px");
+    $(this.line).width( this.chart.chart_diagram_poz_size.w );
+    
+    //{left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    $(this.line).find(".xN_AreasLine_left_label").html( labelLeftRightTexts.left_label );
+    $(this.line).find(".xN_AreasLine_right_label").html( labelLeftRightTexts.right_label );
+    var margin_label_left_right = 5;
+    var left_label_x = 0-$(this.line).find(".xN_AreasLine_left_label").width()-margin_label_left_right;
+    var right_label_x = this.chart.chart_diagram_poz_size.w+margin_label_left_right;
+    var left_label_y = 0-$(this.line).find(".xN_AreasLine_left_label").height()/2;
+    var right_label_y = 0-$(this.line).find(".xN_AreasLine_right_label").height()/2;
+    $(this.line).find(".xN_AreasLine_left_label").css("left", left_label_x+"px");
+    $(this.line).find(".xN_AreasLine_right_label").css("left", right_label_x+"px");
+    $(this.line).find(".xN_AreasLine_left_label").css("top", left_label_y+"px");
+    $(this.line).find(".xN_AreasLine_right_label").css("top", right_label_y+"px");
+    
+    this.from_to = function()
+    {
+        if(details.range_from<details.range_to)
+        {
+            return {from:details.range_from, to:details.range_to};
+        }
+        else
+        {
+            return {from:details.range_to, to:details.range_from};
+        }
+    }
+    
+    this.add_add_part = function(index)
+    {
+        $($(this.line__left).find(".xN_AreasLine_parts_holder").last()).append($("#template_xN_partHolder").html());
+        $($(this.line_right).find(".xN_AreasLine_parts_holder").last()).append($("#template_xN_partHolder").html());
+        
+        var left_last_last_part = 
+        $($(this.line__left).find(".xN_AreasLine_parts_holder").last()).find(".xN_partHolder").last();
+        var right_last_last_part = 
+        $($(this.line_right).find(".xN_AreasLine_parts_holder").last()).find(".xN_partHolder").last();
+        
+        var class_reference = "line_part_"+index+"_";
+        $(left_last_last_part).addClass( class_reference );
+        $(right_last_last_part).addClass( class_reference );
+        
+        $(this.line_right).css("top", "-30px");
+        $(left_last_last_part).width( this.middle_width_part() );
+        $(right_last_last_part).width( this.middle_width_part() );
+        $(left_last_last_part).css( "backgroundColor", this.details["color_"+index] );
+        $(right_last_last_part).css( "backgroundColor", this.details["color_"+index] );
+    }
+    if(details.range_from<details.range_to)
+    for(i=details.range_from;i<=details.range_to;i++)
+    {
+        this.add_add_part(i);
+    }
+    else
+    for(i=details.range_from;i>=details.range_to;i--)
+    {
+        this.add_add_part(i);
+    }
+    
+    /*
+     * 
+     * @returns {undefined}
+     * <root><group_A_data><data><count_q7_1>8</count_q7_1><count_q7_2>3</count_q7_2><count_q7_3>24</count_q7_3><count_q7_4>109</count_q7_4>
+     * <count_q7_5>438</count_q7_5><count_total_q7>582</count_total_q7><count_q8_1>19</count_q8_1><count_q8_2>7</count_q8_2><count_q8_3>23</count_q8_3>
+     * <count_q8_4>87</count_q8_4><count_q8_5>446</count_q8_5><count_total_q8>582</count_total_q8></data><total_pass_by>134872</total_pass_by>
+     * <total_interviews>582</total_interviews></group_A_data><group_B_data><data><count_q7_1>0</count_q7_1><count_q7_2>0</count_q7_2><count_q7_3>0</count_q7_3>
+     * <count_q7_4>1</count_q7_4><count_q7_5>2</count_q7_5><count_total_q7>3</count_total_q7><count_q8_1>0</count_q8_1><count_q8_2>0</count_q8_2>
+     * <count_q8_3>1</count_q8_3><count_q8_4>0</count_q8_4>
+     * <count_q8_5>2</count_q8_5><count_total_q8>3</count_total_q8></data><total_pass_by>1146</total_pass_by><total_interviews>3</total_interviews></group_B_data></root> 
+     */
+    this.init = function()
+    {
+       var dataAXML = $($(this.chart.data_xml).find("group_A_data").get(0)).find("data").get(0);
+       var dataBXML = $($(this.chart.data_xml).find("group_B_data").get(0)).find("data").get(0);
+       var leftTotal =  parseFloat($(dataAXML).find("count_total_"+this.column_name).text());
+       var rightTotal =  parseFloat($(dataBXML).find("count_total_"+this.column_name).text());
+       for(i=this.from_to().from;i<=this.from_to().to;i++)
+       {
+           //$(this.line__left).find(reference_class).get(0)
+           var left_val = parseFloat($(dataAXML).find("count_"+this.column_name+"_"+i).text());
+           var right_val = parseFloat($(dataBXML).find("count_"+this.column_name+"_"+i).text());
+           this.animate_part( i, left_val/leftTotal, right_val/rightTotal );
+       } 
+    }
+    this.animate_part = function(index, percentLeft, percentRight)
+    {
+        var reference_class = ".line_part_"+index+"_";
+        var new_width_left =  percentLeft*this.chart.chart_diagram_poz_size.w;
+        var new_width_right =  percentRight*this.chart.chart_diagram_poz_size.w;
+        $($(this.line__left).find(reference_class).get(0)).animate({width:new_width_left+"px"}, 500);
+        $($(this.line_right).find(reference_class).get(0)).animate({width:new_width_right+"px"}, 500);
+    }
+    if (!this.right_question_is_visible())
+    {
+        var top_position = $(this.line__left).height();
+        var top_position_minus = top_position * -1;
+        var top_position_minus_vrz_dva = -1 * top_position / 2;
+        $(this.line__left).css("top", top_position_minus_vrz_dva + "px");
+        $(this.line_right).css("top", top_position_minus_vrz_dva + "px");
+        $(this.line_right).css("opacity", 0);
+    }
+}
+xN_AreasLine.prototype = new ChartLineBase();
 
 function ChartBase()
 {
@@ -312,20 +440,30 @@ function ChartBase()
      * an array.With for loop should setup the results.
      * On start they will have value 0
      */
+    /*
     this.add_simple_horizontal_line = function(id_line)
     {
         this.lines.push( new ChartSimpleLineHorizontal( id_line ) );
-    }
+    }*/
     /*
      * 
      * @returns {undefined}
      * Functions for adding x2, group A,B lines.
      */
+    /*
     this.add_simple_left_right_questions_line = function( position, label_txt )
     {
         var new_line = new SimpleLine_LeftRightQuestions( this, position, label_txt );
         this.lines.push( new_line );
         return new_line;
+    }*/
+    /*
+     * Function for addin a line into the chart
+     */
+    this.add_line = function( line )
+    {
+        this.lines.push( line );
+        return line;
     }
     
     
@@ -418,6 +556,246 @@ function ChartTest()
 }
 ChartTest.prototype = new ChartBase();
 
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * Γενικές Εντυπώσεις
+ * Генерални Импресии
+ * General Impresions
+ * q7. Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο;
+ (Q7. Генерално, колку се задоволни бевте со вашето искуство во овој овластени работилница?)
+ * q8.Με βάση την εμπειρία σας από το συγκεκριμένο συνεργείο πόσο πιθανό θα ήταν να συστήσετε το συγκεκριμένο συνεργείο σε κάποιον φίλο σας /γνωστό σας / συγγενή σας
+ * (q8.Me вашето искуство на оваа работилница како најверојатно би им препорачале оваа работилница на пријател / познаник / роднина)
+ */
+function Chart__GeneralImpresions()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"GeneralImpresions", chart_label:"ΓΕΝΙΚΈΣ ΕΝΤΥΠΏΣΕΙΣ"},
+            new Rectangle(0,0,900,550),
+            new Rectangle(140,170,665,314)
+    );
+    var line_details = 
+    {
+        range_from:5,range_to:1,
+        color_5:"#339966",
+        color_4:"#99cc00",
+        color_3:"#ffff00",
+        color_2:"#ff9900",
+        color_1:"#ff0000"
+    };
+    this.q7 = this.add_line ( new xN_AreasLine(this, new Point(0, 105), "q7 need label", line_details, "q7", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.q8 = this.add_line ( new xN_AreasLine(this, new Point(0, 210), "q8 need label", line_details, "q8", 
+    {left_label:"Πολύ Πιθανό", right_label:"Καθόλου Πιθανό"}) );
+    
+    this.show_data_to_diagram = function(  )
+    {
+        this.q7.init();
+        this.q8.init();
+    }
+}
+Chart__GeneralImpresions.prototype = new ChartBase();
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * Εγκαταστάσεις(Објекти)
+ * b1 Πως θα αξιολογούσατε τις εγκαταστάσεις του συγκεκριμένου συνεργείου. 
+ (б1 Како вие ја оценувате објекти на оваа работилница.)
+ * 
+ * Διερευνητικές Ερωτήσεις(прелиминарни прашања)
+ * b2. Πώς θα αξιολογούσατε την εμφάνιση του τμήματος Service;(Б2. Како вие ја оценувате изгледот на делот служба;)
+ * b3. Την άνεση του χώρου αναμονής (π.χ. καθίσματα, μηχανές καφέ, κλπ….)(Б3. Удобноста на чекање област (на пример, седишта, кафе машини, итн ....))
+ * b4. Τη γενική καθαριότητα της αντιπροσωπείας;(b4. Општата чистотата на делегацијата?)
+ * b5. Την ευκολία στάθμευσης;(b5. Леснотијата на паркинг?)
+ */
+function Chart__Objects()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Objects", chart_label:"ΕΓΚΑΤΑΣΤΆΣΕΙΣ"},
+            new Rectangle(0,0,860,650),
+            new Rectangle(170,180,665,430)
+    );
+    var line_details = 
+    {
+        range_from:5,range_to:1,
+        color_5:"#339966",
+        color_4:"#99cc00",
+        color_3:"#ffff00",
+        color_2:"#ff9900",
+        color_1:"#ff0000"
+    };
+    this.b1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "q7 need label", line_details, "b1", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.b2 = this.add_line ( new xN_AreasLine(this, new Point(0, 125), "q7 need label", line_details, "b2", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.b3 = this.add_line ( new xN_AreasLine(this, new Point(0, 206), "q7 need label", line_details, "b3", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.b4 = this.add_line ( new xN_AreasLine(this, new Point(0, 292), "q7 need label", line_details, "b4", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.b5 = this.add_line ( new xN_AreasLine(this, new Point(0, 376), "q7 need label", line_details, "b5", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    /*
+    this.b1 = this.add_simple_left_right_questions_line( new Point(0, 43), "b1 need label" );
+    this.b2 = this.add_simple_left_right_questions_line( new Point(0, 125), "b2 need label" );
+    this.b3 = this.add_simple_left_right_questions_line( new Point(0, 206), "b3 need label" );
+    this.b4 = this.add_simple_left_right_questions_line( new Point(0, 292), "b4 need label" );
+    this.b5 = this.add_simple_left_right_questions_line( new Point(0, 376), "b5 need label" );
+    */
+    
+    this.show_data_to_diagram = function(  )
+    {
+        for(var i=1;i<=5;i++)
+        {
+            this["b"+i].init();
+        }
+    }
+}
+Chart__Objects.prototype = new ChartBase();
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * Προσωπικό(Personal)
+ * c1) Πως θα αξιολογούσατε το προσωπικό του συγκεκριμένου συνεργείου(Ц1) Како вие ја оценувате персоналот на оваа работилница)
+ * c2) Αισθανθήκατε ότι σας αντιμετώπισαν σαν ένα σημαντικό πελάτη; (В2) Вие сте почувствувале дека сте ме третира како важен клиент?)
+ * 
+ * Διερευνητικές Ερωτήσεις(прелиминарни прашања)
+ * c3. Πώς θα αξιολογούσατε την φιλικότητα του προσωπικού;(C3. Како вие ја оценувате стил на персоналот?)
+ * c4. Πώς θα αξιολογούσατε την εξυπηρέτηση του προσωπικού;(C4. Како вие ја оценувате услугата персоналот?)
+ * c5. Την ειλικρίνεια και την αξιοπιστία τους;(c5. Чесност и кредибилитет?)
+ * c6. Τον χειρισμό των τηλεφωνικών ερωτήσεων;(C6. Ракување на телефонски прашања?)
+ * c7. Την προθυμία να ακούσουν και να κατανοήσουν τα προβλήματα;(C7. Подготвеност да се слуша и да се разбере проблеми?)
+ * c8. Την επεξήγηση της εργασίας που πρέπει να γίνει;(В8. Објаснување на работа да се направи?)
+ * c9. Την ικανότητα τους να διαγνώσουν προβλήματα;(C9. Нивната способност да дијагностицирање на проблемите?)
+ */
+function Chart__Personal()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Personal", chart_label:"ΠΡΟΣΩΠΙΚΌ"},
+            new Rectangle(0,0,860,950),
+            new Rectangle(170,180,665,730)
+    );
+    var line_details = 
+    {
+        range_from:5,range_to:1,
+        color_5:"#339966",
+        color_4:"#99cc00",
+        color_3:"#ffff00",
+        color_2:"#ff9900",
+        color_1:"#ff0000"
+    };
+    this.c1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "q7 need label", line_details, "c1", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.c2 = this.add_line ( new xN_AreasLine(this, new Point(0, 125), "q7 need label", line_details, "c2", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.c3 = this.add_line ( new xN_AreasLine(this, new Point(0, 206), "q7 need label", line_details, "c3", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.c4 = this.add_line ( new xN_AreasLine(this, new Point(0, 292), "q7 need label", line_details, "c4", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.c5 = this.add_line ( new xN_AreasLine(this, new Point(0, 376), "q7 need label", line_details, "c5", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.c6 = this.add_line ( new xN_AreasLine(this, new Point(0, 456), "q7 need label", line_details, "c6", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.c7 = this.add_line ( new xN_AreasLine(this, new Point(0, 526), "q7 need label", line_details, "c7", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.c8 = this.add_line ( new xN_AreasLine(this, new Point(0, 606), "q7 need label", line_details, "c8", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.c9 = this.add_line ( new xN_AreasLine(this, new Point(0, 686), "q7 need label", line_details, "c9", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+        /*
+    this.c1 = this.add_simple_left_right_questions_line( new Point(0, 43), "c1 need label" );
+    this.c2 = this.add_simple_left_right_questions_line( new Point(0, 125), "c2 need label" );
+    this.c3 = this.add_simple_left_right_questions_line( new Point(0, 206), "c3 need label" );
+    this.c4 = this.add_simple_left_right_questions_line( new Point(0, 292), "c4 need label" );
+    this.c5 = this.add_simple_left_right_questions_line( new Point(0, 376), "c5 need label" ); 
+    this.c6 = this.add_simple_left_right_questions_line( new Point(0, 456), "c6 need label" ); 
+    this.c7 = this.add_simple_left_right_questions_line( new Point(0, 526), "c7 need label" ); 
+    this.c8 = this.add_simple_left_right_questions_line( new Point(0, 606), "c8 need label" ); 
+    this.c9 = this.add_simple_left_right_questions_line( new Point(0, 686), "c9 need label" ); 
+    */
+    
+    this.show_data_to_diagram = function(  )
+    {
+        for(var i=1;i<=9;i++)
+        this["c"+i].init();
+    }
+}
+Chart__Personal.prototype = new ChartBase();
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * Θέματα Χρόνου(Questions on time)
+ * 
+ * d1) Τύχατε της προσοχή του προσωπικού (σας είχε το προσωπικό στο νού του)καθ’ όλη την διάρκεια της επίσκεψης σας; 
+ * (D1) ја зема вниманието на персонал (имавме кадар во неговиот ум) во текот на времетраењето на Вашата посета?)
+ * 
+ * Διερευνητικές Ερωτήσεις(Preliminarni prasanja)
+ * d2. Πώς θα αξιολογούσατε την ευκολία να κλείσετε ραντεβού;(D2. Како вие ја оценувате леснотијата да се резервира закажете состанок?)
+ * d3. Την προσοχή που σας δόθηκε κατά την άφιξή σας;(Д3. Внимание се посветува и на Ваше пристигнување?)
+ * d4. Τον χρόνο αναμονής όταν πήρανε το όχημά σας;(d4. Време на чекање, кога тие се на вашето возило?)
+ * d5. Την ικανότητα τους να ανταποκριθούν στο χρονοδιάγραμμα που σας είχαν δώσει αρχικά;(d5. Нивната способност да ги задоволи распоред дека сте имале првично дадена?)
+ * d6. τον συνολικό χρόνο που απαιτήθηκε ώστε να ολοκληρωθεί το service του οχήματός σας;(d6. вкупното време потребно да се заврши во служба на вашето возило?)
+ * d7. Την ευελιξία της αντιπροσωπείας να σας κλείσει το ραντεβού που θέλατε;(D7. Флексибилност на делегацијата ќе книга вашето назначување што сакавте?)
+ * d8. Την ευκολία ωραρίου;(D8. Леснотијата часа?)
+ */
+function Chart__QuestionsOnTime()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"QuestionsOnTime", chart_label:"ΘΈΜΑΤΑ ΧΡΌΝΟΥ"},
+            new Rectangle(0,0,860,870),
+            new Rectangle(170,180,665,650)
+    );
+    var line_details = 
+    {
+        range_from:5,range_to:1,
+        color_5:"#339966",
+        color_4:"#99cc00",
+        color_3:"#ffff00",
+        color_2:"#ff9900",
+        color_1:"#ff0000"
+    };
+    this.d1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "q7 need label", line_details, "d1", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.d2 = this.add_line ( new xN_AreasLine(this, new Point(0, 125), "q7 need label", line_details, "d2", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.d3 = this.add_line ( new xN_AreasLine(this, new Point(0, 206), "q7 need label", line_details, "d3", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.d4 = this.add_line ( new xN_AreasLine(this, new Point(0, 292), "q7 need label", line_details, "d4", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.d5 = this.add_line ( new xN_AreasLine(this, new Point(0, 376), "q7 need label", line_details, "d5", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.d6 = this.add_line ( new xN_AreasLine(this, new Point(0, 456), "q7 need label", line_details, "d6", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.d7 = this.add_line ( new xN_AreasLine(this, new Point(0, 526), "q7 need label", line_details, "d7", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.d8 = this.add_line ( new xN_AreasLine(this, new Point(0, 606), "q7 need label", line_details, "d8", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+        /*
+    this.d1 = this.add_simple_left_right_questions_line( new Point(0, 43), "d1 need label" );
+    this.d2 = this.add_simple_left_right_questions_line( new Point(0, 125), "d2 need label" );
+    this.d3 = this.add_simple_left_right_questions_line( new Point(0, 206), "d3 need label" );
+    this.d4 = this.add_simple_left_right_questions_line( new Point(0, 292), "d4 need label" );
+    this.d5 = this.add_simple_left_right_questions_line( new Point(0, 376), "d5 need label" ); 
+    this.d6 = this.add_simple_left_right_questions_line( new Point(0, 456), "d6 need label" ); 
+    this.d7 = this.add_simple_left_right_questions_line( new Point(0, 526), "d7 need label" ); 
+    this.d8 = this.add_simple_left_right_questions_line( new Point(0, 606), "d8 need label" ); 
+    */
+    
+    this.show_data_to_diagram = function(  )
+    {
+        for(var i=1;i<=8;i++)
+        this["d"+i].init( );
+    }
+}
+Chart__QuestionsOnTime.prototype = new ChartBase();
+
 /*
  * ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ 
  * Reason to visit
@@ -431,9 +809,14 @@ function Chart__ReasonToVisit()
             new Rectangle(0,0,900,550),
             new Rectangle(140,170,665,314)
     );
+    this.q6_1 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 55), "Service") );
+    this.q6_2 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς") );
+    this.q6_3 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 265), "Επισκευή εντός εγγύησης") );
+    /*
     this.q6_1 = this.add_simple_left_right_questions_line( new Point(0, 55), "Service" );
     this.q6_2 = this.add_simple_left_right_questions_line( new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς");
     this.q6_3 = this.add_simple_left_right_questions_line( new Point(0, 265), "Επισκευή εντός εγγύησης" );
+    */
     
     this.show_data_to_diagram = function(  )
     {
@@ -481,167 +864,7 @@ function Chart__RepeatedVisits()
 Chart__RepeatedVisits.prototype = new ChartBase();
 
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- * Γενικές Εντυπώσεις
- * Генерални Импресии
- * General Impresions
- * q7. Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο;
- (Q7. Генерално, колку се задоволни бевте со вашето искуство во овој овластени работилница?)
- * q8.Με βάση την εμπειρία σας από το συγκεκριμένο συνεργείο πόσο πιθανό θα ήταν να συστήσετε το συγκεκριμένο συνεργείο σε κάποιον φίλο σας /γνωστό σας / συγγενή σας
- * (q8.Me вашето искуство на оваа работилница како најверојатно би им препорачале оваа работилница на пријател / познаник / роднина)
- */
-function Chart__GeneralImpresions()
-{
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"GeneralImpresions", chart_label:"ΓΕΝΙΚΈΣ ΕΝΤΥΠΏΣΕΙΣ"},
-            new Rectangle(0,0,900,550),
-            new Rectangle(140,170,665,314)
-    );
-    this.q7 = this.add_simple_left_right_questions_line( new Point(0, 105), "q7 need label" );
-    this.q8 = this.add_simple_left_right_questions_line( new Point(0, 210), "q8 need label" );
-    
-    this.show_data_to_diagram = function(  )
-    {
-        this.q7.init( this.get_quantity("q7", "A"), this.get_quantity_total("q7", "A"), 
-                        this.get_quantity("q7", "B"), this.get_quantity_total("q7", "B") );
-        this.q8.init( this.get_quantity("q8", "A"), this.get_quantity_total("q8", "A"), 
-                        this.get_quantity("q8", "B"), this.get_quantity_total("q8", "B") );
-    }
-}
-Chart__GeneralImpresions.prototype = new ChartBase();
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- * Εγκαταστάσεις(Објекти)
- * b1 Πως θα αξιολογούσατε τις εγκαταστάσεις του συγκεκριμένου συνεργείου. 
- (б1 Како вие ја оценувате објекти на оваа работилница.)
- * 
- * Διερευνητικές Ερωτήσεις(прелиминарни прашања)
- * b2. Πώς θα αξιολογούσατε την εμφάνιση του τμήματος Service;(Б2. Како вие ја оценувате изгледот на делот служба;)
- * b3. Την άνεση του χώρου αναμονής (π.χ. καθίσματα, μηχανές καφέ, κλπ….)(Б3. Удобноста на чекање област (на пример, седишта, кафе машини, итн ....))
- * b4. Τη γενική καθαριότητα της αντιπροσωπείας;(b4. Општата чистотата на делегацијата?)
- * b5. Την ευκολία στάθμευσης;(b5. Леснотијата на паркинг?)
- */
-function Chart__Objects()
-{
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Objects", chart_label:"ΕΓΚΑΤΑΣΤΆΣΕΙΣ"},
-            new Rectangle(0,0,860,650),
-            new Rectangle(170,180,665,430)
-    );
-    this.b1 = this.add_simple_left_right_questions_line( new Point(0, 43), "b1 need label" );
-    this.b2 = this.add_simple_left_right_questions_line( new Point(0, 125), "b2 need label" );
-    this.b3 = this.add_simple_left_right_questions_line( new Point(0, 206), "b3 need label" );
-    this.b4 = this.add_simple_left_right_questions_line( new Point(0, 292), "b4 need label" );
-    this.b5 = this.add_simple_left_right_questions_line( new Point(0, 376), "b5 need label" );
-    
-    this.show_data_to_diagram = function(  )
-    {
-        this.b1.init( this.get_quantity("b1", "A"), this.get_quantity_total("b1", "A"), 
-                          this.get_quantity("b1", "B"), this.get_quantity_total("b1", "B") );
-        this.b2.init( this.get_quantity("b2", "A"), this.get_quantity_total("b2", "A"), 
-                          this.get_quantity("b2", "B"), this.get_quantity_total("b2", "B") );
-        this.b3.init( this.get_quantity("b3", "A"), this.get_quantity_total("b3", "A"), 
-                          this.get_quantity("b3", "B"), this.get_quantity_total("b3", "B") );
-        this.b4.init( this.get_quantity("b4", "A"), this.get_quantity_total("b4", "A"), 
-                          this.get_quantity("b4", "B"), this.get_quantity_total("b4", "B") );
-        this.b5.init( this.get_quantity("b5", "A"), this.get_quantity_total("b5", "A"), 
-                          this.get_quantity("b5", "B"), this.get_quantity_total("b5", "B") );
-    }
-}
-Chart__Objects.prototype = new ChartBase();
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- * Προσωπικό(Personal)
- * c1) Πως θα αξιολογούσατε το προσωπικό του συγκεκριμένου συνεργείου(Ц1) Како вие ја оценувате персоналот на оваа работилница)
- * c2) Αισθανθήκατε ότι σας αντιμετώπισαν σαν ένα σημαντικό πελάτη; (В2) Вие сте почувствувале дека сте ме третира како важен клиент?)
- * 
- * Διερευνητικές Ερωτήσεις(прелиминарни прашања)
- * c3. Πώς θα αξιολογούσατε την φιλικότητα του προσωπικού;(C3. Како вие ја оценувате стил на персоналот?)
- * c4. Πώς θα αξιολογούσατε την εξυπηρέτηση του προσωπικού;(C4. Како вие ја оценувате услугата персоналот?)
- * c5. Την ειλικρίνεια και την αξιοπιστία τους;(c5. Чесност и кредибилитет?)
- * c6. Τον χειρισμό των τηλεφωνικών ερωτήσεων;(C6. Ракување на телефонски прашања?)
- * c7. Την προθυμία να ακούσουν και να κατανοήσουν τα προβλήματα;(C7. Подготвеност да се слуша и да се разбере проблеми?)
- * c8. Την επεξήγηση της εργασίας που πρέπει να γίνει;(В8. Објаснување на работа да се направи?)
- * c9. Την ικανότητα τους να διαγνώσουν προβλήματα;(C9. Нивната способност да дијагностицирање на проблемите?)
- */
-function Chart__Personal()
-{
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Personal", chart_label:"ΠΡΟΣΩΠΙΚΌ"},
-            new Rectangle(0,0,860,950),
-            new Rectangle(170,180,665,730)
-    );
-    this.c1 = this.add_simple_left_right_questions_line( new Point(0, 43), "c1 need label" );
-    this.c2 = this.add_simple_left_right_questions_line( new Point(0, 125), "c2 need label" );
-    this.c3 = this.add_simple_left_right_questions_line( new Point(0, 206), "c3 need label" );
-    this.c4 = this.add_simple_left_right_questions_line( new Point(0, 292), "c4 need label" );
-    this.c5 = this.add_simple_left_right_questions_line( new Point(0, 376), "c5 need label" ); 
-    this.c6 = this.add_simple_left_right_questions_line( new Point(0, 456), "c6 need label" ); 
-    this.c7 = this.add_simple_left_right_questions_line( new Point(0, 526), "c7 need label" ); 
-    this.c8 = this.add_simple_left_right_questions_line( new Point(0, 606), "c8 need label" ); 
-    this.c9 = this.add_simple_left_right_questions_line( new Point(0, 686), "c9 need label" ); 
-    
-    this.show_data_to_diagram = function(  )
-    {
-        for(var i=1;i<=9;i++)
-        this["c"+i].init( this.get_quantity("c"+i, "A"), this.get_quantity_total("c"+i, "A"), 
-                          this.get_quantity("c"+i, "B"), this.get_quantity_total("c"+i, "B") );
-    }
-}
-Chart__Personal.prototype = new ChartBase();
-
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- * Θέματα Χρόνου(Questions on time)
- * 
- * d1) Τύχατε της προσοχή του προσωπικού (σας είχε το προσωπικό στο νού του)καθ’ όλη την διάρκεια της επίσκεψης σας; 
- * (D1) ја зема вниманието на персонал (имавме кадар во неговиот ум) во текот на времетраењето на Вашата посета?)
- * 
- * Διερευνητικές Ερωτήσεις(Preliminarni prasanja)
- * d2. Πώς θα αξιολογούσατε την ευκολία να κλείσετε ραντεβού;(D2. Како вие ја оценувате леснотијата да се резервира закажете состанок?)
- * d3. Την προσοχή που σας δόθηκε κατά την άφιξή σας;(Д3. Внимание се посветува и на Ваше пристигнување?)
- * d4. Τον χρόνο αναμονής όταν πήρανε το όχημά σας;(d4. Време на чекање, кога тие се на вашето возило?)
- * d5. Την ικανότητα τους να ανταποκριθούν στο χρονοδιάγραμμα που σας είχαν δώσει αρχικά;(d5. Нивната способност да ги задоволи распоред дека сте имале првично дадена?)
- * d6. τον συνολικό χρόνο που απαιτήθηκε ώστε να ολοκληρωθεί το service του οχήματός σας;(d6. вкупното време потребно да се заврши во служба на вашето возило?)
- * d7. Την ευελιξία της αντιπροσωπείας να σας κλείσει το ραντεβού που θέλατε;(D7. Флексибилност на делегацијата ќе книга вашето назначување што сакавте?)
- * d8. Την ευκολία ωραρίου;(D8. Леснотијата часа?)
- */
-function Chart__QuestionsOnTime()
-{
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"QuestionsOnTime", chart_label:"ΘΈΜΑΤΑ ΧΡΌΝΟΥ"},
-            new Rectangle(0,0,860,870),
-            new Rectangle(170,180,665,650)
-    );
-    this.d1 = this.add_simple_left_right_questions_line( new Point(0, 43), "d1 need label" );
-    this.d2 = this.add_simple_left_right_questions_line( new Point(0, 125), "d2 need label" );
-    this.d3 = this.add_simple_left_right_questions_line( new Point(0, 206), "d3 need label" );
-    this.d4 = this.add_simple_left_right_questions_line( new Point(0, 292), "d4 need label" );
-    this.d5 = this.add_simple_left_right_questions_line( new Point(0, 376), "d5 need label" ); 
-    this.d6 = this.add_simple_left_right_questions_line( new Point(0, 456), "d6 need label" ); 
-    this.d7 = this.add_simple_left_right_questions_line( new Point(0, 526), "d7 need label" ); 
-    this.d8 = this.add_simple_left_right_questions_line( new Point(0, 606), "d8 need label" ); 
-    
-    this.show_data_to_diagram = function(  )
-    {
-        for(var i=1;i<=8;i++)
-        this["d"+i].init( this.get_quantity("d"+i, "A"), this.get_quantity_total("d"+i, "A"), 
-                          this.get_quantity("d"+i, "B"), this.get_quantity_total("d"+i, "B") );
-    }
-}
-Chart__QuestionsOnTime.prototype = new ChartBase();
 
 
 /*

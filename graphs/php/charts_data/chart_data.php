@@ -180,5 +180,37 @@ class ChartData extends DataModerator
         return "<total_pass_by>".$total_pass_by[0]["totalPassBy"]."</total_pass_by><total_interviews>".
                 $total_interviews[0]["___COUNT___"]."</total_interviews>";
     }
+    
+    /*
+     * Function for get data for the parts.
+     * It should get back count of total, and count of all parts.
+     * For example if we have parts with values 1,2,3,4 and 5.
+     * It count all count with 1, then with 2, then with 3, ....5.
+     * Then sent back.
+     */
+    protected function get_counts_for_parts($arr_details_parts, $range_from_to)
+    {
+        $data_for = "<data>";
+        for($i=0;$i<count($arr_details_parts);$i++)
+        {
+            for($j=$range_from_to["from"];$j<=$range_from_to["to"];$j++)
+            {
+                $column_variable = $arr_details_parts[$i]["column"];
+                $count_sql = "
+                    SELECT COUNT(".$column_variable.") AS __COUNT__ FROM data WHERE ".$this->area_year_month_dealercode_chain__SQL_condition
+                        ." AND ".$column_variable."='".$j."'
+                ";
+                $count = DB_DETAILS::ADD_ACTION($count_sql, DB_DETAILS::$TYPE_SELECT);
+                //print $count_sql;
+                $data_for .= "<count_".$column_variable."_".$j.">".$count[0]["__COUNT__"]."</count_".$column_variable."_".$j.">";
+            }
+            $count_total = DB_DETAILS::ADD_ACTION("
+                    SELECT COUNT(".$column_variable.") AS __COUNT__ FROM data WHERE ".$this->area_year_month_dealercode_chain__SQL_condition
+                    , DB_DETAILS::$TYPE_SELECT);
+            $data_for .= "<count_total_".$column_variable.">".$count_total[0]["__COUNT__"]."</count_total_".$column_variable.">";
+        }
+        $data_for .= "</data>";
+        return $data_for;
+    }
 }
 ?>

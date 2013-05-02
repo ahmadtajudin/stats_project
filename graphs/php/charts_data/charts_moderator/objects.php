@@ -26,16 +26,17 @@ class Objects extends ChartData
         
         $group_data_reference = "group_".$group_type_left_or_right."_data";
         $data_for_back = "<".$group_data_reference.">";
-        $data_for_back .= $this->get_quantity_xml_data_for_array
+        $data_for_back .= $this->get_counts_for_parts
         (
                 array
                     (
-                    array("column"=>"b1", "value"=>"1", "column_xml_additional_reference"=>""), 
-                    array("column"=>"b2", "value"=>"1", "column_xml_additional_reference"=>""),
-                    array("column"=>"b3", "value"=>"1", "column_xml_additional_reference"=>""),
-                    array("column"=>"b4", "value"=>"1", "column_xml_additional_reference"=>""),
-                    array("column"=>"b5", "value"=>"1", "column_xml_additional_reference"=>"")
+                    array("column"=>"b1", "column_xml_additional_reference"=>""), 
+                    array("column"=>"b2", "column_xml_additional_reference"=>""), 
+                    array("column"=>"b3", "column_xml_additional_reference"=>""), 
+                    array("column"=>"b4", "column_xml_additional_reference"=>""), 
+                    array("column"=>"b5", "column_xml_additional_reference"=>"")
                     ), 
+                array("from"=>"1", "to"=>"5"),
         "quantity");
         $data_for_back .= $this->get_data_xml_total_passby_and_interviews("q7");
         $data_for_back .= "</".$group_data_reference.">";

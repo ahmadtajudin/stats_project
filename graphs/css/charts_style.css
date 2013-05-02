@@ -5,6 +5,16 @@
     Description:
         Purpose of the stylesheet follows.
 */
+body
+{
+    cursor: default;
+}
+/*
+div
+{
+    border:solid 1px;
+}*/
+
 .floatLeft{float:left;}
 .floatRight{float:right;}
 .clearBoth{clear:both;}
@@ -23,3 +33,6 @@
 .marginBottom5px{margin-bottom: 5px;}
 .marginBottom10px{margin-bottom: 10px;}
 .marginBottom15px{margin-bottom: 15px;}
+
+.lineHeight20px{line-height: 20px;}
+.lineHeight30px{line-height: 30px;}

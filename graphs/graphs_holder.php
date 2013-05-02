@@ -44,18 +44,18 @@ require_once 'templates/chart_holder.php';
 require_once 'templates/filters.php';
 ?>
 </div>
-<?php if(!isset($_GET["chart"])){$_GET["chart"] = "1";} ?>
+<?php if(!isset($_GET["chart"])){$_GET["chart"] = "le";} ?>
 <script>
     //ChartModerator.CHART = new ChartTest();
     <?php
     switch($_GET["chart"])
     {
-        case "1":{ ?> ChartModerator.CHART = new Chart__ReasonToVisit(); <?php }break;
-        case "2":{ ?> ChartModerator.CHART = new Chart__RepeatedVisits(); <?php }break;
-        case "3":{ ?> ChartModerator.CHART = new Chart__GeneralImpresions(); <?php }break;
-        case "4":{ ?> ChartModerator.CHART = new Chart__Objects(); <?php }break;
-        case "5":{ ?> ChartModerator.CHART = new Chart__Personal(); <?php }break;
-        case "6":{ ?> ChartModerator.CHART = new Chart__QuestionsOnTime(); <?php }break;
+        case "le":{ ?> ChartModerator.CHART = new Chart__ReasonToVisit(); <?php }break;
+        case "ee":{ ?> ChartModerator.CHART = new Chart__RepeatedVisits(); <?php }break;
+        case "1":{ ?> ChartModerator.CHART = new Chart__GeneralImpresions(); <?php }break;
+        case "2":{ ?> ChartModerator.CHART = new Chart__Objects(); <?php }break;
+        case "3":{ ?> ChartModerator.CHART = new Chart__Personal(); <?php }break;
+        case "4":{ ?> ChartModerator.CHART = new Chart__QuestionsOnTime(); <?php }break;
         case "7":{ ?> ChartModerator.CHART = new Chart__Quantity(); <?php }break;
         case "8":{ ?> ChartModerator.CHART = new Chart__InCaseWhenBackForAdditionalWork(); <?php }break;
         case "9":{ ?> ChartModerator.CHART = new Chart__Costs(); <?php }break;

@@ -257,7 +257,66 @@
                 </div>
             </div>
         </div>
-        
+    </div>
+    
+    <style>
+        .xN_AreasLine
+        {
+            position:absolute;
+        }
+        .xN_AreasLine_line
+        {
+            position: absolute;
+        }
+        .xN_AreasLine_right
+        {
+            border-bottom:solid 2px #000000;
+        }
+        .xN_partHolder
+        {
+            float: left;
+            height: 30px;
+        }
+        .xN_partHolder_percent_label
+        {
+            position: absolute;
+        }
+        .xN_AreasLine_label
+        {
+            position:absolute;
+            width: 100px;
+        }
+        .xN_AreasLine_left_label
+        {
+            text-align: right;
+        }
+        .xN_AreasLine_right_label
+        {
+            text-align: left;
+        }
+    </style>
+    <div id="template_xN_AreasLine"  class="displayNone">
+        <div class="xN_AreasLine">
+            <div class="posRel">
+                <div class="xN_AreasLine_left xN_AreasLine_line">
+                    <div class="xN_AreasLine_parts_holder"></div>
+                    <div class="clearBoth"></div>
+                </div>
+                <div class="xN_AreasLine_right xN_AreasLine_line">
+                    <div class="xN_AreasLine_parts_holder"></div>
+                    <div class="clearBoth"></div>
+                </div>
+                <div class="xN_AreasLine_left_label xN_AreasLine_label"></div>
+                <div class="xN_AreasLine_right_label xN_AreasLine_label"></div>
+            </div>
+        </div>
+    </div>
+    <div id="template_xN_partHolder" class="displayNone">
+        <div class="xN_partHolder">
+            <div class="posRel">
+                <div class="xN_partHolder_percent_label"></div>
+            </div>
+        </div>
     </div>
     
 </div>
