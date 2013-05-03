@@ -1,3 +1,12 @@
+<style>
+    
+    .filter_global_select
+    {
+        width:120px;
+    }
+    
+</style>
+
 <?php
 
 /*

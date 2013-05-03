@@ -36,6 +36,7 @@ ChartData::init_all_months_periods();
     #chart_filters_block_holder
     {
         border:solid 1px #cccccc;
+        min-width: 930px;
     }
 </style>
 <div id="chart_filters_block_holder">
