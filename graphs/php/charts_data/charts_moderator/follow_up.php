@@ -22,13 +22,14 @@ class FollowUp extends ChartData
         
         $group_data_reference = "group_".$group_type_left_or_right."_data";
         $data_for_back = "<".$group_data_reference.">";
-        $data_for_back .= $this->get_quantity_xml_data_for_array
+        $data_for_back .= $this->get_counts_for_parts
         (
                 array
                     (
-                    array("column"=>"h1", "value"=>"1", "column_xml_additional_reference"=>""), 
-                    array("column"=>"h5", "value"=>"1", "column_xml_additional_reference"=>"")
+                    array("column"=>"h1", "column_xml_additional_reference"=>""),
+                    array("column"=>"h5", "column_xml_additional_reference"=>"")
                     ), 
+                array("from"=>"1", "to"=>"5"),
         "quantity");
         $data_for_back .= $this->get_data_xml_total_passby_and_interviews("q7");
         $data_for_back .= "</".$group_data_reference.">";

@@ -15,9 +15,9 @@
  * e67 Το πρόβλημα διορθώθηκε αλλά παρουσιάστηκε άλλο πρόβλημα(e67 Проблемот коригира, но има уште еден проблем)
  * e68 Άλλος λόγος(E68 Друга причина)
  */
-class InCaseWhenBackForAdditionalWork extends ChartData
+class Quality_again_testing extends ChartData
 {
-    public function InCaseWhenBackForAdditionalWork()
+    public function Quality_again_testing()
     {
         parent::__construct();
         $this->print_back_to_client( $this );
@@ -47,8 +47,8 @@ class InCaseWhenBackForAdditionalWork extends ChartData
         return $data_for_back;
     }
 }
-if(isset($_POST["InCaseWhenBackForAdditionalWork"]))
+if(isset($_POST["Quality_again_testing"]))
 {
-    new InCaseWhenBackForAdditionalWork();
+    new Quality_again_testing();
 }
 ?>

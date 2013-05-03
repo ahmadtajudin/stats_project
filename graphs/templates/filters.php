@@ -54,7 +54,7 @@ class ChartFilters
                 
                 <?php if($filter_type == self::GROUP_B){ ?>
                 <div class="floatLeft marginLeft50px">
-                    Ενεργοποίηση <input value="1" name="show_or_hider_line_B" class="show_or_hider_line_B" type="radio" />
+                    Ενεργοποίηση             <input value="1" name="show_or_hider_line_B" class="show_or_hider_line_B" type="radio" />
                     Απενεργοποίηση σύγκρισης <input value="0" name="show_or_hider_line_B" class="show_or_hider_line_B" type="radio" checked="checked" />
                 </div>
                 <?php } ?>
@@ -89,7 +89,8 @@ class ChartFilters
                 </div>
                 <div class="floatLeft">
                     <div>
-                        <select <?php $this->add_name_id("dealers_options", $filter_type); ?> class="filter_global_select">
+                        <select <?php $this->add_name_id("dealers_options", $filter_type); ?> for_type="<?php print $filter_type; ?>" 
+                                                                                         class="filter_global_select filter_global_select_for_type_<?php print $filter_type; ?>">
                             <option value="-1">Όλα</option>
                             <?php
                             if($filter_type == self::GROUP_A)
@@ -112,7 +113,8 @@ class ChartFilters
                         </select>
                     </div>
                     <div>
-                        <select <?php $this->add_name_id("chains_options", $filter_type); ?> class="filter_global_select">
+                        <select <?php $this->add_name_id("chains_options", $filter_type); ?> for_type="<?php print $filter_type; ?>" 
+                                                                                             class="filter_global_select filter_global_select_for_type_<?php print $filter_type; ?>">
                             <option value="-1">Όλα</option>
                             <?php
                             if($filter_type == self::GROUP_A)
@@ -135,7 +137,8 @@ class ChartFilters
                         </select>
                     </div>
                     <div>
-                        <select <?php $this->add_name_id("areas_options", $filter_type); ?> class="filter_global_select">
+                        <select <?php $this->add_name_id("areas_options", $filter_type); ?> for_type="<?php print $filter_type; ?>" 
+                                                                                            class="filter_global_select filter_global_select_for_type_<?php print $filter_type; ?>">
                             <option value="-1">Όλα</option>
                             <?php
                             if($filter_type == self::GROUP_A)
@@ -158,7 +161,8 @@ class ChartFilters
                         </select>
                     </div>
                     <div>
-                        <select <?php $this->add_name_id("years_options", $filter_type); ?> class="filter_global_select">
+                        <select <?php $this->add_name_id("years_options", $filter_type); ?> for_type="<?php print $filter_type; ?>" 
+                                                                                            class="filter_global_select filter_global_select_for_type_<?php print $filter_type; ?>">
                             <option value="-1">Όλα</option>
                             <?php
                             for($i=0;$i<count(ChartData::$all_years);$i++)
@@ -171,7 +175,8 @@ class ChartFilters
                             }
                             ?>
                         </select>
-                        <select <?php $this->add_name_id("months_periods_options", $filter_type); ?> class="filter_global_select">
+                        <select <?php $this->add_name_id("months_periods_options", $filter_type); ?> for_type="<?php print $filter_type; ?>" 
+                                                                                                     class="filter_global_select filter_global_select_for_type_<?php print $filter_type; ?>">
                             <option value="-1">Όλα</option>
                             <?php
                             for($i=0;$i<count(ChartData::$all_months_periods);$i++)
@@ -195,7 +200,7 @@ class ChartFilters
                 <!--
                 <input id="reset_button" type="button" value="Επαναφορά φίλτρων" />
                 -->
-                <button class="btn btn-inverse" type="button">Επαναφορά φίλτρων</button>
+                <button id="reset_button" class="btn btn-inverse" type="button">Επαναφορά φίλτρων</button>
             </div>
             <?php }else if($filter_type == self::GROUP_B){ ?>
             <!--Draw chart button-->
@@ -300,6 +305,8 @@ FiltersModerator.TYPE___BLUE = "B";
 $("#reset_button").click(function(e)
 {
     FiltersModerator.FM.reset();
+    ChartModerator.CHART.load_data(e);
+    FiltersModerator.FM.show_filter_selected_to_the_top_label();
 });
 $(".filter_global_select").change(function(e)
 {
@@ -309,5 +316,16 @@ $(".filter_global_select").change(function(e)
 $(".show_or_hider_line_B").click(function(e)
 {
     ChartModerator.CHART.set_visibility_line_B();
+    //alert($("input[name='show_or_hider_line_B']").val());
+    //alert($("input[name='show_or_hider_line_B']").val()=="1");
+    $(".filter_global_select_for_type_B").prop("disabled", $("input:radio[name='show_or_hider_line_B']:checked").val()=="0");
+});
+
+$(".filter_global_select_for_type_B").prop("disabled", true);
+
+$(document).ready(function(e)
+{
+    ChartModerator.CHART.load_data(e);
+    FiltersModerator.FM.show_filter_selected_to_the_top_label();
 });
 </script>

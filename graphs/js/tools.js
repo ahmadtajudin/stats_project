@@ -558,6 +558,79 @@ ChartTest.prototype = new ChartBase();
 
 
 /*
+ * ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ 
+ * Reason to visit
+ * data holder charts_moderator/reason_to_visit.php
+ */
+function Chart__ReasonToVisit()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"ReasonToVisit", chart_label:"ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ"},
+            new Rectangle(0,0,900,550),
+            new Rectangle(140,170,665,314)
+    );
+    this.q6_1 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 55), "Service") );
+    this.q6_2 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς") );
+    this.q6_3 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 265), "Επισκευή εντός εγγύησης") );
+    /*
+    this.q6_1 = this.add_simple_left_right_questions_line( new Point(0, 55), "Service" );
+    this.q6_2 = this.add_simple_left_right_questions_line( new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς");
+    this.q6_3 = this.add_simple_left_right_questions_line( new Point(0, 265), "Επισκευή εντός εγγύησης" );
+    */
+    
+    this.show_data_to_diagram = function(  )
+    {
+        this.q6_1.init( this.get_quantity("q6_1", "A"), this.get_quantity_total("q6_1", "A"), 
+                        this.get_quantity("q6_1", "B"), this.get_quantity_total("q6_1", "B") );
+        this.q6_2.init( this.get_quantity("q6_2", "A"), this.get_quantity_total("q6_2", "A"), 
+                        this.get_quantity("q6_2", "B"), this.get_quantity_total("q6_2", "B") );
+        this.q6_3.init( this.get_quantity("q6_3", "A"), this.get_quantity_total("q6_3", "A"), 
+                        this.get_quantity("q6_3", "B"), this.get_quantity_total("q6_3", "B") );
+    }
+}
+Chart__ReasonToVisit.prototype = new ChartBase();
+
+/*
+ * Repeated visits
+ */
+function Chart__RepeatedVisits()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"RepeatedVisits", chart_label:"ΕΠΑΝΑΛΗΨΗ ΕΠΙΣΚΕΨΗΣ"},
+            new Rectangle(0,0,860,650),
+            new Rectangle(170,180,665,430)
+    );
+    this.Q17Α_0 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 43), "Τέσσερις και περισσότερες") );
+    this.Q17Α_1 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 125), "Τρεις") );
+    this.Q17Α_2 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 206), "Δύο") );
+    this.Q17Α_3 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 292), "Μία") );
+    this.Q17Α_4 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 376), "Καμία") );
+    /*
+    this.Q17Α_0 = this.add_simple_left_right_questions_line( new Point(0, 43), "Τέσσερις και περισσότερες " );
+    this.Q17Α_1 = this.add_simple_left_right_questions_line( new Point(0, 125), "Τρεις" );
+    this.Q17Α_2 = this.add_simple_left_right_questions_line( new Point(0, 206), "Δύο" );
+    this.Q17Α_3 = this.add_simple_left_right_questions_line( new Point(0, 292), "Μία" );
+    this.Q17Α_4 = this.add_simple_left_right_questions_line( new Point(0, 376), "Καμία" );*/
+    
+    this.show_data_to_diagram = function(  )
+    {
+        this.Q17Α_0.init( this.get_quantity("Q17Α_0", "A"), this.get_quantity_total("Q17Α_0", "A"), 
+                          this.get_quantity("Q17Α_0", "B"), this.get_quantity_total("Q17Α_0", "B") );
+        this.Q17Α_1.init( this.get_quantity("Q17Α_1", "A"), this.get_quantity_total("Q17Α_1", "A"), 
+                          this.get_quantity("Q17Α_1", "B"), this.get_quantity_total("Q17Α_1", "B") );
+        this.Q17Α_2.init( this.get_quantity("Q17Α_2", "A"), this.get_quantity_total("Q17Α_2", "A"), 
+                          this.get_quantity("Q17Α_2", "B"), this.get_quantity_total("Q17Α_2", "B") );
+        this.Q17Α_3.init( this.get_quantity("Q17Α_3", "A"), this.get_quantity_total("Q17Α_3", "A"), 
+                          this.get_quantity("Q17Α_3", "B"), this.get_quantity_total("Q17Α_3", "B") );
+        this.Q17Α_4.init( this.get_quantity("Q17Α_4", "A"), this.get_quantity_total("Q17Α_4", "A"), 
+                          this.get_quantity("Q17Α_4", "B"), this.get_quantity_total("Q17Α_4", "B") );
+    }
+}
+Chart__RepeatedVisits.prototype = new ChartBase();
+
+/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  * Γενικές Εντυπώσεις
@@ -796,76 +869,6 @@ function Chart__QuestionsOnTime()
 }
 Chart__QuestionsOnTime.prototype = new ChartBase();
 
-/*
- * ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ 
- * Reason to visit
- * data holder charts_moderator/reason_to_visit.php
- */
-function Chart__ReasonToVisit()
-{
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"ReasonToVisit", chart_label:"ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ"},
-            new Rectangle(0,0,900,550),
-            new Rectangle(140,170,665,314)
-    );
-    this.q6_1 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 55), "Service") );
-    this.q6_2 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς") );
-    this.q6_3 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 265), "Επισκευή εντός εγγύησης") );
-    /*
-    this.q6_1 = this.add_simple_left_right_questions_line( new Point(0, 55), "Service" );
-    this.q6_2 = this.add_simple_left_right_questions_line( new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς");
-    this.q6_3 = this.add_simple_left_right_questions_line( new Point(0, 265), "Επισκευή εντός εγγύησης" );
-    */
-    
-    this.show_data_to_diagram = function(  )
-    {
-        this.q6_1.init( this.get_quantity("q6_1", "A"), this.get_quantity_total("q6_1", "A"), 
-                        this.get_quantity("q6_1", "B"), this.get_quantity_total("q6_1", "B") );
-        this.q6_2.init( this.get_quantity("q6_2", "A"), this.get_quantity_total("q6_2", "A"), 
-                        this.get_quantity("q6_2", "B"), this.get_quantity_total("q6_2", "B") );
-        this.q6_3.init( this.get_quantity("q6_3", "A"), this.get_quantity_total("q6_3", "A"), 
-                        this.get_quantity("q6_3", "B"), this.get_quantity_total("q6_3", "B") );
-    }
-}
-Chart__ReasonToVisit.prototype = new ChartBase();
-
-/*
- * Repeated visits
- */
-function Chart__RepeatedVisits()
-{
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"RepeatedVisits", chart_label:"ΕΠΑΝΑΛΗΨΗ ΕΠΙΣΚΕΨΗΣ"},
-            new Rectangle(0,0,860,650),
-            new Rectangle(170,180,665,430)
-    );
-    this.Q17Α_0 = this.add_simple_left_right_questions_line( new Point(0, 43), "Τέσσερις και περισσότερες " );
-    this.Q17Α_1 = this.add_simple_left_right_questions_line( new Point(0, 125), "Τρεις" );
-    this.Q17Α_2 = this.add_simple_left_right_questions_line( new Point(0, 206), "Δύο" );
-    this.Q17Α_3 = this.add_simple_left_right_questions_line( new Point(0, 292), "Μία" );
-    this.Q17Α_4 = this.add_simple_left_right_questions_line( new Point(0, 376), "Καμία" );
-    
-    this.show_data_to_diagram = function(  )
-    {
-        this.Q17Α_0.init( this.get_quantity("Q17Α_0", "A"), this.get_quantity_total("Q17Α_0", "A"), 
-                          this.get_quantity("Q17Α_0", "B"), this.get_quantity_total("Q17Α_0", "B") );
-        this.Q17Α_1.init( this.get_quantity("Q17Α_1", "A"), this.get_quantity_total("Q17Α_1", "A"), 
-                          this.get_quantity("Q17Α_1", "B"), this.get_quantity_total("Q17Α_1", "B") );
-        this.Q17Α_2.init( this.get_quantity("Q17Α_2", "A"), this.get_quantity_total("Q17Α_2", "A"), 
-                          this.get_quantity("Q17Α_2", "B"), this.get_quantity_total("Q17Α_2", "B") );
-        this.Q17Α_3.init( this.get_quantity("Q17Α_3", "A"), this.get_quantity_total("Q17Α_3", "A"), 
-                          this.get_quantity("Q17Α_3", "B"), this.get_quantity_total("Q17Α_3", "B") );
-        this.Q17Α_4.init( this.get_quantity("Q17Α_4", "A"), this.get_quantity_total("Q17Α_4", "A"), 
-                          this.get_quantity("Q17Α_4", "B"), this.get_quantity_total("Q17Α_4", "B") );
-    }
-}
-Chart__RepeatedVisits.prototype = new ChartBase();
-
-
-
-
 
 /*
  * To change this template, choose Tools | Templates
@@ -881,7 +884,7 @@ Chart__RepeatedVisits.prototype = new ChartBase();
  * e4. Παρακαλώ βαθμολογήστε την εμπιστοσύνη σας στην τεχνική κατάρτιση της αντιπροσωπείας:
  * (е4. Ве молиме дадете вашата доверба во техничка обука на делегацијата:)
  */
-function Chart__Quantity()
+function Chart__Quality()
 {
     this.init
     (
@@ -889,19 +892,37 @@ function Chart__Quantity()
             new Rectangle(0,0,860,600),
             new Rectangle(170,180,665,360)
     );
+    var line_details = 
+    {
+        range_from:5,range_to:1,
+        color_5:"#339966",
+        color_4:"#99cc00",
+        color_3:"#ffff00",
+        color_2:"#ff9900",
+        color_1:"#ff0000"
+    };
+    this.e1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "e1 need label", line_details, "e1", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.e2 = this.add_line ( new xN_AreasLine(this, new Point(0, 125), "e2 need label", line_details, "e2", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.e3 = this.add_line ( new xN_AreasLine(this, new Point(0, 206), "e3 need label", line_details, "e3", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.e4 = this.add_line ( new xN_AreasLine(this, new Point(0, 292), "e4 need label", line_details, "e4", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    /*
     this.e1 = this.add_simple_left_right_questions_line( new Point(0, 43), "e1 need label" );
     this.e2 = this.add_simple_left_right_questions_line( new Point(0, 125), "e2 need label" );
     this.e3 = this.add_simple_left_right_questions_line( new Point(0, 206), "e3 need label" );
     this.e4 = this.add_simple_left_right_questions_line( new Point(0, 292), "e4 need label" );
+    */
     
     this.show_data_to_diagram = function(  )
     {
         for(var i=1;i<=4;i++)
-        this["e"+i].init( this.get_quantity("e"+i, "A"), this.get_quantity_total("e"+i, "A"), 
-                          this.get_quantity("e"+i, "B"), this.get_quantity_total("e"+i, "B") );
+        this["e"+i].init(  );
     }  
 }
-Chart__Quantity.prototype = new ChartBase();
+Chart__Quality.prototype = new ChartBase();
 
 /*
  * To change this template, choose Tools | Templates
@@ -918,15 +939,24 @@ Chart__Quantity.prototype = new ChartBase();
  * e67 Το πρόβλημα διορθώθηκε αλλά παρουσιάστηκε άλλο πρόβλημα(e67 Проблемот коригира, но има уште еден проблем)
  * e68 Άλλος λόγος(E68 Друга причина)
  */
-function Chart__InCaseWhenBackForAdditionalWork()
+function Chart__Quality_again_testing()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"InCaseWhenBackForAdditionalWork", 
-        chart_label:"ΣΕ ΠΕΡΊΠΤΩΣΗ ΠΟΥ ΧΡΕΙΆΣΤΗΚΕ ΝΑ ΕΠΙΣΤΡΈΨΕΤΕ ΣΤΗΝ ΑΝΤΙΠΡΟΣΩΠΕΊΑ ΓΙΑ ΕΠΙΠΛΈΟΝ ΕΡΓΑΣΊΑΣ"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Quality_again_testing", 
+        chart_label:"ΠΟΙΌΤΗΤΑ – ΔΕΎΤΕΡΗ ΕΠΊΣΚΕΨΗ"},
             new Rectangle(0,0,860,950),
             new Rectangle(170,180,665,670)
     );
+    this.e61 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 43), "need_label") );
+    this.e62 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 125), "need_label") );
+    this.e63 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 206), "need_label") );
+    this.e64 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 292), "need_label") );
+    this.e65 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 372), "need_label") );
+    this.e66 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 452), "need_label") );
+    this.e67 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 532), "need_label") );
+    this.e68 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 612), "need_label") );
+    /*
     this.e61 = this.add_simple_left_right_questions_line( new Point(0, 43), "e61 need label" );
     this.e62 = this.add_simple_left_right_questions_line( new Point(0, 125), "e62 need label" );
     this.e63 = this.add_simple_left_right_questions_line( new Point(0, 206), "e63 need label" );
@@ -935,6 +965,7 @@ function Chart__InCaseWhenBackForAdditionalWork()
     this.e66 = this.add_simple_left_right_questions_line( new Point(0, 452), "e66 need label" );
     this.e67 = this.add_simple_left_right_questions_line( new Point(0, 532), "e67 need label" );
     this.e68 = this.add_simple_left_right_questions_line( new Point(0, 612), "e68 need label" );
+    */
     
     this.show_data_to_diagram = function(  )
     {
@@ -943,7 +974,8 @@ function Chart__InCaseWhenBackForAdditionalWork()
                           this.get_quantity("e6"+i, "B"), this.get_quantity_total("e6"+i, "B") );
     }   
 }
-Chart__InCaseWhenBackForAdditionalWork.prototype = new ChartBase();
+Chart__Quality_again_testing.prototype = new ChartBase();
+
 
 /*
  * To change this template, choose Tools | Templates
@@ -966,18 +998,40 @@ function Chart__Costs()
             new Rectangle(0,0,860,800),
             new Rectangle(170,180,665,520)
     );
+    var line_details = 
+    {
+        range_from:5,range_to:1,
+        color_5:"#339966",
+        color_4:"#99cc00",
+        color_3:"#ffff00",
+        color_2:"#ff9900",
+        color_1:"#ff0000"
+    };
+    this.Z1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "e1 need label", line_details, "Z1", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.Z2 = this.add_line ( new xN_AreasLine(this, new Point(0, 125), "e1 need label", line_details, "Z2", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.Z3 = this.add_line ( new xN_AreasLine(this, new Point(0, 206), "e1 need label", line_details, "Z3", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.Z4 = this.add_line ( new xN_AreasLine(this, new Point(0, 292), "e1 need label", line_details, "Z4", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.Z5 = this.add_line ( new xN_AreasLine(this, new Point(0, 372), "e1 need label", line_details, "Z5", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.Z6 = this.add_line ( new xN_AreasLine(this, new Point(0, 452), "e1 need label", line_details, "Z6", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    /*
     this.Z1 = this.add_simple_left_right_questions_line( new Point(0, 43), "Z1 need label" );
     this.Z2 = this.add_simple_left_right_questions_line( new Point(0, 125), "Z2 need label" );
     this.Z3 = this.add_simple_left_right_questions_line( new Point(0, 206), "Z3 need label" );
     this.Z4 = this.add_simple_left_right_questions_line( new Point(0, 292), "Z4 need label" );
     this.Z5 = this.add_simple_left_right_questions_line( new Point(0, 372), "Z5 need label" );
     this.Z6 = this.add_simple_left_right_questions_line( new Point(0, 452), "Z6 need label" );
+    */
     
     this.show_data_to_diagram = function(  )
     {
         for(var i=1;i<=6;i++)
-        this["Z"+i].init( this.get_quantity("Z"+i, "A"), this.get_quantity_total("Z"+i, "A"), 
-                          this.get_quantity("Z"+i, "B"), this.get_quantity_total("Z"+i, "B") );
+        this["Z"+i].init();
     } 
 }
 Chart__Costs.prototype = new ChartBase();
@@ -999,15 +1053,28 @@ function Chart__FollowUp()
             new Rectangle(0,0,860,650),
             new Rectangle(170,180,665,410)
     );
+    var line_details = 
+    {
+        range_from:5,range_to:1,
+        color_5:"#339966",
+        color_4:"#99cc00",
+        color_3:"#ffff00",
+        color_2:"#ff9900",
+        color_1:"#ff0000"
+    };
+    this.h1 = this.add_line ( new xN_AreasLine(this, new Point(0, 120), "h1 need label", line_details, "h1", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.h5 = this.add_line ( new xN_AreasLine(this, new Point(0, 250), "h5 need label", line_details, "h5", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    /*
     this.h1 = this.add_simple_left_right_questions_line( new Point(0, 120), "h1 need label" );
     this.h5 = this.add_simple_left_right_questions_line( new Point(0, 250), "h5 need label" );
+    */
     
     this.show_data_to_diagram = function(  )
     {
-        this.h1.init( this.get_quantity("h1", "A"), this.get_quantity_total("h1", "A"), 
-                          this.get_quantity("h1", "B"), this.get_quantity_total("h1", "B") );
-        this.h5.init( this.get_quantity("h5", "A"), this.get_quantity_total("h5", "A"), 
-                          this.get_quantity("h5", "B"), this.get_quantity_total("h5", "B") );
+        this.h1.init(  );
+        this.h5.init(  );
     } 
 }
 Chart__FollowUp.prototype = new ChartBase();
@@ -1028,15 +1095,31 @@ function Chart__InFuture()
             new Rectangle(0,0,860,650),
             new Rectangle(170,180,665,410)
     );
+    var line_details = 
+    {
+        range_from:5,range_to:1,
+        color_5:"#339966",
+        color_4:"#99cc00",
+        color_3:"#ffff00",
+        color_2:"#ff9900",
+        color_1:"#ff0000"
+    };
+    this.u1 = this.add_line ( new xN_AreasLine(this, new Point(0, 100), "u1 need label", line_details, "u1", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.u2 = this.add_line ( new xN_AreasLine(this, new Point(0, 200), "u2 need label", line_details, "u2", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.u3 = this.add_line ( new xN_AreasLine(this, new Point(0, 300), "u3 need label", line_details, "u3", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    /*
     this.u1 = this.add_simple_left_right_questions_line( new Point(0, 100), "u1 need label" );
     this.u2 = this.add_simple_left_right_questions_line( new Point(0, 200), "u2 need label" );
     this.u3 = this.add_simple_left_right_questions_line( new Point(0, 300), "u3 need label" );
+    */
     
     this.show_data_to_diagram = function(  )
     {
         for(var i=1;i<=3;i++)
-        this["u"+i].init( this.get_quantity("u"+i, "A"), this.get_quantity_total("u"+i, "A"), 
-                          this.get_quantity("u"+i, "B"), this.get_quantity_total("u"+i, "B") );
+        this["u"+i].init(  );
     } 
 }
 Chart__InFuture.prototype = new ChartBase();
@@ -1057,14 +1140,28 @@ function Chart__CloseCall()
             new Rectangle(0,0,860,650),
             new Rectangle(170,180,665,410)
     );
+    var line_details = 
+    {
+        range_from:5,range_to:1,
+        color_5:"#339966",
+        color_4:"#99cc00",
+        color_3:"#ffff00",
+        color_2:"#ff9900",
+        color_1:"#ff0000"
+    };
+    this.i1 = this.add_line ( new xN_AreasLine(this, new Point(0, 120), "i1 need label", line_details, "i1", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    this.i2 = this.add_line ( new xN_AreasLine(this, new Point(0, 250), "i1 need label", line_details, "i2", 
+    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    /*
     this.i1 = this.add_simple_left_right_questions_line( new Point(0, 120), "i1 need label" );
     this.i2 = this.add_simple_left_right_questions_line( new Point(0, 250), "i2 need label" );
+    */
     
     this.show_data_to_diagram = function(  )
     {
         for(var i=1;i<=2;i++)
-        this["i"+i].init( this.get_quantity("i"+i, "A"), this.get_quantity_total("i"+i, "A"), 
-                          this.get_quantity("i"+i, "B"), this.get_quantity_total("i"+i, "B") );
+        this["i"+i].init(   );
     } 
 }
 Chart__CloseCall.prototype = new ChartBase();

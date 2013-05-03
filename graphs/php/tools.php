@@ -29,7 +29,7 @@ require_once 'charts_data/charts_moderator/objects.php';
 require_once 'charts_data/charts_moderator/personal.php';
 require_once 'charts_data/charts_moderator/questions_on_time.php';
 require_once 'charts_data/charts_moderator/quality.php';
-require_once 'charts_data/charts_moderator/in_case_when_back_the_delegation_for_additional_work.php';
+require_once 'charts_data/charts_moderator/quality_again_testing.php';
 require_once 'charts_data/charts_moderator/costs.php';
 require_once 'charts_data/charts_moderator/follow_up.php';
 require_once 'charts_data/charts_moderator/in_future.php';
