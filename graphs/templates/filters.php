@@ -28,12 +28,12 @@ class ChartFilters
     public function header()
     {
         ?>
-        <div class="marginBottom15px">
+        <div id="filter_header" class="marginBottom15px">
             <div class="floatLeft">
                 <!--
                 <input type="button" value="Εκτύπωση" />
                 -->
-                <button class="btn btn-inverse" type="button">Εκτύπωση</button>
+                <button id="print_button" class="btn btn-inverse" type="button">Εκτύπωση</button>
             </div>
             <div class="floatLeft marginLeft10px lineHeight30px"><b id="filter_chart_label"></b></div>
             <div class="clearBoth"></div>
@@ -62,7 +62,7 @@ class ChartFilters
                     ?>
                 
                 <?php if($filter_type == self::GROUP_B){ ?>
-                <div class="floatLeft marginLeft50px">
+                <div id="filter_show_hide_group_B" class="floatLeft marginLeft50px">
                     Ενεργοποίηση             <input value="1" name="show_or_hider_line_B" class="show_or_hider_line_B" type="radio" />
                     Απενεργοποίηση σύγκρισης <input value="0" name="show_or_hider_line_B" class="show_or_hider_line_B" type="radio" checked="checked" />
                 </div>
@@ -89,7 +89,7 @@ class ChartFilters
             Total interviews+total passby values
             end
             -->
-            <div class="marginBottom15px">
+            <div <?php $this->add_name_id("filter_options_group", $filter_type); ?> class="marginBottom15px">
                 <div class="floatLeft labels_select_for_boxes">
                     <div>Αντιπρόσωποι:</div>
                     <div>Αλυσίδα:</div>
@@ -306,6 +306,40 @@ function FiltersModerator()
                 $("#months_periods_options__"+group_type+" option:selected").text()
         );
     }
+    
+    /*
+     * Function for printing the page
+     */
+    this.print = function()
+    {
+        //window.frames["window_for_print"] = new Window();
+        //alert(window.frames.length);
+        var wind_temp = window.open("print_the_chart.php", "my_window_for_print");
+        /*
+        for(var i in wind_temp.document)
+        {
+            //console.log(i+":"+wind_temp.document[i])
+        }*/
+        //alert(wind_temp.document.innerHTML);
+        //wind_temp.document
+        
+        //alert(wind_temp.document.body.innerHTML);
+        //wind_temp.document.body.innerHTML += $("#chart_filters_block_holder").html();
+        wind_temp.onload = function()
+        {
+        wind_temp.init( $("#chart_filters_block_holder").html() ); 
+        }
+        /*
+        wind_temp.document.body.innerHTML += ( 
+                "<script>$(window).click(function(e){window.print();});alert(12);<'/script>" 
+    );*/
+        /*
+        wind_temp.focus();
+        wind_temp.print();
+        wind_temp.close();
+        */
+        //window.print();
+    }
 }
 FiltersModerator.FM = new FiltersModerator();
 FiltersModerator.TYPE_ORANGE = "A";
@@ -329,12 +363,8 @@ $(".show_or_hider_line_B").click(function(e)
     //alert($("input[name='show_or_hider_line_B']").val()=="1");
     $(".filter_global_select_for_type_B").prop("disabled", $("input:radio[name='show_or_hider_line_B']:checked").val()=="0");
 });
-
-$(".filter_global_select_for_type_B").prop("disabled", true);
-
-$(document).ready(function(e)
+$("#print_button").click(function(e)
 {
-    ChartModerator.CHART.load_data(e);
-    FiltersModerator.FM.show_filter_selected_to_the_top_label();
+    FiltersModerator.FM.print();
 });
 </script>

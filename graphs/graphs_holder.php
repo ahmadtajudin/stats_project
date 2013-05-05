@@ -30,6 +30,7 @@ CHART_Area::init_areas_for_dealer();
 ChartData::init_all_years();
 ChartData::init_all_months_periods();
 ?>
+<!---->
 <link rel="stylesheet" href="graphs/css/charts_style.css" />
 <script src="graphs/js/tools.js"></script>
 <style>
@@ -65,4 +66,12 @@ require_once 'templates/filters.php';
         case "10":{ ?> ChartModerator.CHART = new Chart__CloseCall(); <?php }break;
     }
     ?>
+
+    $(".filter_global_select_for_type_B").prop("disabled", true);
+
+    $(document).ready(function(e)
+    {
+        ChartModerator.CHART.load_data(e);
+        FiltersModerator.FM.show_filter_selected_to_the_top_label();
+    });
 </script>
