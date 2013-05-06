@@ -38,8 +38,23 @@ ChartData::init_all_months_periods();
     {
         border:solid 1px #cccccc;
         min-width: 930px;
+        font-size: 13px;
     }
 </style>
+
+<!--
+          <div id="example" class="bs-docs-example tooltip-demo">
+            <ul class="bs-docs-tooltip-examples">
+              <li><a class="example" href="#" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</a></li>
+              <li><a class="example" href="#" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a></li>
+              <li><a class="example" href="#" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</a></li>
+              <li><a class="example" href="#" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</a></li>
+            </ul>
+          </div>
+<script>
+</script>
+-->
+
 <div id="chart_filters_block_holder">
 <?php
 require_once 'templates/chart_holder.php';
@@ -73,5 +88,7 @@ require_once 'templates/filters.php';
     {
         ChartModerator.CHART.load_data(e);
         FiltersModerator.FM.show_filter_selected_to_the_top_label();
+        $('.tool_tip_labels').tooltip();
     });
+    
 </script>

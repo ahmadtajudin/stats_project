@@ -230,15 +230,16 @@
         .simple_line_left_right_question .chart_label
         {
             position:absolute;
-            left: -105px;
-            width: 100px;
+            left: -155px;
+            width: 150px;
             text-align: right;
+            font-size: 12px;
         }
     </style>
     <div id="template_simple_line_left_right_question" class="displayNone">
         <div class="simple_line_left_right_question">
             <div class="posRel">
-                <div class="chart_label">
+                <div class="chart_label tool_tip_labels" data-toggle="tooltip" data-placement="top" title="">
                     Line1<br/>Line2<br/>Line3
                 </div>
                 <div class="simple_line_left_question line">
@@ -284,11 +285,13 @@
         .xN_AreasLine_label
         {
             position:absolute;
-            width: 100px;
+            width: 150px;
+            font-size: 12px;
         }
         .xN_AreasLine_left_label
         {
-            text-align: right;
+            text-align: left;
+            background:url('images/bg_gray_to_white.jpg') repeat-y;
         }
         .xN_AreasLine_right_label
         {
@@ -306,7 +309,7 @@
                     <div class="xN_AreasLine_parts_holder"></div>
                     <div class="clearBoth"></div>
                 </div>
-                <div class="xN_AreasLine_left_label xN_AreasLine_label"></div>
+                <div class="xN_AreasLine_left_label xN_AreasLine_label tool_tip_labels" data-toggle="tooltip" data-placement="top" title="not defined"></div>
                 <div class="xN_AreasLine_right_label xN_AreasLine_label"></div>
             </div>
         </div>

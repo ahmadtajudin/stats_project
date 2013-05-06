@@ -153,7 +153,7 @@ function ChartSimpleLineHorizontal(id_or_class_reference)
 }
 ChartSimpleLineHorizontal.prototype = new ChartLineBase();
 
-function SimpleLine_LeftRightQuestions(chart, position, label_txt)
+function SimpleLine_LeftRightQuestions(chart, position, label_txt, full_text)
 {
     this.position = position;
     this.chart = chart;
@@ -167,6 +167,7 @@ function SimpleLine_LeftRightQuestions(chart, position, label_txt)
     $(this.line_holder).css("top", this.position.y+"px");
     $($(this.line_holder).find(".line")).width( this.chart.chart_diagram_poz_size.w );
     $(this.line_holder).find(".chart_label").html( label_txt );
+    $(this.line_holder).find(".chart_label").attr("title", full_text);
     var label_top_position = -1*$(this.line_holder).find(".chart_label").height()/2;
     $(this.line_holder).find(".chart_label").css("top", label_top_position+"px");
     /*
@@ -232,6 +233,8 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
     //{left_label:"Άριστη", right_label:"Πολύ κακή"}) );
     $(this.line).find(".xN_AreasLine_left_label").html( labelLeftRightTexts.left_label );
     $(this.line).find(".xN_AreasLine_right_label").html( labelLeftRightTexts.right_label );
+    $(this.line).find(".xN_AreasLine_left_label").attr("title", labelLeftRightTexts.left_label_full_text);
+    
     var margin_label_left_right = 5;
     var left_label_x = 0-$(this.line).find(".xN_AreasLine_left_label").width()-margin_label_left_right;
     var right_label_x = this.chart.chart_diagram_poz_size.w+margin_label_left_right;
@@ -568,7 +571,7 @@ function Chart__ReasonToVisit()
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"ReasonToVisit", chart_label:"ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ"},
             new Rectangle(0,0,900,550),
-            new Rectangle(140,170,665,314)
+            new Rectangle(200,170,665,314)
     );
     this.q6_1 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 55), "Service") );
     this.q6_2 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς") );
@@ -600,7 +603,7 @@ function Chart__RepeatedVisits()
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"RepeatedVisits", chart_label:"ΕΠΑΝΑΛΗΨΗ ΕΠΙΣΚΕΨΗΣ"},
             new Rectangle(0,0,860,650),
-            new Rectangle(170,180,665,430)
+            new Rectangle(200,180,665,430)
     );
     this.Q17Α_0 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 43), "Τέσσερις και περισσότερες") );
     this.Q17Α_1 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 125), "Τρεις") );
@@ -647,7 +650,7 @@ function Chart__GeneralImpresions()
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"GeneralImpresions", chart_label:"ΓΕΝΙΚΈΣ ΕΝΤΥΠΏΣΕΙΣ"},
             new Rectangle(0,0,900,550),
-            new Rectangle(140,170,665,314)
+            new Rectangle(200,170,665,314)
     );
     var line_details = 
     {
@@ -659,9 +662,9 @@ function Chart__GeneralImpresions()
         color_1:"#ff0000"
     };
     this.q7 = this.add_line ( new xN_AreasLine(this, new Point(0, 105), "q7 need label", line_details, "q7", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Συνολικά, πόσο ...", right_label:"", left_label_full_text:"Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ Κακή έως το 10 Άριστη)"}) );
     this.q8 = this.add_line ( new xN_AreasLine(this, new Point(0, 210), "q8 need label", line_details, "q8", 
-    {left_label:"Πολύ Πιθανό", right_label:"Καθόλου Πιθανό"}) );
+    {left_label:"Με βάση την εμπειρία ...", right_label:"", left_label_full_text:"Με βάση την εμπειρία σας από το συγκεκριμένο συνεργείο πόσο πιθανό θα ήταν να συστήσετε το συγκεκριμένο συνεργείο σε κάποιον φίλο σας /γνωστό σας / συγγενή σας"}) );
     
     this.show_data_to_diagram = function(  )
     {
@@ -690,7 +693,7 @@ function Chart__Objects()
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Objects", chart_label:"ΕΓΚΑΤΑΣΤΆΣΕΙΣ"},
             new Rectangle(0,0,860,650),
-            new Rectangle(170,180,665,430)
+            new Rectangle(200,180,665,430)
     );
     var line_details = 
     {
@@ -702,15 +705,20 @@ function Chart__Objects()
         color_1:"#ff0000"
     };
     this.b1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "q7 need label", line_details, "b1", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Πως θα αξιολογούσατε τις ...", right_label:"",
+        left_label_full_text:"Πως θα αξιολογούσατε τις εγκαταστάσεις του συγκεκριμένου συνεργείου."}) );
     this.b2 = this.add_line ( new xN_AreasLine(this, new Point(0, 125), "q7 need label", line_details, "b2", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Πώς θα αξιολογούσατε ...", right_label:"",
+        left_label_full_text:"Πώς θα αξιολογούσατε την εμφάνιση του τμήματος Service"}) );
     this.b3 = this.add_line ( new xN_AreasLine(this, new Point(0, 206), "q7 need label", line_details, "b3", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Την άνεση του ...", right_label:"",
+        left_label_full_text:"Την άνεση του χώρου αναμονής (π.χ. καθίσματα, μηχανές καφέ, κλπ….)"}) );
     this.b4 = this.add_line ( new xN_AreasLine(this, new Point(0, 292), "q7 need label", line_details, "b4", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Τη γενική καθαριότητα ...", right_label:"",
+        left_label_full_text:"Τη γενική καθαριότητα της αντιπροσωπείας."}) );
     this.b5 = this.add_line ( new xN_AreasLine(this, new Point(0, 376), "q7 need label", line_details, "b5", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Την ευκολία στάθμευσης", right_label:"",
+        left_label_full_text:"Την ευκολία στάθμευσης."}) );
     /*
     this.b1 = this.add_simple_left_right_questions_line( new Point(0, 43), "b1 need label" );
     this.b2 = this.add_simple_left_right_questions_line( new Point(0, 125), "b2 need label" );
@@ -751,7 +759,7 @@ function Chart__Personal()
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Personal", chart_label:"ΠΡΟΣΩΠΙΚΌ"},
             new Rectangle(0,0,860,950),
-            new Rectangle(170,180,665,730)
+            new Rectangle(200,180,665,730)
     );
     var line_details = 
     {
@@ -763,23 +771,32 @@ function Chart__Personal()
         color_1:"#ff0000"
     };
     this.c1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "q7 need label", line_details, "c1", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Πως θα αξιολογούσατε ...", right_label:"",
+    left_label_full_text:"Πως θα αξιολογούσατε το προσωπικό του συγκεκριμένου συνεργείου"}) );
     this.c2 = this.add_line ( new xN_AreasLine(this, new Point(0, 125), "q7 need label", line_details, "c2", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Αισθανθήκατε ότι ...", right_label:"",
+    left_label_full_text:"Αισθανθήκατε ότι σας αντιμετώπισαν σαν ένα σημαντικό πελάτη"}) );
     this.c3 = this.add_line ( new xN_AreasLine(this, new Point(0, 206), "q7 need label", line_details, "c3", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Πώς θα αξιολογούσατε ...", right_label:"",
+    left_label_full_text:"Πώς θα αξιολογούσατε την φιλικότητα του προσωπικού"}) );
     this.c4 = this.add_line ( new xN_AreasLine(this, new Point(0, 292), "q7 need label", line_details, "c4", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Πώς θα αξιολογούσατε ...", right_label:"",
+    left_label_full_text:"Πώς θα αξιολογούσατε την εξυπηρέτηση του προσωπικού"}) );
     this.c5 = this.add_line ( new xN_AreasLine(this, new Point(0, 376), "q7 need label", line_details, "c5", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Την ειλικρίνεια ...", right_label:"",
+    left_label_full_text:"Την ειλικρίνεια και την αξιοπιστία τους"}) );
     this.c6 = this.add_line ( new xN_AreasLine(this, new Point(0, 456), "q7 need label", line_details, "c6", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Τον χειρισμό ...", right_label:"",
+    left_label_full_text:"Τον χειρισμό των τηλεφωνικών ερωτήσεων"}) );
     this.c7 = this.add_line ( new xN_AreasLine(this, new Point(0, 526), "q7 need label", line_details, "c7", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Την προθυμία να ...", right_label:"",
+    left_label_full_text:"Την προθυμία να ακούσουν και να κατανοήσουν τα προβλήματα"}) );
     this.c8 = this.add_line ( new xN_AreasLine(this, new Point(0, 606), "q7 need label", line_details, "c8", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Την επεξήγηση της ...", right_label:"",
+    left_label_full_text:"Την επεξήγηση της εργασίας που πρέπει να γίνει"}) );
     this.c9 = this.add_line ( new xN_AreasLine(this, new Point(0, 686), "q7 need label", line_details, "c9", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Την ικανότητα τους ...", right_label:"",
+    left_label_full_text:"Την ικανότητα τους να διαγνώσουν προβλήματα"}) );
         /*
     this.c1 = this.add_simple_left_right_questions_line( new Point(0, 43), "c1 need label" );
     this.c2 = this.add_simple_left_right_questions_line( new Point(0, 125), "c2 need label" );
@@ -823,7 +840,7 @@ function Chart__QuestionsOnTime()
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"QuestionsOnTime", chart_label:"ΘΈΜΑΤΑ ΧΡΌΝΟΥ"},
             new Rectangle(0,0,860,870),
-            new Rectangle(170,180,665,650)
+            new Rectangle(200,180,665,650)
     );
     var line_details = 
     {
@@ -835,21 +852,29 @@ function Chart__QuestionsOnTime()
         color_1:"#ff0000"
     };
     this.d1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "q7 need label", line_details, "d1", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Τύχατε της προσοχή ...", right_label:"",
+    left_label_full_text:"Τύχατε της προσοχή του προσωπικού (σας είχε το προσωπικό στο νού του)καθ’ όλη την διάρκεια της επίσκεψης σας"}) );
     this.d2 = this.add_line ( new xN_AreasLine(this, new Point(0, 125), "q7 need label", line_details, "d2", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Πώς θα αξιολογούσατε ...", right_label:"",
+    left_label_full_text:"Πώς θα αξιολογούσατε την ευκολία να κλείσετε ραντεβού"}) );
     this.d3 = this.add_line ( new xN_AreasLine(this, new Point(0, 206), "q7 need label", line_details, "d3", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Την προσοχή που ...", right_label:"",
+    left_label_full_text:"Την προσοχή που σας δόθηκε κατά την άφιξή σας"}) );
     this.d4 = this.add_line ( new xN_AreasLine(this, new Point(0, 292), "q7 need label", line_details, "d4", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Τον χρόνο αναμονής ...", right_label:"",
+    left_label_full_text:"Τον χρόνο αναμονής όταν πήρανε το όχημά σας"}) );
     this.d5 = this.add_line ( new xN_AreasLine(this, new Point(0, 376), "q7 need label", line_details, "d5", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Την ικανότητα τους ...", right_label:"",
+    left_label_full_text:"Την ικανότητα τους να ανταποκριθούν στο χρονοδιάγραμμα που σας είχαν δώσει αρχικά"}) );
     this.d6 = this.add_line ( new xN_AreasLine(this, new Point(0, 456), "q7 need label", line_details, "d6", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"τον συνολικό ...", right_label:"",
+    left_label_full_text:"τον συνολικό χρόνο που απαιτήθηκε ώστε να ολοκληρωθεί το service του οχήματός σας"}) );
     this.d7 = this.add_line ( new xN_AreasLine(this, new Point(0, 526), "q7 need label", line_details, "d7", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Την ευελιξία της ...", right_label:"",
+    left_label_full_text:"Την ευελιξία της αντιπροσωπείας να σας κλείσει το ραντεβού που θέλατε"}) );
     this.d8 = this.add_line ( new xN_AreasLine(this, new Point(0, 606), "q7 need label", line_details, "d8", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Την ευκολία ωραρίου", right_label:"",
+    left_label_full_text:"Την ευκολία ωραρίου"}) );
         /*
     this.d1 = this.add_simple_left_right_questions_line( new Point(0, 43), "d1 need label" );
     this.d2 = this.add_simple_left_right_questions_line( new Point(0, 125), "d2 need label" );
@@ -890,7 +915,7 @@ function Chart__Quality()
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Quality", chart_label:"ΠΟΙΌΤΗΤΑ"},
             new Rectangle(0,0,860,600),
-            new Rectangle(170,180,665,360)
+            new Rectangle(200,180,665,360)
     );
     var line_details = 
     {
@@ -902,13 +927,17 @@ function Chart__Quality()
         color_1:"#ff0000"
     };
     this.e1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "e1 need label", line_details, "e1", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Παρακαλώ αξιολογήστε ...", right_label:"",
+    left_label_full_text:"Παρακαλώ αξιολογήστε την εμπιστοσύνη σας στις εργασίες που πραγματοποιήθηκαν στο αυτοκίνητο σας κατά τη διάρκεια του τελευταίου service"}) );
     this.e2 = this.add_line ( new xN_AreasLine(this, new Point(0, 125), "e2 need label", line_details, "e2", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Σε ποιο βαθμό ...", right_label:"",
+    left_label_full_text:"Σε ποιο βαθμό ολοκληρώθηκαν οι εργασίες που ζητήσατε"}) );
     this.e3 = this.add_line ( new xN_AreasLine(this, new Point(0, 206), "e3 need label", line_details, "e3", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Πώς θα αξιολογούσατε ...", right_label:"",
+    left_label_full_text:"Πώς θα αξιολογούσατε την καθαριότητα του οχήματός σας μετά  το service ή  την επισκευή"}) );
     this.e4 = this.add_line ( new xN_AreasLine(this, new Point(0, 292), "e4 need label", line_details, "e4", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Παρακαλώ βαθμολογήστε ...", right_label:"",
+    left_label_full_text:"Παρακαλώ βαθμολογήστε την εμπιστοσύνη σας στην τεχνική κατάρτιση της αντιπροσωπείας"}) );
     /*
     this.e1 = this.add_simple_left_right_questions_line( new Point(0, 43), "e1 need label" );
     this.e2 = this.add_simple_left_right_questions_line( new Point(0, 125), "e2 need label" );
@@ -946,16 +975,32 @@ function Chart__Quality_again_testing()
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Quality_again_testing", 
         chart_label:"ΠΟΙΌΤΗΤΑ – ΔΕΎΤΕΡΗ ΕΠΊΣΚΕΨΗ"},
             new Rectangle(0,0,860,950),
-            new Rectangle(170,180,665,670)
+            new Rectangle(200,180,665,670)
     );
-    this.e61 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 43), "need_label") );
-    this.e62 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 125), "need_label") );
-    this.e63 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 206), "need_label") );
-    this.e64 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 292), "need_label") );
-    this.e65 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 372), "need_label") );
-    this.e66 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 452), "need_label") );
-    this.e67 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 532), "need_label") );
-    this.e68 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 612), "need_label") );
+    this.e61 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 43), 
+    "Δεν ήταν αρκετός ο ...",
+    "Δεν ήταν αρκετός ο χρόνος / το πρόγραμμα ήταν γεμάτο") );
+    this.e62 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 125), 
+    "Δεν μπορούσαν να ...",
+    "Δεν μπορούσαν να βρουν το πρόβλημα") );
+    this.e63 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 206), 
+    "Δεν ήταν διαθέσιμα ...",
+    "Δεν ήταν διαθέσιμα τα ανταλλακτικά") );
+    this.e64 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 292), 
+    "Τα ανταλλακτικά που ...",
+    "Τα ανταλλακτικά που χρησιμοποιήθηκαν ήταν ελαττωματικά") );
+    this.e65 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 372), 
+    "Το τμήμα του service ...",
+    "Το τμήμα του service δεν μπόρεσε να βρει το πρόβλημα την πρώτη φορά") );
+    this.e66 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 452), 
+    "Το τμήμα του service ...",
+    "Το τμήμα του service επιχείρησε την επισκευή αλλά δεν διόρθωσε το πρόβλημα") );
+    this.e67 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 532), 
+    "Το πρόβλημα διορθώθηκε ...",
+    "Το πρόβλημα διορθώθηκε αλλά παρουσιάστηκε άλλο πρόβλημα") );
+    this.e68 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 612), 
+    "Άλλος λόγος",
+    "") );
     /*
     this.e61 = this.add_simple_left_right_questions_line( new Point(0, 43), "e61 need label" );
     this.e62 = this.add_simple_left_right_questions_line( new Point(0, 125), "e62 need label" );
@@ -996,7 +1041,7 @@ function Chart__Costs()
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Costs", chart_label:"ΚΌΣΤΗ"},
             new Rectangle(0,0,860,800),
-            new Rectangle(170,180,665,520)
+            new Rectangle(200,180,665,520)
     );
     var line_details = 
     {
@@ -1008,17 +1053,23 @@ function Chart__Costs()
         color_1:"#ff0000"
     };
     this.Z1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "e1 need label", line_details, "Z1", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Από άποψη κόστους ...", right_label:"",
+    left_label_full_text:"Από άποψη κόστους, παρακαλώ αξιολογήστε την υπηρεσία που λάβατε"}) );
     this.Z2 = this.add_line ( new xN_AreasLine(this, new Point(0, 125), "e1 need label", line_details, "Z2", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Παροχή σαφών πληροφοριών ...", right_label:"",
+    left_label_full_text:"Παροχή σαφών πληροφοριών σχετικά με το κόστος πριν την έναρξη της εργασίας"}) );
     this.Z3 = this.add_line ( new xN_AreasLine(this, new Point(0, 206), "e1 need label", line_details, "Z3", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Επεξήγηση των εργασιών που έγιναν", right_label:"",
+    left_label_full_text:""}) );
     this.Z4 = this.add_line ( new xN_AreasLine(this, new Point(0, 292), "e1 need label", line_details, "Z4", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Πόσο λογικό ήταν ...", right_label:"",
+    left_label_full_text:"Πόσο λογικό ήταν το κόστος των εργασιών και των ανταλλακτικών"}) );
     this.Z5 = this.add_line ( new xN_AreasLine(this, new Point(0, 372), "e1 need label", line_details, "Z5", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Επεξήγηση των χρεώσεων του service?", right_label:"",
+    left_label_full_text:""}) );
     this.Z6 = this.add_line ( new xN_AreasLine(this, new Point(0, 452), "e1 need label", line_details, "Z6", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Επεξήγηση του μελλοντικού ...", right_label:"",
+    left_label_full_text:"Επεξήγηση του μελλοντικού προγραμμάτος συντήρησης και επισκευής"}) );
     /*
     this.Z1 = this.add_simple_left_right_questions_line( new Point(0, 43), "Z1 need label" );
     this.Z2 = this.add_simple_left_right_questions_line( new Point(0, 125), "Z2 need label" );
@@ -1051,7 +1102,7 @@ function Chart__FollowUp()
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"FollowUp", chart_label:"FOLLOW UP"},
             new Rectangle(0,0,860,650),
-            new Rectangle(170,180,665,410)
+            new Rectangle(200,180,665,410)
     );
     var line_details = 
     {
@@ -1063,9 +1114,11 @@ function Chart__FollowUp()
         color_1:"#ff0000"
     };
     this.h1 = this.add_line ( new xN_AreasLine(this, new Point(0, 120), "h1 need label", line_details, "h1", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Πως θα αξιολογούσατε ...", right_label:"",
+    left_label_full_text:"Πως θα αξιολογούσατε την επικοινωνία που είχατε με την αντιπροσωπεία από το τελευταίο service / επισκευή που είχατε"}) );
     this.h5 = this.add_line ( new xN_AreasLine(this, new Point(0, 250), "h5 need label", line_details, "h5", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Πώς θα αξιολογούσατε ...", right_label:"",
+    left_label_full_text:"Πώς θα αξιολογούσατε τον τρόπο που αντιμετωπίστηκε το θέμα σας"}) );
     /*
     this.h1 = this.add_simple_left_right_questions_line( new Point(0, 120), "h1 need label" );
     this.h5 = this.add_simple_left_right_questions_line( new Point(0, 250), "h5 need label" );
@@ -1093,7 +1146,7 @@ function Chart__InFuture()
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"InFuture", chart_label:"ΣΤΟ ΜΈΛΛΟΝ"},
             new Rectangle(0,0,860,650),
-            new Rectangle(170,180,665,410)
+            new Rectangle(200,180,665,410)
     );
     var line_details = 
     {
@@ -1105,11 +1158,14 @@ function Chart__InFuture()
         color_1:"#ff0000"
     };
     this.u1 = this.add_line ( new xN_AreasLine(this, new Point(0, 100), "u1 need label", line_details, "u1", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Θα πάτε ξανά στο ...", right_label:"",
+    left_label_full_text:"Θα πάτε ξανά στο συγκεκριμένο συνεργείο για κάποια μελλοντική εργασία"}) );
     this.u2 = this.add_line ( new xN_AreasLine(this, new Point(0, 200), "u2 need label", line_details, "u2", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Θα συνιστούσατε τα ...", right_label:"",
+    left_label_full_text:"Θα συνιστούσατε τα αυτοκίνητα της Hyundai στην οικογένειά σας και στους φίλους σας"}) );
     this.u3 = this.add_line ( new xN_AreasLine(this, new Point(0, 300), "u3 need label", line_details, "u3", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Θα αγοράζατε ξανά ένα αυτοκίνητο Hyundai", right_label:"",
+    left_label_full_text:""}) );
     /*
     this.u1 = this.add_simple_left_right_questions_line( new Point(0, 100), "u1 need label" );
     this.u2 = this.add_simple_left_right_questions_line( new Point(0, 200), "u2 need label" );
@@ -1138,7 +1194,7 @@ function Chart__CloseCall()
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"CloseCall", chart_label:"ΚΛΕΊΣΙΜΟ ΚΛΉΣΗΣ"},
             new Rectangle(0,0,860,650),
-            new Rectangle(170,180,665,410)
+            new Rectangle(200,180,665,410)
     );
     var line_details = 
     {
@@ -1150,9 +1206,11 @@ function Chart__CloseCall()
         color_1:"#ff0000"
     };
     this.i1 = this.add_line ( new xN_AreasLine(this, new Point(0, 120), "i1 need label", line_details, "i1", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Πώς θα αξιολογούσατε την ...", right_label:"",
+    left_label_full_text:"Πώς θα αξιολογούσατε την συνολική ποιότητα του αυτοκινήτου σας"}) );
     this.i2 = this.add_line ( new xN_AreasLine(this, new Point(0, 250), "i1 need label", line_details, "i2", 
-    {left_label:"Άριστη", right_label:"Πολύ κακή"}) );
+    {left_label:"Θα ήθελα να μου πείτε ...", right_label:"",
+    left_label_full_text:"Θα ήθελα να μου πείτε συνολικά για την μάρκα HYUNDAI σε σχέση με άλλες μάρκες που ξέρετε, θα λέγατε ότι είναι μια άριστη μάρκα"}) );
     /*
     this.i1 = this.add_simple_left_right_questions_line( new Point(0, 120), "i1 need label" );
     this.i2 = this.add_simple_left_right_questions_line( new Point(0, 250), "i2 need label" );

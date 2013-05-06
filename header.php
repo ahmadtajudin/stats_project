@@ -22,6 +22,7 @@ Tools::redirectUserByPermissions();
         <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="bootstrap/js/bootstrap.file-input.js"></script>
         <script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap-tooltip.js"></script>
         <script type="text/javascript" src="js/jquery.validate.js"></script>
         <script type="text/javascript" src="js/tools.js"></script>
         <!--[if lt IE 9]>
