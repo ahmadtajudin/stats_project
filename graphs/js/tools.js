@@ -569,7 +569,7 @@ function Chart__ReasonToVisit()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"ReasonToVisit", chart_label:"ΛΟΓΟΙ ΕΠΙΣΚΕΨΗΣ"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"ReasonToVisit", chart_label:"Λογοι Επισκεψης"},
             new Rectangle(0,0,900,550),
             new Rectangle(200,170,665,314)
     );
@@ -601,7 +601,7 @@ function Chart__RepeatedVisits()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"RepeatedVisits", chart_label:"ΕΠΑΝΑΛΗΨΗ ΕΠΙΣΚΕΨΗΣ"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"RepeatedVisits", chart_label:"Επαναληψη Επισκεψης"},
             new Rectangle(0,0,860,650),
             new Rectangle(200,180,665,430)
     );
@@ -648,7 +648,7 @@ function Chart__GeneralImpresions()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"GeneralImpresions", chart_label:"ΓΕΝΙΚΈΣ ΕΝΤΥΠΏΣΕΙΣ"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"GeneralImpresions", chart_label:"Γενικές Εντυπώσεις"},
             new Rectangle(0,0,900,550),
             new Rectangle(200,170,665,314)
     );
@@ -691,7 +691,7 @@ function Chart__Objects()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Objects", chart_label:"ΕΓΚΑΤΑΣΤΆΣΕΙΣ"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Objects", chart_label:"Εγκαταστάσεις"},
             new Rectangle(0,0,860,650),
             new Rectangle(200,180,665,430)
     );
@@ -757,7 +757,7 @@ function Chart__Personal()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Personal", chart_label:"ΠΡΟΣΩΠΙΚΌ"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Personal", chart_label:"Προσωπικό"},
             new Rectangle(0,0,860,950),
             new Rectangle(200,180,665,730)
     );
@@ -838,7 +838,7 @@ function Chart__QuestionsOnTime()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"QuestionsOnTime", chart_label:"ΘΈΜΑΤΑ ΧΡΌΝΟΥ"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"QuestionsOnTime", chart_label:"Θέματα Χρόνου"},
             new Rectangle(0,0,860,870),
             new Rectangle(200,180,665,650)
     );
@@ -913,7 +913,7 @@ function Chart__Quality()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Quality", chart_label:"ΠΟΙΌΤΗΤΑ"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Quality", chart_label:"Ποιότητα"},
             new Rectangle(0,0,860,600),
             new Rectangle(200,180,665,360)
     );
@@ -973,7 +973,7 @@ function Chart__Quality_again_testing()
     this.init
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Quality_again_testing", 
-        chart_label:"ΠΟΙΌΤΗΤΑ – ΔΕΎΤΕΡΗ ΕΠΊΣΚΕΨΗ"},
+        chart_label:"Ποιότητα – Δεύτερη επίσκεψη"},
             new Rectangle(0,0,860,950),
             new Rectangle(200,180,665,670)
     );
@@ -1039,7 +1039,7 @@ function Chart__Costs()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Costs", chart_label:"ΚΌΣΤΗ"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Costs", chart_label:"Κόστη"},
             new Rectangle(0,0,860,800),
             new Rectangle(200,180,665,520)
     );
@@ -1100,7 +1100,7 @@ function Chart__FollowUp()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"FollowUp", chart_label:"FOLLOW UP"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"FollowUp", chart_label:"Follow Up"},
             new Rectangle(0,0,860,650),
             new Rectangle(200,180,665,410)
     );
@@ -1144,7 +1144,7 @@ function Chart__InFuture()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"InFuture", chart_label:"ΣΤΟ ΜΈΛΛΟΝ"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"InFuture", chart_label:"Στο μέλλον"},
             new Rectangle(0,0,860,650),
             new Rectangle(200,180,665,410)
     );
@@ -1192,7 +1192,7 @@ function Chart__CloseCall()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"CloseCall", chart_label:"ΚΛΕΊΣΙΜΟ ΚΛΉΣΗΣ"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"CloseCall", chart_label:"Κλείσιμο Κλήσης"},
             new Rectangle(0,0,860,650),
             new Rectangle(200,180,665,410)
     );

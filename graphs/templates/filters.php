@@ -5,6 +5,11 @@
         width:120px;
     }
     
+    #filter_chart_label
+    {
+        font-size: 15px;
+    }
+    
 </style>
 
 <?php

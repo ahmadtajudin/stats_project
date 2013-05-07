@@ -81,6 +81,7 @@
         position:absolute;
         left:20px;
         top:20px;
+        font-size: 20px;
     }
     #chart_left_right_data_filter_above_the_cahrt
     {
