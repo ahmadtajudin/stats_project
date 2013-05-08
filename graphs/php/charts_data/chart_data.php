@@ -212,6 +212,11 @@ class ChartData extends DataModerator
                 $count_total[0]["__COUNT__"] = "1";
             }
             $data_for .= "<count_total_".$column_variable.">".$count_total[0]["__COUNT__"]."</count_total_".$column_variable.">";
+            
+            $sumtotal_for_average = DB_DETAILS::ADD_ACTION("
+      SELECT SUM(".$column_variable.") AS __SUM__ FROM data WHERE ".$this->area_year_month_dealercode_chain__SQL_condition
+                    , DB_DETAILS::$TYPE_SELECT);
+            $data_for .= "<sum_total_for_average_".$column_variable.">".$sumtotal_for_average[0]["__SUM__"]."</sum_total_for_average_".$column_variable.">";
         }
         $data_for .= "</data>";
         return $data_for;

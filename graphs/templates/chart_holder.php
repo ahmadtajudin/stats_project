@@ -95,6 +95,36 @@
         font-weight: bold;
     }
     
+    #legend_chart
+    {
+        margin-top: 10px;
+        width:650px;
+        /*
+        border:solid 1px;
+        */
+    }
+    #legend_chart .legend_rectangle_holder
+    {
+        padding-top: 5px;
+    }
+    #legend_chart .legent_label
+    {
+        line-height: 20px;
+        margin-left: 5px;
+    }
+    .legend_rectangle
+    {
+        width:10px;
+        height:10px;
+        background-color: #000000;
+    }
+    .legend_label_holder
+    {
+        margin-left:10px;
+        margin-right:10px;
+        float:left;
+    }
+    
 </style>
 
 <div id="chart_main_holder">
@@ -137,6 +167,19 @@
             Τελευταία ενσωμάτωση δεδομένων: 
                 <?php print Chart_Month::$months_labels_el[Chart_Year::$last_date_changing_data["Months"]-1]; ?> <?php print Chart_Year::$last_date_changing_data["Year"]; ?>
         </div>
+        <div id="legend_chart" class="displayNone">
+            
+            <div id="legend_label_holder_template" class="displayNone">
+                <div class="legend_label_holder">
+                    <div>
+                        <div class="floatLeft legend_rectangle_holder"><div class="legend_rectangle"></div></div>
+                        <div class="floatLeft legent_label">Πολύ απογοητευμένος (1)</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="clearBoth"></div>
     </div>
     
     <div id="charts__holder">
@@ -272,7 +315,7 @@
         }
         .xN_AreasLine_right
         {
-            border-bottom:solid 2px #000000;
+            border-top:solid 2px #000000;
         }
         .xN_partHolder
         {
@@ -281,44 +324,72 @@
         }
         .xN_partHolder_percent_label
         {
-            position: absolute;
+            text-align: center;
+            line-height: 30px;
+            overflow: hidden;
+            /*
+            border:solid 1px;
+            */
         }
         .xN_AreasLine_label
         {
             position:absolute;
-            width: 150px;
+            width: 130px;
             font-size: 12px;
         }
         .xN_AreasLine_left_label
         {
             text-align: left;
             background:url('images/bg_gray_to_white.jpg') repeat-y;
+            padding-left: 10px;
+            padding-right: 20px;
         }
         .xN_AreasLine_right_label
         {
             text-align: left;
         }
+        .xN_AreasLine_left_coeficient
+        {
+            position:absolute;
+            left:-30px;
+            top:7px;
+            font-size: 11px;
+            font-weight: bold;
+        }
     </style>
     <div id="template_xN_AreasLine"  class="displayNone">
         <div class="xN_AreasLine">
             <div class="posRel">
-                <div class="xN_AreasLine_left xN_AreasLine_line">
-                    <div class="xN_AreasLine_parts_holder"></div>
-                    <div class="clearBoth"></div>
+                <div class="xN_AreasLine_left_label xN_AreasLine_label tool_tip_labels" 
+                     data-toggle="tooltip" data-placement="top" data-original-title="not defined">
                 </div>
                 <div class="xN_AreasLine_right xN_AreasLine_line">
+                    <div class="posRel">
+                        <div class="xN_AreasLine_left_coeficient">
+                            -
+                        </div>
+                    </div>
                     <div class="xN_AreasLine_parts_holder"></div>
                     <div class="clearBoth"></div>
                 </div>
-                <div class="xN_AreasLine_left_label xN_AreasLine_label tool_tip_labels" data-toggle="tooltip" data-placement="top" title="not defined"></div>
+                <div class="xN_AreasLine_left xN_AreasLine_line">
+                    <div class="posRel">
+                        <div class="xN_AreasLine_left_coeficient">
+                            -
+                        </div>
+                    </div>
+                    <div class="xN_AreasLine_parts_holder"></div>
+                    <div class="clearBoth"></div>
+                </div>
                 <div class="xN_AreasLine_right_label xN_AreasLine_label"></div>
             </div>
         </div>
     </div>
     <div id="template_xN_partHolder" class="displayNone">
-        <div class="xN_partHolder">
+        <div class="xN_partHolder ">
             <div class="posRel">
-                <div class="xN_partHolder_percent_label"></div>
+                <div class="xN_partHolder_percent_label">-
+                </div>
             </div>
         </div>
     </div>

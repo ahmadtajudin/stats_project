@@ -98,8 +98,8 @@ function ChartLineBase()
         if(this.right_question_is_visible())
         {
             $(this.line_right).removeClass("displayNone");
-            $(this.line_right).stop().animate({opacity:1, top:top_position_minus+"px"}, 500);
-            $(this.line__left).stop().animate({top:"0px"}, 500);
+            $(this.line__left).stop().animate({top:top_position_minus+"px"}, 500);
+            $(this.line_right).stop().animate({opacity:1, top:"0px"}, 500);
             $("#chart_left_right_data_filter_above_the_cahrt_info_right").stop().animate({opacity:1}, 500);
         }
         else
@@ -233,9 +233,9 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
     //{left_label:"Άριστη", right_label:"Πολύ κακή"}) );
     $(this.line).find(".xN_AreasLine_left_label").html( labelLeftRightTexts.left_label );
     $(this.line).find(".xN_AreasLine_right_label").html( labelLeftRightTexts.right_label );
-    $(this.line).find(".xN_AreasLine_left_label").attr("title", labelLeftRightTexts.left_label_full_text);
+    $(this.line).find(".xN_AreasLine_left_label").attr("data-original-title", labelLeftRightTexts.left_label_full_text);
     
-    var margin_label_left_right = 5;
+    var margin_label_left_right = 45;
     var left_label_x = 0-$(this.line).find(".xN_AreasLine_left_label").width()-margin_label_left_right;
     var right_label_x = this.chart.chart_diagram_poz_size.w+margin_label_left_right;
     var left_label_y = 0-$(this.line).find(".xN_AreasLine_left_label").height()/2;
@@ -244,6 +244,8 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
     $(this.line).find(".xN_AreasLine_right_label").css("left", right_label_x+"px");
     $(this.line).find(".xN_AreasLine_left_label").css("top", left_label_y+"px");
     $(this.line).find(".xN_AreasLine_right_label").css("top", right_label_y+"px");
+    
+    this.array_parts = [];
     
     this.from_to = function()
     {
@@ -270,12 +272,24 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
         var class_reference = "line_part_"+index+"_";
         $(left_last_last_part).addClass( class_reference );
         $(right_last_last_part).addClass( class_reference );
+        $(left_last_last_part).addClass( "tool_tip_labels" );
+        $(right_last_last_part).addClass( "tool_tip_labels" );
+        $(left_last_last_part).attr("data-toggle", "tooltip");
+        $(left_last_last_part).attr("data-placement", "top");
+        $(left_last_last_part).attr("data-original-title", "");
+        $(right_last_last_part).attr("data-toggle", "tooltip");
+        $(right_last_last_part).attr("data-placement", "top");
+        $(right_last_last_part).attr("data-original-title", "");
+        
+        this.array_parts[index] = {left:left_last_last_part, right:right_last_last_part};
         
         $(this.line_right).css("top", "-30px");
         $(left_last_last_part).width( this.middle_width_part() );
         $(right_last_last_part).width( this.middle_width_part() );
         $(left_last_last_part).css( "backgroundColor", this.details["color_"+index] );
         $(right_last_last_part).css( "backgroundColor", this.details["color_"+index] );
+        
+        //alert("->"+$(left_last_last_part).attr("title"));
     }
     if(details.range_from<details.range_to)
     for(i=details.range_from;i<=details.range_to;i++)
@@ -312,6 +326,12 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
            var right_val = parseFloat($(dataBXML).find("count_"+this.column_name+"_"+i).text());
            this.animate_part( i, left_val/leftTotal, right_val/rightTotal );
        } 
+       var average_left = parseFloat($(dataAXML).find("sum_total_for_average_"+this.column_name).text())/
+                          parseFloat($(dataAXML).find("count_total_"+this.column_name).text());
+       var average_right = parseFloat($(dataBXML).find("sum_total_for_average_"+this.column_name).text())/
+                          parseFloat($(dataBXML).find("count_total_"+this.column_name).text());
+       $(this.line__left).find(".xN_AreasLine_left_coeficient").html("A:"+average_left.toFixed(1));
+       $(this.line_right).find(".xN_AreasLine_left_coeficient").html("B:"+average_right.toFixed(1));
     }
     this.animate_part = function(index, percentLeft, percentRight)
     {
@@ -320,14 +340,34 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
         var new_width_right =  percentRight*this.chart.chart_diagram_poz_size.w;
         $($(this.line__left).find(reference_class).get(0)).animate({width:new_width_left+"px"}, 500);
         $($(this.line_right).find(reference_class).get(0)).animate({width:new_width_right+"px"}, 500);
+        var percent_left = Math.round(percentLeft*1000)/10;
+        var percent_rigt = Math.round(percentRight*1000)/10;
+        $($(this.line__left).find(reference_class).get(0)).find(".xN_partHolder_percent_label").html
+        (
+                percent_left+"%"
+        );
+        $(this.array_parts[index].left).attr("data-original-title", percent_left+"%");
+        //$(this.array_parts[index].left).tooltip();
+        //console.log($(this.array_parts[index].left).attr("data-toggle"));
+        //console.log($(this.array_parts[index].left).attr("data-placement"));
+        //console.log($(this.array_parts[index].left).attr("title"));
+        //$($(this.line__left).find(reference_class).get(0)).attr("title", percent_left+"%");
+        $($(this.line_right).find(reference_class).get(0)).find(".xN_partHolder_percent_label").html
+        (
+                percent_rigt+"%"
+        );
+        //$($(this.line_right).find(reference_class).get(0)).attr("title", percent_rigt+"%");
+        //alert($(this.array_parts[index].right).tooltip);
+        $(this.array_parts[index].right).attr("data-original-title", percent_rigt+"%");
+        //$(this.array_parts[index].right).tooltip();
     }
     if (!this.right_question_is_visible())
     {
         var top_position = $(this.line__left).height();
         var top_position_minus = top_position * -1;
         var top_position_minus_vrz_dva = -1 * top_position / 2;
-        $(this.line__left).css("top", top_position_minus_vrz_dva + "px");
         $(this.line_right).css("top", top_position_minus_vrz_dva + "px");
+        $(this.line__left).css("top", top_position_minus_vrz_dva + "px");
         $(this.line_right).css("opacity", 0);
     }
 }
@@ -542,6 +582,63 @@ function ChartBase()
     {
         return $(this.data_xml).find("group_"+filter_type+"_data").find("total_pass_by").text(); 
     }
+    
+    /*
+     * 
+     * @param {type} line_details
+     * @returns {undefined}
+     * If need legend, this function will show legend on top
+     */
+    this.init_legend = function(line_details)
+    {
+        var from = line_details.range_from;
+        var to = line_details.range_to;
+        if(from > line_details.range_to)
+        {
+            from = line_details.range_to;
+            to = line_details.range_from;
+        }
+        $("#legend_chart").removeClass("displayNone");
+        for(var i=from;i<=to;i++)
+        {
+            $("#legend_chart").append( $("#legend_label_holder_template").html() );
+            $($("#legend_chart").find(".legend_label_holder").last()).find(".legend_rectangle").css
+            ("backgroundColor", line_details["color_"+i]);
+            $($("#legend_chart").find(".legend_label_holder").last()).find(".legent_label").html
+            (line_details["label_"+i]+" ("+i+")");
+        }
+    }
+    
+    /*
+     * 
+     * @type Eventor
+     * 
+    var line_details = 
+    {
+        range_from:5,range_to:1,
+        
+        color_5:"#339966",
+        color_4:"#99cc00",
+        color_3:"#ffff00",
+        color_2:"#ff9900",
+        color_1:"#ff0000",
+        
+        line_1:"Πολύ απογοητευμένος",
+        line_2:"Απογοητευμένος",
+        line_3:"Ικανοποιημένος",
+        line_4:"Πολύ ικανοποιημένος",
+        line_5:"Εξαιρετικά ικανοποιημένος"
+    };
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Costs", chart_label:"Κόστη"},
+            new Rectangle(0,0,860,830),
+            new Rectangle(200,210,665,520)
+    );
+    
+    this.init_legend( line_details );
+     * 
+     */
 }
 ChartBase.prototype = new Eventor();
 ChartBase.ON_CHART_DATA_LOAD = "ON_CHART_DATA_LOAD";
@@ -573,9 +670,11 @@ function Chart__ReasonToVisit()
             new Rectangle(0,0,900,550),
             new Rectangle(200,170,665,314)
     );
+        
     this.q6_1 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 55), "Service") );
     this.q6_2 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς") );
     this.q6_3 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 265), "Επισκευή εντός εγγύησης") );
+    
     /*
     this.q6_1 = this.add_simple_left_right_questions_line( new Point(0, 55), "Service" );
     this.q6_2 = this.add_simple_left_right_questions_line( new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς");
@@ -646,25 +745,37 @@ Chart__RepeatedVisits.prototype = new ChartBase();
  */
 function Chart__GeneralImpresions()
 {
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"GeneralImpresions", chart_label:"Γενικές Εντυπώσεις"},
-            new Rectangle(0,0,900,550),
-            new Rectangle(200,170,665,314)
-    );
     var line_details = 
     {
         range_from:5,range_to:1,
+        
         color_5:"#339966",
         color_4:"#99cc00",
         color_3:"#ffff00",
         color_2:"#ff9900",
-        color_1:"#ff0000"
+        color_1:"#ff0000",
+        
+        label_1:"Πολύ απογοητευμένος",
+        label_2:"Απογοητευμένος",
+        label_3:"Ικανοποιημένος",
+        label_4:"Πολύ ικανοποιημένος",
+        label_5:"Εξαιρετικά ικανοποιημένος"
     };
+    
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"GeneralImpresions", chart_label:"Γενικές Εντυπώσεις"},
+            new Rectangle(0,0,900,610),
+            new Rectangle(180,230,665,314)
+    );
+    
+    this.init_legend( line_details );
+        
     this.q7 = this.add_line ( new xN_AreasLine(this, new Point(0, 105), "q7 need label", line_details, "q7", 
     {left_label:"Συνολικά, πόσο ...", right_label:"", left_label_full_text:"Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ Κακή έως το 10 Άριστη)"}) );
     this.q8 = this.add_line ( new xN_AreasLine(this, new Point(0, 210), "q8 need label", line_details, "q8", 
     {left_label:"Με βάση την εμπειρία ...", right_label:"", left_label_full_text:"Με βάση την εμπειρία σας από το συγκεκριμένο συνεργείο πόσο πιθανό θα ήταν να συστήσετε το συγκεκριμένο συνεργείο σε κάποιον φίλο σας /γνωστό σας / συγγενή σας"}) );
+    
     
     this.show_data_to_diagram = function(  )
     {
@@ -689,21 +800,32 @@ Chart__GeneralImpresions.prototype = new ChartBase();
  */
 function Chart__Objects()
 {
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Objects", chart_label:"Εγκαταστάσεις"},
-            new Rectangle(0,0,860,650),
-            new Rectangle(200,180,665,430)
-    );
     var line_details = 
     {
         range_from:5,range_to:1,
+        
         color_5:"#339966",
         color_4:"#99cc00",
         color_3:"#ffff00",
         color_2:"#ff9900",
-        color_1:"#ff0000"
+        color_1:"#ff0000",
+        
+        label_1:"Πολύ απογοητευμένος",
+        label_2:"Απογοητευμένος",
+        label_3:"Ικανοποιημένος",
+        label_4:"Πολύ ικανοποιημένος",
+        label_5:"Εξαιρετικά ικανοποιημένος"
     };
+    
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Objects", chart_label:"Εγκαταστάσεις"},
+            new Rectangle(0,0,860,700),
+            new Rectangle(180,230,665,430)
+    );
+        
+    this.init_legend( line_details );
+    
     this.b1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "q7 need label", line_details, "b1", 
     {left_label:"Πως θα αξιολογούσατε τις ...", right_label:"",
         left_label_full_text:"Πως θα αξιολογούσατε τις εγκαταστάσεις του συγκεκριμένου συνεργείου."}) );
@@ -755,21 +877,32 @@ Chart__Objects.prototype = new ChartBase();
  */
 function Chart__Personal()
 {
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Personal", chart_label:"Προσωπικό"},
-            new Rectangle(0,0,860,950),
-            new Rectangle(200,180,665,730)
-    );
     var line_details = 
     {
         range_from:5,range_to:1,
+        
         color_5:"#339966",
         color_4:"#99cc00",
         color_3:"#ffff00",
         color_2:"#ff9900",
-        color_1:"#ff0000"
+        color_1:"#ff0000",
+        
+        label_1:"Πολύ απογοητευμένος",
+        label_2:"Απογοητευμένος",
+        label_3:"Ικανοποιημένος",
+        label_4:"Πολύ ικανοποιημένος",
+        label_5:"Εξαιρετικά ικανοποιημένος"
     };
+    
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Personal", chart_label:"Προσωπικό"},
+            new Rectangle(0,0,860,1000),
+            new Rectangle(180,230,665,730)
+    );
+    
+    this.init_legend( line_details );
+    
     this.c1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "q7 need label", line_details, "c1", 
     {left_label:"Πως θα αξιολογούσατε ...", right_label:"",
     left_label_full_text:"Πως θα αξιολογούσατε το προσωπικό του συγκεκριμένου συνεργείου"}) );
@@ -836,21 +969,32 @@ Chart__Personal.prototype = new ChartBase();
  */
 function Chart__QuestionsOnTime()
 {
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"QuestionsOnTime", chart_label:"Θέματα Χρόνου"},
-            new Rectangle(0,0,860,870),
-            new Rectangle(200,180,665,650)
-    );
     var line_details = 
     {
         range_from:5,range_to:1,
+        
         color_5:"#339966",
         color_4:"#99cc00",
         color_3:"#ffff00",
         color_2:"#ff9900",
-        color_1:"#ff0000"
+        color_1:"#ff0000",
+        
+        label_1:"Πολύ απογοητευμένος",
+        label_2:"Απογοητευμένος",
+        label_3:"Ικανοποιημένος",
+        label_4:"Πολύ ικανοποιημένος",
+        label_5:"Εξαιρετικά ικανοποιημένος"
     };
+    
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"QuestionsOnTime", chart_label:"Θέματα Χρόνου"},
+            new Rectangle(0,0,860,920),
+            new Rectangle(180,230,665,650)
+    );
+        
+    this.init_legend( line_details );
+    
     this.d1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "q7 need label", line_details, "d1", 
     {left_label:"Τύχατε της προσοχή ...", right_label:"",
     left_label_full_text:"Τύχατε της προσοχή του προσωπικού (σας είχε το προσωπικό στο νού του)καθ’ όλη την διάρκεια της επίσκεψης σας"}) );
@@ -911,21 +1055,32 @@ Chart__QuestionsOnTime.prototype = new ChartBase();
  */
 function Chart__Quality()
 {
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Quality", chart_label:"Ποιότητα"},
-            new Rectangle(0,0,860,600),
-            new Rectangle(200,180,665,360)
-    );
     var line_details = 
     {
         range_from:5,range_to:1,
+        
         color_5:"#339966",
         color_4:"#99cc00",
         color_3:"#ffff00",
         color_2:"#ff9900",
-        color_1:"#ff0000"
+        color_1:"#ff0000",
+        
+        label_1:"Πολύ απογοητευμένος",
+        label_2:"Απογοητευμένος",
+        label_3:"Ικανοποιημένος",
+        label_4:"Πολύ ικανοποιημένος",
+        label_5:"Εξαιρετικά ικανοποιημένος"
     };
+    
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Quality", chart_label:"Ποιότητα"},
+            new Rectangle(0,0,860,650),
+            new Rectangle(180,230,665,360)
+    );
+        
+    this.init_legend( line_details );    
+        
     this.e1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "e1 need label", line_details, "e1", 
     {left_label:"Παρακαλώ αξιολογήστε ...", right_label:"",
     left_label_full_text:"Παρακαλώ αξιολογήστε την εμπιστοσύνη σας στις εργασίες που πραγματοποιήθηκαν στο αυτοκίνητο σας κατά τη διάρκεια του τελευταίου service"}) );
@@ -1037,21 +1192,32 @@ Chart__Quality_again_testing.prototype = new ChartBase();
  */
 function Chart__Costs()
 {
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Costs", chart_label:"Κόστη"},
-            new Rectangle(0,0,860,800),
-            new Rectangle(200,180,665,520)
-    );
     var line_details = 
     {
         range_from:5,range_to:1,
+        
         color_5:"#339966",
         color_4:"#99cc00",
         color_3:"#ffff00",
         color_2:"#ff9900",
-        color_1:"#ff0000"
+        color_1:"#ff0000",
+        
+        label_1:"Πολύ απογοητευμένος",
+        label_2:"Απογοητευμένος",
+        label_3:"Ικανοποιημένος",
+        label_4:"Πολύ ικανοποιημένος",
+        label_5:"Εξαιρετικά ικανοποιημένος"
     };
+    
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"Costs", chart_label:"Κόστη"},
+            new Rectangle(0,0,860,850),
+            new Rectangle(180,230,665,520)
+    );
+    
+    this.init_legend( line_details );
+    
     this.Z1 = this.add_line ( new xN_AreasLine(this, new Point(0, 43), "e1 need label", line_details, "Z1", 
     {left_label:"Από άποψη κόστους ...", right_label:"",
     left_label_full_text:"Από άποψη κόστους, παρακαλώ αξιολογήστε την υπηρεσία που λάβατε"}) );
@@ -1098,21 +1264,32 @@ Chart__Costs.prototype = new ChartBase();
  */
 function Chart__FollowUp()
 {
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"FollowUp", chart_label:"Follow Up"},
-            new Rectangle(0,0,860,650),
-            new Rectangle(200,180,665,410)
-    );
     var line_details = 
     {
         range_from:5,range_to:1,
+        
         color_5:"#339966",
         color_4:"#99cc00",
         color_3:"#ffff00",
         color_2:"#ff9900",
-        color_1:"#ff0000"
+        color_1:"#ff0000",
+        
+        label_1:"Πολύ απογοητευμένος",
+        label_2:"Απογοητευμένος",
+        label_3:"Ικανοποιημένος",
+        label_4:"Πολύ ικανοποιημένος",
+        label_5:"Εξαιρετικά ικανοποιημένος"
     };
+    
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"FollowUp", chart_label:"Follow Up"},
+            new Rectangle(0,0,860,700),
+            new Rectangle(180,230,665,410)
+    );
+        
+    this.init_legend( line_details );
+    
     this.h1 = this.add_line ( new xN_AreasLine(this, new Point(0, 120), "h1 need label", line_details, "h1", 
     {left_label:"Πως θα αξιολογούσατε ...", right_label:"",
     left_label_full_text:"Πως θα αξιολογούσατε την επικοινωνία που είχατε με την αντιπροσωπεία από το τελευταίο service / επισκευή που είχατε"}) );
@@ -1142,21 +1319,32 @@ Chart__FollowUp.prototype = new ChartBase();
  */
 function Chart__InFuture()
 {
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"InFuture", chart_label:"Στο μέλλον"},
-            new Rectangle(0,0,860,650),
-            new Rectangle(200,180,665,410)
-    );
     var line_details = 
     {
         range_from:5,range_to:1,
+        
         color_5:"#339966",
         color_4:"#99cc00",
         color_3:"#ffff00",
         color_2:"#ff9900",
-        color_1:"#ff0000"
+        color_1:"#ff0000",
+        
+        label_1:"Πολύ απογοητευμένος",
+        label_2:"Απογοητευμένος",
+        label_3:"Ικανοποιημένος",
+        label_4:"Πολύ ικανοποιημένος",
+        label_5:"Εξαιρετικά ικανοποιημένος"
     };
+    
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"InFuture", chart_label:"Στο μέλλον"},
+            new Rectangle(0,0,860,700),
+            new Rectangle(180,230,665,410)
+    );
+    
+    this.init_legend( line_details );
+    
     this.u1 = this.add_line ( new xN_AreasLine(this, new Point(0, 100), "u1 need label", line_details, "u1", 
     {left_label:"Θα πάτε ξανά στο ...", right_label:"",
     left_label_full_text:"Θα πάτε ξανά στο συγκεκριμένο συνεργείο για κάποια μελλοντική εργασία"}) );
@@ -1190,21 +1378,32 @@ Chart__InFuture.prototype = new ChartBase();
  */
 function Chart__CloseCall()
 {
-    this.init
-    (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"CloseCall", chart_label:"Κλείσιμο Κλήσης"},
-            new Rectangle(0,0,860,650),
-            new Rectangle(200,180,665,410)
-    );
     var line_details = 
     {
         range_from:5,range_to:1,
+        
         color_5:"#339966",
         color_4:"#99cc00",
         color_3:"#ffff00",
         color_2:"#ff9900",
-        color_1:"#ff0000"
+        color_1:"#ff0000",
+        
+        label_1:"Πολύ απογοητευμένος",
+        label_2:"Απογοητευμένος",
+        label_3:"Ικανοποιημένος",
+        label_4:"Πολύ ικανοποιημένος",
+        label_5:"Εξαιρετικά ικανοποιημένος"
     };
+    
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"CloseCall", chart_label:"Κλείσιμο Κλήσης"},
+            new Rectangle(0,0,860,700),
+            new Rectangle(180,230,665,410)
+    );
+        
+    this.init_legend( line_details )
+        
     this.i1 = this.add_line ( new xN_AreasLine(this, new Point(0, 120), "i1 need label", line_details, "i1", 
     {left_label:"Πώς θα αξιολογούσατε την ...", right_label:"",
     left_label_full_text:"Πώς θα αξιολογούσατε την συνολική ποιότητα του αυτοκινήτου σας"}) );
