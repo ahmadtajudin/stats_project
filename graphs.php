@@ -32,16 +32,4 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $('.toggle-state').click(function(event) {
-        $('ul.show-hide-el').slideToggle(300, function() {
-            if ($('ul.show-hide-el').css('display') == 'block') {
-                $('.toggle-state  a ').css('background', '#0088cc url(images/minus-icon.png) 97% center no-repeat');
-            }
-            else if ($('ul.show-hide-el').css('display') == 'none') {
-                $('.toggle-state  a ').css('background', '#0088cc url(images/plus-icon.png) 97% center no-repeat');
-            }
-        })
-    });
-</script>
 <?php include("footer.php"); ?>

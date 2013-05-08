@@ -96,7 +96,7 @@ div.top-nav ul{
     font-size: 13px;
     position:absolute;
     right: 0;
-    top: 0px;
+    top: 90px;
 }
 div.top-nav ul li{
     float: left;
@@ -201,7 +201,7 @@ div.chart-container{
     -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
     box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
-    background: #0088cc url(images/minus-icon.png) 97% center no-repeat;
+    background: #0088cc;
     color:#fff;
     -webkit-border-radius: 6px 6px 0 0;
     -moz-border-radius: 6px 6px 0 0;
