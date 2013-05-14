@@ -22,9 +22,9 @@ class ReasonToVisit extends ChartData
         (
                 array
                     (
-                    array("column"=>"q6_1", "value"=>"1", "column_xml_additional_reference"=>""), 
-                    array("column"=>"q6_2", "value"=>"1", "column_xml_additional_reference"=>""), 
-                    array("column"=>"q6_3", "value"=>"1", "column_xml_additional_reference"=>"")
+                    array("column"=>"q61", "value"=>"1", "column_xml_additional_reference"=>""), 
+                    array("column"=>"q62", "value"=>"1", "column_xml_additional_reference"=>""), 
+                    array("column"=>"q63", "value"=>"1", "column_xml_additional_reference"=>"")
                     ), 
         "quantity");
         $data_for_back .= $this->get_data_xml_total_passby_and_interviews("q6_1");

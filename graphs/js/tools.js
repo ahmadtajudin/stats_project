@@ -671,9 +671,9 @@ function Chart__ReasonToVisit()
             new Rectangle(200,170,665,314)
     );
         
-    this.q6_1 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 55), "Service") );
-    this.q6_2 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς") );
-    this.q6_3 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 265), "Επισκευή εντός εγγύησης") );
+    this.q61 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 55), "Service") );
+    this.q62 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς") );
+    this.q63 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 265), "Επισκευή εντός εγγύησης") );
     
     /*
     this.q6_1 = this.add_simple_left_right_questions_line( new Point(0, 55), "Service" );
@@ -683,12 +683,12 @@ function Chart__ReasonToVisit()
     
     this.show_data_to_diagram = function(  )
     {
-        this.q6_1.init( this.get_quantity("q6_1", "A"), this.get_quantity_total("q6_1", "A"), 
-                        this.get_quantity("q6_1", "B"), this.get_quantity_total("q6_1", "B") );
-        this.q6_2.init( this.get_quantity("q6_2", "A"), this.get_quantity_total("q6_2", "A"), 
-                        this.get_quantity("q6_2", "B"), this.get_quantity_total("q6_2", "B") );
-        this.q6_3.init( this.get_quantity("q6_3", "A"), this.get_quantity_total("q6_3", "A"), 
-                        this.get_quantity("q6_3", "B"), this.get_quantity_total("q6_3", "B") );
+        this.q61.init( this.get_quantity("q61", "A"), this.get_quantity_total("q61", "A"), 
+                        this.get_quantity("q61", "B"), this.get_quantity_total("q61", "B") );
+        this.q62.init( this.get_quantity("q62", "A"), this.get_quantity_total("q62", "A"), 
+                        this.get_quantity("q62", "B"), this.get_quantity_total("q62", "B") );
+        this.q63.init( this.get_quantity("q63", "A"), this.get_quantity_total("q63", "A"), 
+                        this.get_quantity("q63", "B"), this.get_quantity_total("q63", "B") );
     }
 }
 Chart__ReasonToVisit.prototype = new ChartBase();
