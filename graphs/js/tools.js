@@ -696,19 +696,21 @@ Chart__ReasonToVisit.prototype = new ChartBase();
 /*
  * Repeated visits
  */
-function Chart__RepeatedVisits()
+function Chart__TotalVisits()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"RepeatedVisits", chart_label:"Επαναληψη Επισκεψης"},
-            new Rectangle(0,0,860,650),
-            new Rectangle(200,180,665,430)
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"TotalVisits", chart_label:"Συνολικές επισκέψεις"},
+            new Rectangle(0,0,860,820),
+            new Rectangle(200,180,665,600)
     );
-    this.Q17Α_0 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 43), "Τέσσερις και περισσότερες") );
-    this.Q17Α_1 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 125), "Τρεις") );
-    this.Q17Α_2 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 206), "Δύο") );
-    this.Q17Α_3 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 292), "Μία") );
-    this.Q17Α_4 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 376), "Καμία") );
+    this.q5b_1 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 43), "1 φορά") );
+    this.q5b_2 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 125), "2 φορά") );
+    this.q5b_3 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 206), "3 φορά") );
+    this.q5b_4 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 292), "4 φορά") );
+    this.q5b_5 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 376), "5 φορά") );
+    this.q5b_6 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 460), "6 φορά") );
+    this.q5b_7 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 544), "7+ φορά") );
     /*
     this.Q17Α_0 = this.add_simple_left_right_questions_line( new Point(0, 43), "Τέσσερις και περισσότερες " );
     this.Q17Α_1 = this.add_simple_left_right_questions_line( new Point(0, 125), "Τρεις" );
@@ -718,19 +720,12 @@ function Chart__RepeatedVisits()
     
     this.show_data_to_diagram = function(  )
     {
-        this.Q17Α_0.init( this.get_quantity("Q17Α_0", "A"), this.get_quantity_total("Q17Α_0", "A"), 
-                          this.get_quantity("Q17Α_0", "B"), this.get_quantity_total("Q17Α_0", "B") );
-        this.Q17Α_1.init( this.get_quantity("Q17Α_1", "A"), this.get_quantity_total("Q17Α_1", "A"), 
-                          this.get_quantity("Q17Α_1", "B"), this.get_quantity_total("Q17Α_1", "B") );
-        this.Q17Α_2.init( this.get_quantity("Q17Α_2", "A"), this.get_quantity_total("Q17Α_2", "A"), 
-                          this.get_quantity("Q17Α_2", "B"), this.get_quantity_total("Q17Α_2", "B") );
-        this.Q17Α_3.init( this.get_quantity("Q17Α_3", "A"), this.get_quantity_total("Q17Α_3", "A"), 
-                          this.get_quantity("Q17Α_3", "B"), this.get_quantity_total("Q17Α_3", "B") );
-        this.Q17Α_4.init( this.get_quantity("Q17Α_4", "A"), this.get_quantity_total("Q17Α_4", "A"), 
-                          this.get_quantity("Q17Α_4", "B"), this.get_quantity_total("Q17Α_4", "B") );
+        for(var i=1;i<=7;i++)
+        this["q5b_"+i].init( this.get_quantity("q5b_"+i, "A"), this.get_quantity_total("q5b_"+i, "A"), 
+                          this.get_quantity("q5b_"+i, "B"), this.get_quantity_total("q5b_"+i, "B") );
     }
 }
-Chart__RepeatedVisits.prototype = new ChartBase();
+Chart__TotalVisits.prototype = new ChartBase();
 
 /*
  * To change this template, choose Tools | Templates

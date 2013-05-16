@@ -68,7 +68,7 @@ require_once 'templates/filters.php';
     switch($_GET["chart"])
     {
         case "le":{ ?> ChartModerator.CHART = new Chart__ReasonToVisit(); <?php }break;
-        case "ee":{ ?> ChartModerator.CHART = new Chart__RepeatedVisits(); <?php }break;
+        case "ee":{ ?> ChartModerator.CHART = new Chart__TotalVisits(); <?php }break;
         case "1":{ ?> ChartModerator.CHART = new Chart__GeneralImpresions(); <?php }break;
         case "2":{ ?> ChartModerator.CHART = new Chart__Objects(); <?php }break;
         case "3":{ ?> ChartModerator.CHART = new Chart__Personal(); <?php }break;

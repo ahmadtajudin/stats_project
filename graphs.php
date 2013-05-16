@@ -7,7 +7,7 @@
                 <div class="toggle-state"><a href="#"><b>Choose Chart</b></a></div>
                 <ul class="nav nav-list bs-docs-sidenav show-hide-el">
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=le">Λογοι Επισκεψης</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=ee">Επαναληψη Επισκεψης</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=ee">Συνολικές επισκέψεις</a></li>
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=1">Γενικές Εντυπώσεις</a></li>
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=2">Εγκαταστάσεις</a></li>
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=3">Προσωπικό</a></li>
