@@ -181,6 +181,23 @@ class ChartData extends DataModerator
                 $total_interviews[0]["___COUNT___"]."</total_interviews>";
     }
     
+    protected  function get_data_xml_average($column_init_for_average)
+    {
+        $SQLSelectAverageSUM = 
+                "SELECT SUM(".$column_init_for_average.") AS ___SUM___ FROM data 
+                    WHERE ".$this->area_year_month_dealercode_chain__SQL_condition." 
+                    AND ".$column_init_for_average."<>''";
+        $average_row = DB_DETAILS::ADD_ACTION($SQLSelectAverageSUM, DB_DETAILS::$TYPE_SELECT);
+        $SQLSelectAverageCOUNT = 
+                "SELECT COUNT(".$column_init_for_average.") AS ___COUNT___ FROM data 
+                    WHERE ".$this->area_year_month_dealercode_chain__SQL_condition." 
+                    AND ".$column_init_for_average."<>''";
+        $averagecount_row = DB_DETAILS::ADD_ACTION($SQLSelectAverageCOUNT, DB_DETAILS::$TYPE_SELECT);
+        //print $SQLSelectAverageSUM;
+        return "<average><average>".$average_row[0]["___SUM___"]."</average><count>".$averagecount_row[0]["___COUNT___"]."</count></average>";
+    }
+
+
     /*
      * Function for get data for the parts.
      * It should get back count of total, and count of all parts.

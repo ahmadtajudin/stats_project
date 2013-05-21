@@ -319,7 +319,7 @@ function FiltersModerator()
     {
         //window.frames["window_for_print"] = new Window();
         //alert(window.frames.length);
-        var wind_temp = window.open("print_the_chart.php", "my_window_for_print");
+        //var wind_temp = window.open("print_the_chart.php", "my_window_for_print");
         /*
         for(var i in wind_temp.document)
         {
@@ -330,20 +330,26 @@ function FiltersModerator()
         
         //alert(wind_temp.document.body.innerHTML);
         //wind_temp.document.body.innerHTML += $("#chart_filters_block_holder").html();
-        wind_temp.onload = function()
+        /*wind_temp.onload = function()
         {
         wind_temp.init( $("#chart_filters_block_holder").html() ); 
-        }
+        }*/
         /*
         wind_temp.document.body.innerHTML += ( 
                 "<script>$(window).click(function(e){window.print();});alert(12);<'/script>" 
-    );*/
+        );*/
         /*
         wind_temp.focus();
         wind_temp.print();
         wind_temp.close();
         */
         //window.print();
+        $.post("pdf_viewer/dompdf_tools.php",
+        {html_temp_for_pdf:$("#chart_filters_block_holder").html()},
+        function()
+        {
+            var wind_temp = window.open("pdf_viewer/chart_viewer.php", "my_window_for_print");
+        });
     }
 }
 FiltersModerator.FM = new FiltersModerator();

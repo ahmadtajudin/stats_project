@@ -131,6 +131,7 @@ function ChartLineBase()
     }
 }
 ChartLineBase.REFERENCES = [];
+
 function ChartSimpleLineHorizontal(id_or_class_reference)
 {
     this.id_or_class_reference = "#"+id_or_class_reference;
@@ -560,6 +561,10 @@ function ChartBase()
         {
             this.lines[i].set_visibility_line_B();
         }
+        var is_visible_line_b = 
+                    $("input:radio[name='show_or_hider_line_B']:checked").val()=="1";
+        this.dispatch_event(ChartBase.ON_CHANGE_VISIBILITY_RESULT_B,
+                {is_visible_line_b:is_visible_line_b});
     }
     /*
      * 
@@ -581,6 +586,14 @@ function ChartBase()
     this.get_total_passby = function(filter_type)
     {
         return $(this.data_xml).find("group_"+filter_type+"_data").find("total_pass_by").text(); 
+    }
+    
+    this.get_average_coeficient = function(filter_type)
+    {
+        var count = parseFloat($(this.data_xml).find("group_"+filter_type+"_data").find("count").text());
+        var average = parseFloat($(this.data_xml).find("group_"+filter_type+"_data").find("average").text());
+        var coef = average/count;
+        return count.toFixed(1);
     }
     
     /*
@@ -642,6 +655,7 @@ function ChartBase()
 }
 ChartBase.prototype = new Eventor();
 ChartBase.ON_CHART_DATA_LOAD = "ON_CHART_DATA_LOAD";
+ChartBase.ON_CHANGE_VISIBILITY_RESULT_B = "ON_CHANGE_VISIBILITY_RESULT_B";
 
 function ChartTest()
 {
@@ -666,7 +680,7 @@ function Chart__ReasonToVisit()
 {
     this.init
     (
-            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"ReasonToVisit", chart_label:"Λογοι Επισκεψης"},
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"ReasonToVisit", chart_label:"Λόγοι Επίσκεψης"},
             new Rectangle(0,0,900,550),
             new Rectangle(200,170,665,314)
     );
@@ -698,6 +712,18 @@ Chart__ReasonToVisit.prototype = new ChartBase();
  */
 function Chart__TotalVisits()
 {
+    $("#average_form").removeClass("displayNone");
+    this.add_event(ChartBase.ON_CHANGE_VISIBILITY_RESULT_B, function(data)
+    {
+        if(data.is_visible_line_b)
+        {
+            $("#average_form___resulta_B_holder").removeClass("displayNone");
+        }
+        else
+        {
+            $("#average_form___resulta_B_holder").addClass("displayNone");
+        }
+    });
     this.init
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"TotalVisits", chart_label:"Συνολικές επισκέψεις"},
@@ -723,6 +749,9 @@ function Chart__TotalVisits()
         for(var i=1;i<=7;i++)
         this["q5b_"+i].init( this.get_quantity("q5b_"+i, "A"), this.get_quantity_total("q5b_"+i, "A"), 
                           this.get_quantity("q5b_"+i, "B"), this.get_quantity_total("q5b_"+i, "B") );
+       
+        $("#average_form___resulta_A_holder").find(".average_form___results").html(this.get_average_coeficient("A"));
+        $("#average_form___resulta_B_holder").find(".average_form___results").html(this.get_average_coeficient("B"));
     }
 }
 Chart__TotalVisits.prototype = new ChartBase();

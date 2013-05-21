@@ -16,6 +16,7 @@ Tools::redirectUserByPermissions();
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="bootstrap/css/datepicker.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.shadow.css" />
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
@@ -24,6 +25,7 @@ Tools::redirectUserByPermissions();
         <script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
         <script type="text/javascript" src="bootstrap/js/bootstrap-tooltip.js"></script>
         <script type="text/javascript" src="js/jquery.validate.js"></script>
+        <script type="text/javascript" src="js/jquery.shadow.js"></script>
         <script type="text/javascript" src="js/tools.js"></script>
         <!--[if lt IE 9]>
           <script src="js/html5.js" type="text/javascript"></script>

@@ -30,7 +30,8 @@ class TotalVisits extends ChartData
                     array("column"=>"q5b", "value"=>"7", "column_xml_additional_reference"=>"_7")
                     ), 
         "quantity");
-        $data_for_back .= $this->get_data_xml_total_passby_and_interviews("Q17Α");
+        $data_for_back .= $this->get_data_xml_total_passby_and_interviews("q5b");
+        $data_for_back .= $this->get_data_xml_average("q5b");
         $data_for_back .= "</".$group_data_reference.">";
         return $data_for_back;
     }

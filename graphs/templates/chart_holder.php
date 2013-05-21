@@ -125,6 +125,28 @@
         float:left;
     }
     
+    #average_form
+    {
+        position:absolute;
+        /*left:740px;*/
+        left:10px;
+        top:50px;
+        padding:20px;
+        background-color: #ffffff;
+    }
+    .average_form___results
+    {
+        font-size:20px;
+    }
+    .avetage_form_line
+    {
+        line-height: 20px;
+    }
+    .average_form_title
+    {
+        margin-bottom: 10px;
+    }
+    
 </style>
 
 <div id="chart_main_holder">
@@ -181,6 +203,16 @@
         </div>
         <div class="clearBoth"></div>
     </div>
+    
+    <div id="average_form" class="displayNone">
+        <div class="avetage_form_line average_form_title">Μέσος όρος</div>
+        <div class="avetage_form_line" id="average_form___resulta_A_holder">Group A: <span class="average_form___results">-</span></div>
+        <div class="avetage_form_line displayNone" id="average_form___resulta_B_holder">Group B: <span class="average_form___results">-</span></div>
+    </div>
+    <script>
+        $('#average_form')
+    .shadow({type:'sides', sides:'hz-1'});
+    </script>
     
     <div id="charts__holder">
         <div class="holder">
