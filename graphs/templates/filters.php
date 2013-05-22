@@ -344,12 +344,13 @@ function FiltersModerator()
         wind_temp.close();
         */
         //window.print();
-        $.post("pdf_viewer/dompdf_tools.php",
+        /*$.post("pdf_viewer/dompdf_tools.php",
         {html_temp_for_pdf:$("#chart_filters_block_holder").html()},
         function()
         {
             var wind_temp = window.open("pdf_viewer/chart_viewer.php", "my_window_for_print");
-        });
+        });*/
+        console.log($("#chart_filters_block_holder").html());
     }
 }
 FiltersModerator.FM = new FiltersModerator();

@@ -2,6 +2,10 @@
 session_start();
 require_once("dompdf_config.inc.php");
 
+//$html_for_chart = $_SESSION["html_temp_for_pdf"];
+$html_for_chart = "Λόγοι Επίσκεψης";
+//require_once 'chart_html_example.php';
+
 $html =
   '<html><head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style></style>
@@ -23,7 +27,7 @@ $html =
         <script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
         <script type="text/javascript" src="js/jquery.validate.js"></script>
         <script type="text/javascript" src="js/tools.js"></script>
-        </head><body>'.$_SESSION["html_temp_for_pdf"].'</body></html>';
+        </head><body>'.$html_for_chart.'</body></html>';
 //print $html;
  
 $dompdf = new DOMPDF(); 
