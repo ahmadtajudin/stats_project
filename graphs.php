@@ -17,7 +17,8 @@
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=7">Κόστη</a></li>
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=8">Follow Up</a></li>
                     <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=9">Στο μέλλον</a></li>
-                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=10">Κλείσιμο Κλήσης</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=epma">Επικοινωνία πελάτη με αντιπροσωπεία</a></li>
+                    <li><i class="icon-chevron-right"></i><a href="graphs.php?chart=kk">Κλείσιμο Κλήσης</a></li>
                 </ul>
             </div>
             <div class="span10">

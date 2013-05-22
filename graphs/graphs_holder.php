@@ -78,7 +78,8 @@ require_once 'templates/filters.php';
         case "7":{ ?> ChartModerator.CHART = new Chart__Costs(); <?php }break;
         case "8":{ ?> ChartModerator.CHART = new Chart__FollowUp(); <?php }break;
         case "9":{ ?> ChartModerator.CHART = new Chart__InFuture(); <?php }break;
-        case "10":{ ?> ChartModerator.CHART = new Chart__CloseCall(); <?php }break;
+        case "kk":{ ?> ChartModerator.CHART = new Chart__CloseCall(); <?php }break;
+        case "epma":{ ?> ChartModerator.CHART = new Chart__ContactClientDelegation(); <?php }break;
     }
     ?>
 

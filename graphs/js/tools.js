@@ -1447,6 +1447,46 @@ function Chart__CloseCall()
 }
 Chart__CloseCall.prototype = new ChartBase();
 
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * Επικοινωνία πελάτη με αντιπροσωπεία
+ * 
+H3-BC column: Υπήρξαν θέματα για τα οποία χρειάστηκε να επικοινωνήσετε με την αντιπροσωπεία μετά το τελευταίο service που κάνατε;
+ * Имаше прашања што мораше да се јавите на Застапништва по последната услуга што направи? 
+H4-BD column: Λύθηκαν τα θέματα σας;
+ * Реши вашите проблеми?
+
+do not use H3,4 in chart ;-)
+h3, h4 replies are 1= yes, 2 = no.
+ */
+function Chart__ContactClientDelegation()
+{
+    this.init
+    (
+            {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"ContactClientDelegation", 
+                                    chart_label:"Επικοινωνία πελάτη με αντιπροσωπεία"},
+            new Rectangle(0,0,860,600),
+            new Rectangle(180,180,665,335)
+    );
+        
+    this.h3 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 100), 
+    "Υπήρξαν θέματα για τα οποία ...",
+    "Υπήρξαν θέματα για τα οποία χρειάστηκε να επικοινωνήσετε με την αντιπροσωπεία μετά το τελευταίο service που κάνατε") );
+    this.h4 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 250), 
+    "Λύθηκαν τα θέματα σας",
+    "") ); 
+    this.show_data_to_diagram = function(  )
+    {
+        for(var i=3;i<=4;i++)
+        this["h"+i].init( this.get_quantity("h"+i, "A"), this.get_quantity_total("h"+i, "A"), 
+                          this.get_quantity("h"+i, "B"), this.get_quantity_total("h"+i, "B") );
+    }
+}
+Chart__ContactClientDelegation.prototype = new ChartBase();
+
+
 function ChartModerator(){}
 ChartModerator.CHART = null;
 
