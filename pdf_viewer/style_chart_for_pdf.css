@@ -1,0 +1,37 @@
+body
+{
+    padding:0px;
+    margin:0px;
+    font-family: "dejavu serif condensed";
+    font-size:12px;
+}
+
+.top_left_title
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    font-size:20px;
+    font-weight: normal;
+}
+
+.last_date_label
+{
+    position:absolute;
+    top:160px;
+    left:100px;
+    font-weight: bold;
+}
+
+.top_filter_results_holder
+{
+    position: absolute;
+    top:100px;
+}
+
+.absolute{position:absolute;}
+.relative{position:relative;}
+
+.floatLeft{float:left;}
+.floatRight{float:right;}
+.clear{clear: both;}

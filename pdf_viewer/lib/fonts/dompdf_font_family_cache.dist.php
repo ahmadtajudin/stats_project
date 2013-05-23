@@ -107,5 +107,5 @@
     'bold_italic' => DOMPDF_FONT_DIR . 'DejaVuSerifCondensed-BoldItalic',
     'italic' => DOMPDF_FONT_DIR . 'DejaVuSerifCondensed-Italic',
     'normal' => DOMPDF_FONT_DIR . 'DejaVuSerifCondensed',
-  ),
+  )
 ) ?>
