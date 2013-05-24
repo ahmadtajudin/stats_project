@@ -156,6 +156,13 @@ ChartSimpleLineHorizontal.prototype = new ChartLineBase();
 
 function SimpleLine_LeftRightQuestions(chart, position, label_txt, full_text)
 {
+    this.line_type = "line_type_simple_horizontal";
+    this.line_label = label_txt;
+    this.line_label_full = full_text;
+    
+    this.percentA = 0;
+    this.percentB = 0;
+    
     this.position = position;
     this.chart = chart;
     $("#chart_holder_lines").append( $("#template_simple_line_left_right_question").html() );
@@ -185,6 +192,10 @@ function SimpleLine_LeftRightQuestions(chart, position, label_txt, full_text)
         var percentA100 = Math.round( percentA*100 );
         var percentB = above_valueB/under_valueB;
         var percentB100 = Math.round( percentB*100 );
+        
+        this.percentA = percentA;
+        this.percentB = percentB;
+        
         var widthA = this.chart.chart_diagram_poz_size.w*percentA;
         var widthB = this.chart.chart_diagram_poz_size.w*percentB;
         $($(this.line_holder).find(".simple_line_left_question .line_color_width")).stop().animate({width:widthA}, 500);
@@ -207,11 +218,20 @@ function SimpleLine_LeftRightQuestions(chart, position, label_txt, full_text)
         $($(this.line_holder).find(".simple_line_left_question .line_color_width")).width(0);
         $($(this.line_holder).find(".simple_line_right_question .line_color_width")).width(0);
     }
+    
+    this.get_percent_value_for_print = function(filter_type)
+    {
+        return this["percent"+filter_type];
+    }
 }
 SimpleLine_LeftRightQuestions.prototype = new ChartLineBase();
 
 function xN_AreasLine(chart, position, label_txt, details, column_name, labelLeftRightTexts)
 {
+    this.line_type = "line_type_xNParts";
+    this.line_label = label_txt;
+    this.line_label_full = labelLeftRightTexts;
+    
     this.details = details;
     this.column_name = column_name;
     this.count_areas = function()
@@ -314,8 +334,10 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
      * <count_q8_3>1</count_q8_3><count_q8_4>0</count_q8_4>
      * <count_q8_5>2</count_q8_5><count_total_q8>3</count_total_q8></data><total_pass_by>1146</total_pass_by><total_interviews>3</total_interviews></group_B_data></root> 
      */
+    this.percents = [];
     this.init = function()
     {
+       this.percents = [];
        var dataAXML = $($(this.chart.data_xml).find("group_A_data").get(0)).find("data").get(0);
        var dataBXML = $($(this.chart.data_xml).find("group_B_data").get(0)).find("data").get(0);
        var leftTotal =  parseFloat($(dataAXML).find("count_total_"+this.column_name).text());
@@ -326,6 +348,7 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
            var left_val = parseFloat($(dataAXML).find("count_"+this.column_name+"_"+i).text());
            var right_val = parseFloat($(dataBXML).find("count_"+this.column_name+"_"+i).text());
            this.animate_part( i, left_val/leftTotal, right_val/rightTotal );
+           this.percents.push({A:left_val/leftTotal, B:right_val/rightTotal});
        } 
        var average_left = parseFloat($(dataAXML).find("sum_total_for_average_"+this.column_name).text())/
                           parseFloat($(dataAXML).find("count_total_"+this.column_name).text());
@@ -334,6 +357,21 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
        $(this.line__left).find(".xN_AreasLine_left_coeficient").html("A:"+average_left.toFixed(1));
        $(this.line_right).find(".xN_AreasLine_left_coeficient").html("B:"+average_right.toFixed(1));
     }
+    
+    this.get_percent_value_for_print = function(filter_type)
+    {
+        var percent_text = "";
+        for(var i=0;i<this.percents.length;i++)
+        {
+            if(i>0)
+            {
+                percent_text += ";";
+            }
+            percent_text += this.percents[i][filter_type];
+        }
+        return percent_text;
+    }
+    
     this.animate_part = function(index, percentLeft, percentRight)
     {
         var reference_class = ".line_part_"+index+"_";
@@ -376,6 +414,7 @@ xN_AreasLine.prototype = new ChartLineBase();
 
 function ChartBase()
 {
+    this.chart_title = "undefined";
     /*
      * 
      * Chart diagram coordinates, backgrounds, numbers, and rectangles variables
@@ -401,6 +440,7 @@ function ChartBase()
      */
     this.init = function(range, chart_poz_size, chart_diagram_poz_size)
     {
+        this.chart_title = range.chart_label;
         this.chart_min_value = range.chart_min_value;
         this.chart_max_value = range.chart_max_value;
         this.delta_plus = range.delta_plus;

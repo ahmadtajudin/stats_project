@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'dompdf_tools.php';
 require_once("dompdf_config.inc.php");
 

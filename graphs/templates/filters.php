@@ -317,40 +317,26 @@ function FiltersModerator()
      */
     this.print = function()
     {
-        //window.frames["window_for_print"] = new Window();
-        //alert(window.frames.length);
-        //var wind_temp = window.open("print_the_chart.php", "my_window_for_print");
-        /*
-        for(var i in wind_temp.document)
+        var object_details =  
         {
-            //console.log(i+":"+wind_temp.document[i])
-        }*/
-        //alert(wind_temp.document.innerHTML);
-        //wind_temp.document
-        
-        //alert(wind_temp.document.body.innerHTML);
-        //wind_temp.document.body.innerHTML += $("#chart_filters_block_holder").html();
-        /*wind_temp.onload = function()
+            ADD_DATA_INTO_SESSION:"yes i will do it now",
+            chart_title:ChartModerator.CHART.chart_title,
+            diagram_height:ChartModerator.CHART.chart_diagram_poz_size.h,
+            count_lines:ChartModerator.CHART.lines.length,
+            group_B_is_visible:$("input:radio[name='show_or_hider_line_B']:checked").val()
+        };
+        for(var i=0;i<ChartModerator.CHART.lines.length;i++)
         {
-        wind_temp.init( $("#chart_filters_block_holder").html() ); 
-        }*/
-        /*
-        wind_temp.document.body.innerHTML += ( 
-                "<script>$(window).click(function(e){window.print();});alert(12);<'/script>" 
-        );*/
-        /*
-        wind_temp.focus();
-        wind_temp.print();
-        wind_temp.close();
-        */
-        //window.print();
-        /*$.post("pdf_viewer/dompdf_tools.php",
-        {html_temp_for_pdf:$("#chart_filters_block_holder").html()},
-        function()
+            object_details["width_A_"+i] = ChartModerator.CHART.lines[i].get_percent_value_for_print("A");
+            object_details["width_B_"+i] = ChartModerator.CHART.lines[i].get_percent_value_for_print("B");
+            object_details["line_type_"+i] = ChartModerator.CHART.lines[i].line_type;
+            object_details["line_label_"+i] = ChartModerator.CHART.lines[i].line_label;
+            object_details["line_label_full_"+i] = ChartModerator.CHART.lines[i].line_label_full;
+        }
+        $.post("pdf_viewer/dompdf_tools.php", object_details, function(data)
         {
-            var wind_temp = window.open("pdf_viewer/chart_viewer.php", "my_window_for_print");
-        });*/
-        console.log($("#chart_filters_block_holder").html());
+            console.log( data );
+        });
     }
 }
 FiltersModerator.FM = new FiltersModerator();
