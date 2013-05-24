@@ -29,6 +29,44 @@ body
     top:100px;
 }
 
+.line_horizontal_A
+{
+    height: 30px;
+    background-color: #f89876;
+    text-align: right;
+}
+.line_horizontal_B
+{
+    height: 30px;
+    background-color: #0166f6;
+    text-align: right;
+    border-top: solid 1px #000000;
+}
+.line_horizontal_percent_right
+{
+    padding-left: 5px;
+    line-height: 20px;
+    position:absolute;
+}
+.parce_for_xNLine
+{
+    text-align: center;
+    height: 30px;
+    position: absolute;
+    line-height: 20px;
+    overflow: hidden;
+}
+.parce_for_xNLineB
+{
+    border-top: solid 1px #000000;
+}
+
+.line_title_draw
+{
+    position:absolute;
+    width:150px;
+}
+
 .absolute{position:absolute;}
 .relative{position:relative;}
 

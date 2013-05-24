@@ -307,9 +307,30 @@ function FiltersModerator()
         $("#period_selected_"+group_type).html
         ( 
                 $("#years_options__"+group_type+" option:selected").text()
-                    +
+                    +", "+
                 $("#months_periods_options__"+group_type+" option:selected").text()
         );
+    }
+    
+    /*
+     * 
+     * @returns {undefined}
+     * This is function for returning filter data by group
+     * it separate the data by  ;
+     */
+    this.get_filter_details_by_group = function(group_type)
+    {
+        return $("#dealers_options__"+group_type+" option:selected").text()+";"+
+               $("#chains_options__"+group_type+" option:selected").text()+";"+
+               $("#areas_options__"+group_type+" option:selected").text()+";"+
+               $("#years_options__"+group_type+" option:selected").text()
+                    +", "+
+               $("#months_periods_options__"+group_type+" option:selected").text()
+    }
+    
+    this.passByData = function(group_type)
+    {
+        return $("#total_interviews__"+group_type).html()+";"+$("#total_passby__"+group_type).html();
     }
     
     /*
@@ -317,13 +338,24 @@ function FiltersModerator()
      */
     this.print = function()
     {
+        //alert($("#chart_left_right_data_filter_above_the_cahrt__date_info").html());
         var object_details =  
         {
             ADD_DATA_INTO_SESSION:"yes i will do it now",
             chart_title:ChartModerator.CHART.chart_title,
+            
+            //differenced data by ;.
+            groupADetails:this.get_filter_details_by_group(FiltersModerator.TYPE_ORANGE),
+            groupBDetails:this.get_filter_details_by_group(FiltersModerator.TYPE___BLUE),
+            
+            last_date_changed:$("#chart_left_right_data_filter_above_the_cahrt__date_info").html(),
+            
             diagram_height:ChartModerator.CHART.chart_diagram_poz_size.h,
             count_lines:ChartModerator.CHART.lines.length,
-            group_B_is_visible:$("input:radio[name='show_or_hider_line_B']:checked").val()
+            group_B_is_visible:$("input:radio[name='show_or_hider_line_B']:checked").val(),
+            
+            passByDataA:this.passByData(FiltersModerator.TYPE_ORANGE),
+            passByDataB:this.passByData(FiltersModerator.TYPE___BLUE)
         };
         for(var i=0;i<ChartModerator.CHART.lines.length;i++)
         {
@@ -336,6 +368,10 @@ function FiltersModerator()
         $.post("pdf_viewer/dompdf_tools.php", object_details, function(data)
         {
             console.log( data );
+            //window.location.href = "pdf_viewer/chart_viewer.php";
+            //window.open("pdf_viewer/chart_viewer.php"); 
+            window.open("pdf_viewer/chart_viewer.php", "window_name","location=1,status=1,scrollbars=1,resizable=no,width=650,height=650");
+            window.focus();
         });
     }
 }

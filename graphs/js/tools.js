@@ -229,8 +229,8 @@ SimpleLine_LeftRightQuestions.prototype = new ChartLineBase();
 function xN_AreasLine(chart, position, label_txt, details, column_name, labelLeftRightTexts)
 {
     this.line_type = "line_type_xNParts";
-    this.line_label = label_txt;
-    this.line_label_full = labelLeftRightTexts;
+    this.line_label = labelLeftRightTexts.left_label;
+    this.line_label_full = labelLeftRightTexts.left_label_full_text;
     
     this.details = details;
     this.column_name = column_name;
