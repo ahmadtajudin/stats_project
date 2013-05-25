@@ -355,7 +355,11 @@ function FiltersModerator()
             group_B_is_visible:$("input:radio[name='show_or_hider_line_B']:checked").val(),
             
             passByDataA:this.passByData(FiltersModerator.TYPE_ORANGE),
-            passByDataB:this.passByData(FiltersModerator.TYPE___BLUE)
+            passByDataB:this.passByData(FiltersModerator.TYPE___BLUE),
+            
+            chart_have_average_form:ChartModerator.CHART.chart_have_average_form_for_database(),
+            average_A:ChartModerator.CHART.average_A,
+            average_B:ChartModerator.CHART.average_B
         };
         for(var i=0;i<ChartModerator.CHART.lines.length;i++)
         {
@@ -368,6 +372,7 @@ function FiltersModerator()
         $.post("pdf_viewer/dompdf_tools.php", object_details, function(data)
         {
             console.log( data );
+            //return;
             //window.location.href = "pdf_viewer/chart_viewer.php";
             //window.open("pdf_viewer/chart_viewer.php"); 
             window.open("pdf_viewer/chart_viewer.php", "window_name","location=1,status=1,scrollbars=1,resizable=no,width=650,height=650");

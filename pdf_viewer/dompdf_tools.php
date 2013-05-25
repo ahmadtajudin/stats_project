@@ -71,6 +71,25 @@ class ChartDrawer
         if(isset($_SESSION["chart_title"])){return $_SESSION["chart_title"];}
         return "undefined";
     }
+    
+    private  static function chart_have_average_form()
+    {
+        return $_SESSION["chart_have_average_form"] == "1";
+    }
+    private  static function draw_average_form()
+    {
+        $class_display_none = "";
+        if(!self::group_B_is_visible())$class_display_none="display:none;";
+        return '
+            <div class="average_form">
+                <div>Μέσος όρος</div>
+                <div style="margin-top:10px;">
+                    <div>Group A: <span class="result_average">'.$_SESSION["average_A"].'</span></div>
+                    <div style="'.$class_display_none.'">Group B: <span class="result_average">'.$_SESSION["average_B"].'</span></div>
+                </div>
+            </div>
+            ';
+    }
 
 
     private  static function top_left_title()
@@ -82,7 +101,7 @@ class ChartDrawer
         $group_A_details = explode(";", $_SESSION["groupADetails"]);
         $group_B_details = explode(";", $_SESSION["groupBDetails"]);
         $leftHTML = 
-        '<div class="absolute" style="left:100px;top:50px; color:'.self::colorA.';">
+        '<div class="absolute" style="left:150px;top:50px; color:'.self::colorA.';">
                     <div>Group A</div>
                     <div>Αντιπρόσωποι:<b>'.$group_A_details[0].'</b></div>
                     <div>Αλυσίδα:<b>'.$group_A_details[1].'</b></div>
@@ -90,7 +109,7 @@ class ChartDrawer
                     <div>Περίοδος:<b>'.$group_A_details[3].'</b></div>
                </div>';
         $rightHTML =        
-        '<div class="absolute" style="left:500px;top:50px; color:'.self::colorB.';">
+        '<div class="absolute" style="left:550px;top:50px; color:'.self::colorB.';">
                     <div>Group B</div>
                     <div>Αντιπρόσωποι:<b>'.$group_B_details[0].'</b></div>
                     <div>Αλυσίδα:<b>'.$group_B_details[1].'</b></div>
@@ -298,6 +317,7 @@ class ChartDrawer
     public static function draw()
     {
         return self::top_left_title().self::top_filter_results().self::draw_last_date_label().self::titles_top_for_xNCharts().
+            self::draw_average_form().
             self::draw_chart().self::draw_filter_details(self::GROUP_A).self::draw_filter_details(self::GROUP_B);
     }
     
@@ -336,6 +356,9 @@ class ChartDrawer
         $_SESSION["passByDataA"] = $_POST["passByDataA"];
         $_SESSION["passByDataB"] = $_POST["passByDataB"];
         
+        $_SESSION["chart_have_average_form"] = $_POST["chart_have_average_form"];
+        $_SESSION["average_A"] = $_POST["average_A"];
+        $_SESSION["average_B"] = $_POST["average_B"];
         print_r($_SESSION);
     }
 }

@@ -19,7 +19,7 @@ body
 {
     position:absolute;
     top:160px;
-    left:100px;
+    left:150px;
     font-weight: bold;
 }
 
@@ -65,6 +65,21 @@ body
 {
     position:absolute;
     width:150px;
+}
+
+.average_form
+{
+    position:absolute;
+    background-color: #ffffff;
+    border:solid 1px #cccccc;
+    top:40px;
+    left:0px;
+    padding:10px;
+    width:120px;
+}
+.average_form .result_average
+{
+    font-size:20px;
 }
 
 .absolute{position:absolute;}

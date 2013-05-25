@@ -414,6 +414,27 @@ xN_AreasLine.prototype = new ChartLineBase();
 
 function ChartBase()
 {
+    this.chart_have_average_form = false;
+    this.chart_have_average_form_for_database = function(){if(this.chart_have_average_form)return "1";return "0";}
+    this.setup_average_form = function()
+    {
+        this.chart_have_average_form = true;
+        $("#average_form").removeClass("displayNone");
+        this.add_event(ChartBase.ON_CHANGE_VISIBILITY_RESULT_B, function(data)
+        {
+            if(data.is_visible_line_b)
+            {
+                $("#average_form___resulta_B_holder").removeClass("displayNone");
+            }
+            else
+            {
+                $("#average_form___resulta_B_holder").addClass("displayNone");
+            }
+        });
+    }
+    this.average_A = 0;
+    this.average_B = 0;
+    
     this.chart_title = "undefined";
     /*
      * 
@@ -752,18 +773,7 @@ Chart__ReasonToVisit.prototype = new ChartBase();
  */
 function Chart__TotalVisits()
 {
-    $("#average_form").removeClass("displayNone");
-    this.add_event(ChartBase.ON_CHANGE_VISIBILITY_RESULT_B, function(data)
-    {
-        if(data.is_visible_line_b)
-        {
-            $("#average_form___resulta_B_holder").removeClass("displayNone");
-        }
-        else
-        {
-            $("#average_form___resulta_B_holder").addClass("displayNone");
-        }
-    });
+    this.setup_average_form();
     this.init
     (
             {chart_min_value:0, chart_max_value:100, delta_plus:20, data_type_chart:"TotalVisits", chart_label:"Συνολικές επισκέψεις"},
@@ -792,6 +802,8 @@ function Chart__TotalVisits()
        
         $("#average_form___resulta_A_holder").find(".average_form___results").html(this.get_average_coeficient("A"));
         $("#average_form___resulta_B_holder").find(".average_form___results").html(this.get_average_coeficient("B"));
+        this.average_A = this.get_average_coeficient("A");
+        this.average_B = this.get_average_coeficient("B");
     }
 }
 Chart__TotalVisits.prototype = new ChartBase();
