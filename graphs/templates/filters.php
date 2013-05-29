@@ -196,7 +196,7 @@ class ChartFilters
                             for($i=0;$i<count(ChartData::$all_months_periods);$i++)
                             {
                             ?>
-                            <option value="<?php print ChartData::$all_months_periods[$i]["id"]; ?>">
+                            <option value="<?php print ChartData::$all_months_periods[$i]["months"]; ?>">
                                 <?php print ChartData::$all_months_periods[$i]["month_name_gr"]; ?>
                             </option>
                             <?php
@@ -368,6 +368,12 @@ function FiltersModerator()
             object_details["line_type_"+i] = ChartModerator.CHART.lines[i].line_type;
             object_details["line_label_"+i] = ChartModerator.CHART.lines[i].line_label;
             object_details["line_label_full_"+i] = ChartModerator.CHART.lines[i].line_label_full;
+            
+            /*
+             * This averages are for the parts when we have xN lines
+             */
+            object_details["average_A_"+i] = ChartModerator.CHART.lines[i].average_A;
+            object_details["average_B_"+i] = ChartModerator.CHART.lines[i].average_B;
         }
         $.post("pdf_viewer/dompdf_tools.php", object_details, function(data)
         {

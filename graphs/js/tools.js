@@ -62,6 +62,8 @@ ResizerPozicioner.resize_pozicion = function(element_id_or_class, rect_size_posi
 
 function ChartLineBase()
 {
+    this.average_A = "-";
+    this.average_B = "-";
     /*
      * If Right question available, then second line of the lines should be visible,
      * in another case should be invisible
@@ -189,9 +191,9 @@ function SimpleLine_LeftRightQuestions(chart, position, label_txt, full_text)
         if(under_valueA == 0){above_valueA=0;under_valueA=1;}
         if(under_valueB == 0){above_valueB=0;under_valueB=1;}
         var percentA = above_valueA/under_valueA;
-        var percentA100 = Math.round( percentA*100 );
+        var percentA100 = parseFloat( percentA*100 ).toFixed(1);
         var percentB = above_valueB/under_valueB;
-        var percentB100 = Math.round( percentB*100 );
+        var percentB100 = parseFloat( percentB*100 ).toFixed(1);
         
         this.percentA = percentA;
         this.percentB = percentB;
@@ -354,6 +356,9 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
                           parseFloat($(dataAXML).find("count_total_"+this.column_name).text());
        var average_right = parseFloat($(dataBXML).find("sum_total_for_average_"+this.column_name).text())/
                           parseFloat($(dataBXML).find("count_total_"+this.column_name).text());
+       this.average_A = average_left;
+       this.average_B = average_right;
+       
        $(this.line__left).find(".xN_AreasLine_left_coeficient").html("A:"+average_left.toFixed(1));
        $(this.line_right).find(".xN_AreasLine_left_coeficient").html("B:"+average_right.toFixed(1));
     }
@@ -652,9 +657,11 @@ function ChartBase()
     this.get_average_coeficient = function(filter_type)
     {
         var count = parseFloat($(this.data_xml).find("group_"+filter_type+"_data").find("count").text());
-        var average = parseFloat($(this.data_xml).find("group_"+filter_type+"_data").find("average").text());
+        var average = parseFloat($(this.data_xml).find("group_"+filter_type+"_data").find("average_total").text());
         var coef = average/count;
-        return count.toFixed(1);
+        console.log("average:["+average+"]")
+        console.log("count:["+count+"]")
+        return coef.toFixed(2);
     }
     
     /*
@@ -663,6 +670,7 @@ function ChartBase()
      * @returns {undefined}
      * If need legend, this function will show legend on top
      */
+    
     this.init_legend = function(line_details)
     {
         var from = line_details.range_from;

@@ -42,7 +42,7 @@ class Quality_again_testing extends ChartData
                     array("column"=>"e68", "value"=>"1", "column_xml_additional_reference"=>"")
                     ), 
         "quantity");
-        $data_for_back .= $this->get_data_xml_total_passby_and_interviews("q7");
+        $data_for_back .= $this->get_data_xml_total_passby_and_interviews("e61");
         $data_for_back .= "</".$group_data_reference.">";
         return $data_for_back;
     }

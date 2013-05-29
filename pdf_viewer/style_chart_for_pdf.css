@@ -65,6 +65,7 @@ body
 {
     position:absolute;
     width:150px;
+    color:#000000 !important;
 }
 
 .average_form
@@ -81,6 +82,40 @@ body
 {
     font-size:20px;
 }
+
+.table_results_holder
+{
+    border:solid 1px #cccccc;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.table_results_holder td
+{
+    border:solid 1px #cccccc;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.table_header_th
+{
+    background-color: #efefef;
+}
+
+.background_color_cell_par
+{
+    
+}
+.background_color_cell_ne_par
+{
+    /*background-color: #cccccc;*/
+}
+
+.background_color_cell_vertical_par
+{
+    background-color: #efefef;
+}
+
+.textAlignCenter{text-align: center;}
 
 .absolute{position:absolute;}
 .relative{position:relative;}

@@ -170,12 +170,13 @@ class ChartData extends DataModerator
      */
     protected function get_data_xml_total_passby_and_interviews($column_init_for_intervews)
     {
-        $total_pass_by = DB_DETAILS::ADD_ACTION
-                (
-                "SELECT SUM(passby) AS totalPassBy FROM passby WHERE ".$this->area_year_month_dealercode_chain__SQL_condition,
-                DB_DETAILS::$TYPE_SELECT);
+        $sql_total_passBY = 
+                "SELECT SUM(passby) AS totalPassBy FROM passby WHERE ".$this->area_year_month_dealercode_chain__SQL_condition;
+        //print $sql_total_passBY;
+        $total_pass_by = DB_DETAILS::ADD_ACTION($sql_total_passBY, DB_DETAILS::$TYPE_SELECT);
         $sql_select_total_interviews = "SELECT COUNT(".$column_init_for_intervews.") AS ___COUNT___ FROM data WHERE ".
                 $this->area_year_month_dealercode_chain__SQL_condition." AND ".$column_init_for_intervews."<>''";
+        //print $sql_select_total_interviews;
         $total_interviews = DB_DETAILS::ADD_ACTION($sql_select_total_interviews, DB_DETAILS::$TYPE_SELECT);
         return "<total_pass_by>".$total_pass_by[0]["totalPassBy"]."</total_pass_by><total_interviews>".
                 $total_interviews[0]["___COUNT___"]."</total_interviews>";
@@ -194,7 +195,7 @@ class ChartData extends DataModerator
                     AND ".$column_init_for_average."<>''";
         $averagecount_row = DB_DETAILS::ADD_ACTION($SQLSelectAverageCOUNT, DB_DETAILS::$TYPE_SELECT);
         //print $SQLSelectAverageSUM;
-        return "<average><average>".$average_row[0]["___SUM___"]."</average><count>".$averagecount_row[0]["___COUNT___"]."</count></average>";
+        return "<average><average_total>".$average_row[0]["___SUM___"]."</average_total><count>".$averagecount_row[0]["___COUNT___"]."</count></average>";
     }
 
 
@@ -221,9 +222,11 @@ class ChartData extends DataModerator
                 //print $count_sql;
                 $data_for .= "<count_".$column_variable."_".$j.">".$count[0]["__COUNT__"]."</count_".$column_variable."_".$j.">";
             }
-            $count_total = DB_DETAILS::ADD_ACTION("
+            $count_total_sql = "
                     SELECT COUNT(".$column_variable.") AS __COUNT__ FROM data WHERE ".$this->area_year_month_dealercode_chain__SQL_condition
-                    , DB_DETAILS::$TYPE_SELECT);
+                    ." AND ".$column_variable."<>'0' ";
+            $count_total = DB_DETAILS::ADD_ACTION($count_total_sql, DB_DETAILS::$TYPE_SELECT);
+            //print $count_total_sql;
             if($count_total[0]["__COUNT__"] == "0")
             {
                 $count_total[0]["__COUNT__"] = "1";

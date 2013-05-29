@@ -13,7 +13,10 @@ $html =
     <link href="style_chart_for_pdf.css" rel="stylesheet">
 </head>
 <body>
-    <div class="relative">'.ChartDrawer::draw().'</div>
+    <div>
+        <div class="relative" style=" page-break-after: always;">'.ChartDrawer::draw().'</div>
+        '.ChartDrawer::draw_lines_table_results().'
+    </div>
 </body>
 </html>';
 //print $html;

@@ -39,7 +39,7 @@ class Costs extends ChartData
                     ), 
                 array("from"=>"1", "to"=>"5"),
         "quantity");
-        $data_for_back .= $this->get_data_xml_total_passby_and_interviews("q7");
+        $data_for_back .= $this->get_data_xml_total_passby_and_interviews("Z1");
         $data_for_back .= "</".$group_data_reference.">";
         return $data_for_back;
     } 

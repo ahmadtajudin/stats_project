@@ -79,6 +79,7 @@ class ChartDrawer
     private  static function draw_average_form()
     {
         $class_display_none = "";
+        if(!self::chart_have_average_form()){return "";}
         if(!self::group_B_is_visible())$class_display_none="display:none;";
         return '
             <div class="average_form">
@@ -182,8 +183,8 @@ class ChartDrawer
         $labelPercentLeftA = self::left_diagram+$widthA;
         $labelPercentLeftB = self::left_diagram+$widthB;
         
-        $percentA = number_format($line_percent_width_A*100, 0);
-        $percentB = number_format($line_percent_width_B*100, 0);
+        $percentA = number_format($line_percent_width_A*100, 1);
+        $percentB = number_format($line_percent_width_B*100, 1);
         
         if(!self::group_B_is_visible())
         {
@@ -299,14 +300,14 @@ class ChartDrawer
     private  static function draw_filter_details($is_for_group)
     {
         $color = self::colorA;
-        $left = 100;
+        $left = 150;
         if($is_for_group == self::GROUP_B)
         {
             $color = self::colorB;
-            $left = 400;
+            $left = 450;
         }
         $passby_interviews_data = explode(";", $_SESSION["passByData".$is_for_group]);
-        $top_position = self::top_diagram()+self::diagram_height()+50;
+        $top_position = self::top_diagram()+self::diagram_height()+30;
         return '<div class="absolute" style="left:'.$left.'px;top:'.$top_position.'px;font-size:14px;">
                     <div style="color:'.$color.';">Group '.$is_for_group.'</div>
                     <div>Σύνολο συνεντεύξεων:<b style="color:'.$color.';">'.$passby_interviews_data[0].'</b></div>
@@ -316,11 +317,110 @@ class ChartDrawer
 
     public static function draw()
     {
-        return self::top_left_title().self::top_filter_results().self::draw_last_date_label().self::titles_top_for_xNCharts().
+        return 
+        self::top_left_title().self::top_filter_results().self::draw_last_date_label().self::titles_top_for_xNCharts().
             self::draw_average_form().
             self::draw_chart().self::draw_filter_details(self::GROUP_A).self::draw_filter_details(self::GROUP_B);
+                //.self::draw_lines_table_results();
     }
     
+    public  static function draw_lines_table_results()
+    {
+        $top_position = self::top_diagram()+self::diagram_height()+150;
+        if($_SESSION["line_type_0"] == self::line_type_simple_horizontal)
+        {
+            return "";    
+        }
+        
+        $lines_table_results = '';
+        for($i=0;$i<$_SESSION["count_lines"];$i++)
+        {
+            $arr_results_A = explode(";", $_SESSION["width_A_".$i]);
+            $arr_results_B = explode(";", $_SESSION["width_B_".$i]);
+            for($j=0;$j<count($arr_results_A);$j++)
+            {
+                $arr_results_A[$j] = number_format($arr_results_A[$j]*100, 1);
+                $arr_results_B[$j] = number_format($arr_results_B[$j]*100, 1);
+            }
+            if($i % 2 == 0)
+            {
+                $background_color_cell_vertical_par = "";
+            }
+            else
+            {
+                $background_color_cell_vertical_par = "background_color_cell_vertical_par";
+            }
+            $averageA = number_format($_SESSION["average_A_".$i], 1);
+            $averageB = number_format($_SESSION["average_B_".$i], 1);
+            if(!self::group_B_is_visible())
+            $lines_table_results .= '
+            <tr>
+                    <td class="table_header_th">'.$_SESSION["line_label_".$i].'</td>
+                    <td class="textAlignCenter">'.$averageA.'</td>
+                    <td class="textAlignCenter">A</td>
+                    <td class="textAlignCenter">'.$arr_results_A[4].'%</td>
+                    <td class="textAlignCenter">'.$arr_results_A[3].'%</td>
+                    <td class="textAlignCenter">'.$arr_results_A[2].'%</td>
+                    <td class="textAlignCenter">'.$arr_results_A[1].'%</td>
+                    <td class="textAlignCenter">'.$arr_results_A[0].'%</td>
+            </tr>    
+            ';
+            else
+            $lines_table_results .= '
+            <tr>
+                    <td rowspan="2" class=" '.$background_color_cell_vertical_par.'">'.$_SESSION["line_label_".$i].'</td>
+                    
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$averageA.'</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">A</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$arr_results_A[4].'%</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$arr_results_A[3].'%</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$arr_results_A[2].'%</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$arr_results_A[1].'%</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$arr_results_A[0].'%</td>
+                    </tr>
+                    <tr>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$averageB.'</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">B</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$arr_results_B[4].'%</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$arr_results_B[3].'%</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$arr_results_B[2].'%</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$arr_results_B[1].'%</td>
+                    <td class="textAlignCenter '.$background_color_cell_vertical_par.'">'.$arr_results_B[0].'%</td>
+            </tr>    
+            ';
+        }
+        
+        return '
+        <div>
+            <table class="table_results_holder">
+                <tr>
+                    <td class="table_header_th"><b>ΔΕΙΚΤΕΣ ΙΚΑΝΟΠΟΙΗΣΗΣ</b></td>
+                    <td class="textAlignCenter table_header_th">Μέσος όρος</td>
+                    <td class="textAlignCenter table_header_th">Group</td>
+                    <td class="textAlignCenter table_header_th">Πολύ απογοητευμένος (1)</td>
+                    <td class="textAlignCenter table_header_th">Απογοητευμένος (2)</td>
+                    <td class="textAlignCenter table_header_th">Ικανοποιημένος (3)</td>
+                    <td class="textAlignCenter table_header_th">Πολύ ικανοποιημένος (4)</td>
+                    <td class="textAlignCenter table_header_th">Εξαιρετικά ικανοποιημένος (5)</td>
+                </tr>
+                '.$lines_table_results.'
+            </table>
+        </div>
+        ';
+        /*
+         * 
+                <img src="images/1.png" />&nbsp;&nbsp;Πολύ απογοητευμένος (1) &nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="images/2.png" />&nbsp;&nbsp;Απογοητευμένος (2) &nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="images/3.png" />&nbsp;&nbsp;Ικανοποιημένος (3)<br/>
+                <img src="images/4.png" />&nbsp;&nbsp;Πολύ ικανοποιημένος (4) &nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="images/5.png" />&nbsp;&nbsp;Εξαιρετικά ικανοποιημένος (5)
+         */
+    }
+    //////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////
+    /////Function for adding the data into session
     //////////////////////////////////////////////////////////////////////////////
     public static function ADD_DATA_INTO_SESSION()
     {
@@ -351,6 +451,12 @@ class ChartDrawer
             $_SESSION["width_B_".$i] = $_POST["width_B_".$i];
             $_SESSION["line_type_".$i] = $_POST["line_type_".$i];
             $_SESSION["line_label_".$i] = $_POST["line_label_".$i];
+            
+            /*
+             * This averages are for the parts when we have xN lines
+             */
+            $_SESSION["average_A_".$i] = $_POST["average_A_".$i];
+            $_SESSION["average_B_".$i] = $_POST["average_B_".$i];
         }
         
         $_SESSION["passByDataA"] = $_POST["passByDataA"];
