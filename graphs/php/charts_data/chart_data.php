@@ -104,7 +104,7 @@ class ChartData extends DataModerator
     protected function get_quantity_total_xml_line( $column_variable, $column_variable_addtional_reference )
     {
         $sql_select_quantity_total = "SELECT COUNT(".$column_variable.") AS ___COUNT___ FROM data WHERE ".
-                $this->area_year_month_dealercode_chain__SQL_condition;
+                $this->area_year_month_dealercode_chain__SQL_condition." AND ".$column_variable."<>'' ";
         //print "[".$sql_select_quantity_total."]";
         $quantity = DB_DETAILS::ADD_ACTION($sql_select_quantity_total, DB_DETAILS::$TYPE_SELECT);
         return "<".$column_variable.$column_variable_addtional_reference.">".$quantity[0]["___COUNT___"]."</".$column_variable.$column_variable_addtional_reference.">";
@@ -224,7 +224,7 @@ class ChartData extends DataModerator
             }
             $count_total_sql = "
                     SELECT COUNT(".$column_variable.") AS __COUNT__ FROM data WHERE ".$this->area_year_month_dealercode_chain__SQL_condition
-                    ." AND ".$column_variable."<>'0' ";
+                    ." AND ".$column_variable."<>'0' AND ".$column_variable."<>'' ";
             $count_total = DB_DETAILS::ADD_ACTION($count_total_sql, DB_DETAILS::$TYPE_SELECT);
             //print $count_total_sql;
             if($count_total[0]["__COUNT__"] == "0")

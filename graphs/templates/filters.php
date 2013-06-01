@@ -375,6 +375,13 @@ function FiltersModerator()
             object_details["average_A_"+i] = ChartModerator.CHART.lines[i].average_A;
             object_details["average_B_"+i] = ChartModerator.CHART.lines[i].average_B;
         }
+        
+        for(var i=1;i<=5;i++)
+        {
+            object_details["legend_title_"+i] = ChartModerator.CHART.line_details["label_"+i];
+            object_details["legend_color_"+i] = ChartModerator.CHART.line_details["color_"+i]; 
+        }
+        
         $.post("pdf_viewer/dompdf_tools.php", object_details, function(data)
         {
             console.log( data );

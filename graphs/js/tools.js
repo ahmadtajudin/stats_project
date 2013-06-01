@@ -670,9 +670,10 @@ function ChartBase()
      * @returns {undefined}
      * If need legend, this function will show legend on top
      */
-    
+    this.line_details = null;
     this.init_legend = function(line_details)
     {
+        this.line_details = line_details;
         var from = line_details.range_from;
         var to = line_details.range_to;
         if(from > line_details.range_to)
@@ -756,7 +757,7 @@ function Chart__ReasonToVisit()
         
     this.q61 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 55), "Service") );
     this.q62 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 160), "Επισκευή για την οποία πληρώσατε εσείς") );
-    this.q63 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 265), "Επισκευή εντός εγγύησης") );
+    this.q63 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 265), "Επισκευή για την οποία δεν πληρώσατε γιατί την κάλυπτε η εγγύηση") );
     
     /*
     this.q6_1 = this.add_simple_left_right_questions_line( new Point(0, 55), "Service" );
@@ -839,11 +840,11 @@ function Chart__GeneralImpresions()
         color_2:"#ff9900",
         color_1:"#ff0000",
         
-        label_1:"Πολύ απογοητευμένος",
-        label_2:"Απογοητευμένος",
-        label_3:"Ικανοποιημένος",
-        label_4:"Πολύ ικανοποιημένος",
-        label_5:"Εξαιρετικά ικανοποιημένος"
+        label_1:"Πολύ Κακή",
+        label_2:"Κακή",
+        label_3:"Ούτε καλή ούτε κακή",
+        label_4:"Καλή",
+        label_5:"Άριστη "
     };
     
     this.init
@@ -854,11 +855,14 @@ function Chart__GeneralImpresions()
     );
     
     this.init_legend( line_details );
-        
+    
+    //Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ Κακή έως το 10 Άριστη)
     this.q7 = this.add_line ( new xN_AreasLine(this, new Point(0, 105), "q7 need label", line_details, "q7", 
-    {left_label:"Συνολικά, πόσο ...", right_label:"", left_label_full_text:"Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ Κακή έως το 10 Άριστη)"}) );
+    {left_label:"Συνολικά, πόσο ...", right_label:"", 
+        left_label_full_text:"Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο."}) );
     this.q8 = this.add_line ( new xN_AreasLine(this, new Point(0, 210), "q8 need label", line_details, "q8", 
-    {left_label:"Με βάση την εμπειρία ...", right_label:"", left_label_full_text:"Με βάση την εμπειρία σας από το συγκεκριμένο συνεργείο πόσο πιθανό θα ήταν να συστήσετε το συγκεκριμένο συνεργείο σε κάποιον φίλο σας /γνωστό σας / συγγενή σας"}) );
+    {left_label:"Με βάση την εμπειρία ...", right_label:"", 
+        left_label_full_text:"Με βάση την εμπειρία σας από το συγκεκριμένο συνεργείο πόσο πιθανό θα ήταν να συστήσετε το συγκεκριμένο συνεργείο σε κάποιον φίλο σας /γνωστό σας / συγγενή σας"}) );
     
     
     this.show_data_to_diagram = function(  )
@@ -894,11 +898,11 @@ function Chart__Objects()
         color_2:"#ff9900",
         color_1:"#ff0000",
         
-        label_1:"Πολύ απογοητευμένος",
-        label_2:"Απογοητευμένος",
-        label_3:"Ικανοποιημένος",
-        label_4:"Πολύ ικανοποιημένος",
-        label_5:"Εξαιρετικά ικανοποιημένος"
+        label_1:"Πολύ Κακή",
+        label_2:"Κακή",
+        label_3:"Ούτε καλή ούτε κακή",
+        label_4:"Καλή",
+        label_5:"Άριστη "
     };
     
     this.init
@@ -971,11 +975,11 @@ function Chart__Personal()
         color_2:"#ff9900",
         color_1:"#ff0000",
         
-        label_1:"Πολύ απογοητευμένος",
-        label_2:"Απογοητευμένος",
-        label_3:"Ικανοποιημένος",
-        label_4:"Πολύ ικανοποιημένος",
-        label_5:"Εξαιρετικά ικανοποιημένος"
+        label_1:"Πολύ Κακή",
+        label_2:"Κακή",
+        label_3:"Ούτε καλή ούτε κακή",
+        label_4:"Καλή",
+        label_5:"Άριστη "
     };
     
     this.init
@@ -1063,11 +1067,11 @@ function Chart__QuestionsOnTime()
         color_2:"#ff9900",
         color_1:"#ff0000",
         
-        label_1:"Πολύ απογοητευμένος",
-        label_2:"Απογοητευμένος",
-        label_3:"Ικανοποιημένος",
-        label_4:"Πολύ ικανοποιημένος",
-        label_5:"Εξαιρετικά ικανοποιημένος"
+        label_1:"Πολύ Κακή",
+        label_2:"Κακή",
+        label_3:"Ούτε καλή ούτε κακή",
+        label_4:"Καλή",
+        label_5:"Άριστη "
     };
     
     this.init
@@ -1149,11 +1153,11 @@ function Chart__Quality()
         color_2:"#ff9900",
         color_1:"#ff0000",
         
-        label_1:"Πολύ απογοητευμένος",
-        label_2:"Απογοητευμένος",
-        label_3:"Ικανοποιημένος",
-        label_4:"Πολύ ικανοποιημένος",
-        label_5:"Εξαιρετικά ικανοποιημένος"
+        label_1:"Πολύ Κακή",
+        label_2:"Κακή",
+        label_3:"Ούτε καλή ούτε κακή",
+        label_4:"Καλή",
+        label_5:"Άριστη "
     };
     
     this.init
@@ -1286,11 +1290,11 @@ function Chart__Costs()
         color_2:"#ff9900",
         color_1:"#ff0000",
         
-        label_1:"Πολύ απογοητευμένος",
-        label_2:"Απογοητευμένος",
-        label_3:"Ικανοποιημένος",
-        label_4:"Πολύ ικανοποιημένος",
-        label_5:"Εξαιρετικά ικανοποιημένος"
+        label_1:"Πολύ Κακή",
+        label_2:"Κακή",
+        label_3:"Ούτε καλή ούτε κακή",
+        label_4:"Καλή",
+        label_5:"Άριστη "
     };
     
     this.init
@@ -1358,11 +1362,11 @@ function Chart__FollowUp()
         color_2:"#ff9900",
         color_1:"#ff0000",
         
-        label_1:"Πολύ απογοητευμένος",
-        label_2:"Απογοητευμένος",
-        label_3:"Ικανοποιημένος",
-        label_4:"Πολύ ικανοποιημένος",
-        label_5:"Εξαιρετικά ικανοποιημένος"
+        label_1:"Πολύ Κακή",
+        label_2:"Κακή",
+        label_3:"Ούτε καλή ούτε κακή",
+        label_4:"Καλή",
+        label_5:"Άριστη "
     };
     
     this.init
@@ -1413,11 +1417,11 @@ function Chart__InFuture()
         color_2:"#ff9900",
         color_1:"#ff0000",
         
-        label_1:"Πολύ απογοητευμένος",
-        label_2:"Απογοητευμένος",
-        label_3:"Ικανοποιημένος",
-        label_4:"Πολύ ικανοποιημένος",
-        label_5:"Εξαιρετικά ικανοποιημένος"
+        label_1:"Σίγουρα Όχι",
+        label_2:"Μάλλον Όχι",
+        label_3:"Ούτε ναι ούτε όχι",
+        label_4:"Μάλλον Ναι",
+        label_5:"Σίγουρα Ναι "
     };
     
     this.init
@@ -1472,11 +1476,11 @@ function Chart__CloseCall()
         color_2:"#ff9900",
         color_1:"#ff0000",
         
-        label_1:"Πολύ απογοητευμένος",
-        label_2:"Απογοητευμένος",
-        label_3:"Ικανοποιημένος",
-        label_4:"Πολύ ικανοποιημένος",
-        label_5:"Εξαιρετικά ικανοποιημένος"
+        label_1:"Πολύ Κακή",
+        label_2:"Κακή",
+        label_3:"Ούτε καλή ούτε κακή",
+        label_4:"Καλή",
+        label_5:"Άριστη "
     };
     
     this.init

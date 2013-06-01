@@ -277,9 +277,16 @@
             position:absolute;
             top:0px;
         }
-        .simple_line_left_right_question .line_color_width, .simple_line_left_right_question .line_percent
+        .simple_line_left_right_question .line_color_width
         {
-            float: left;
+            position:relative;
+        }
+        .simple_line_left_right_question .line_percent
+        {
+            /*float: left;*/
+            position: absolute;
+            right:-105px;
+            width:100px;
         }
         .simple_line_left_right_question .line_percent
         {
@@ -320,16 +327,16 @@
                 </div>
                 <div class="simple_line_left_question line">
                     <div>
-                        <div class="line_color_width"></div>
-                        <div class="line_percent">100%</div>
-                        <div class="clearBoth"></div>
+                        <div class="line_color_width">
+                            <div class="line_percent">100%</div>
+                        </div>
                     </div>
                 </div>
                 <div class="simple_line_right_question line">
                     <div>
-                        <div class="line_color_width"></div>
-                        <div class="line_percent">100%</div>
-                        <div class="clearBoth"></div>
+                        <div class="line_color_width">
+                            <div class="line_percent">100%</div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -123,15 +123,17 @@ class ChartDrawer
     
     private  static function titles_top_for_xNCharts()
     {
+        /*$_SESSION["legend_title_".$i] = $_POST["legend_title_".$i];
+        $_SESSION["legend_color_".$i] = $_POST["legend_color_".$i];*/
         if($_SESSION["line_type_0"] == self::line_type_simple_horizontal)
                         return '';
         return '
             <div class="absolute" style="left:'.self::left_diagram.'px;top:200px;">
-                <img src="images/1.png" />&nbsp;&nbsp;Πολύ απογοητευμένος (1) &nbsp;&nbsp;&nbsp;&nbsp;
-                <img src="images/2.png" />&nbsp;&nbsp;Απογοητευμένος (2) &nbsp;&nbsp;&nbsp;&nbsp;
-                <img src="images/3.png" />&nbsp;&nbsp;Ικανοποιημένος (3)<br/>
-                <img src="images/4.png" />&nbsp;&nbsp;Πολύ ικανοποιημένος (4) &nbsp;&nbsp;&nbsp;&nbsp;
-                <img src="images/5.png" />&nbsp;&nbsp;Εξαιρετικά ικανοποιημένος (5)
+                <img src="images/1.png" />&nbsp;&nbsp;'.$_SESSION["legend_title_1"].' (1) &nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="images/2.png" />&nbsp;&nbsp;'.$_SESSION["legend_title_2"].' (2) &nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="images/3.png" />&nbsp;&nbsp;'.$_SESSION["legend_title_3"].' (3)<br/>
+                <img src="images/4.png" />&nbsp;&nbsp;'.$_SESSION["legend_title_4"].' (4) &nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="images/5.png" />&nbsp;&nbsp;'.$_SESSION["legend_title_5"].' (5)
             </div>
             ';
     }
@@ -465,6 +467,13 @@ class ChartDrawer
         $_SESSION["chart_have_average_form"] = $_POST["chart_have_average_form"];
         $_SESSION["average_A"] = $_POST["average_A"];
         $_SESSION["average_B"] = $_POST["average_B"];
+        
+        for($i=1;$i<=5;$i++)
+        {
+            $_SESSION["legend_title_".$i] = $_POST["legend_title_".$i];
+            $_SESSION["legend_color_".$i] = $_POST["legend_color_".$i];
+        }
+        
         print_r($_SESSION);
     }
 }
