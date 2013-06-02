@@ -11,8 +11,17 @@ class Admin_User {
         $last_ID = Db_Actions::DbInsert2("users", array(
                     'username' => $_POST['username'],
                     'password' => $_POST['password'],
-                    'user_type' => $_POST['userType']
+                    'user_type' => $_POST['userType'],
+                    'dealer_code' => $_POST['userType'] == Tools::$SUPER_CLIENT ? $_POST['username'] : ""
         ));
+        $userType = Db_Actions::DbSanitizeData($_POST['userType']);
+        if ($userType == Tools::$SUPER_CLIENT) {
+            $dealer_code = Db_Actions::DbSanitizeData($_POST['username']);
+            $dealer_name = Db_Actions::DbSanitizeData($_POST['dealer_address']);
+            $dealer_area = Db_Actions::DbSanitizeData($_POST['dealer_area']);
+            $dealer_password = Db_Actions::DbSanitizeData($_POST['password']);
+            Db_Actions::DbInsert("INSERT INTO dealers(dealer_code,dealer_name,dealer_area,dealer_password ) VALUES('" . $dealer_code . "', '" . $dealer_name . "', '" . $dealer_area . "', '" . $dealer_password . "')");
+        }
         $_SESSION[Tools::$USER_MESSAGE] = "User Created";
         ?><script type="text/javascript">window.location = "../superadmin.php";</script><?php
     }
@@ -24,14 +33,14 @@ class Admin_User {
         $password = $_POST['password'];
         $user_type = $_POST['user_type'];
         $dealer_code = $_POST['dealer_code'];
-        
+
         $affected_rows = Db_Actions::DbUpdate2("users", array(
-            'username' => $username,
-            'password' => $password,
-            'user_type' => $user_type,
-            'dealer_code' => $dealer_code
-        ),"id=".  Db_Actions::DbSanitizeData($user_ID) );
-        if($affected_rows == 1 || $affected_rows == 0){
+                    'username' => $username,
+                    'password' => $password,
+                    'user_type' => $user_type,
+                    'dealer_code' => $dealer_code
+                        ), "id=" . Db_Actions::DbSanitizeData($user_ID));
+        if ($affected_rows == 1 || $affected_rows == 0) {
             echo "1";
         }
     }

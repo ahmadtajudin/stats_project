@@ -3,10 +3,8 @@
     <div class="span12 faq-container">
         <p class="centered"><img src="images/login_glob_img.jpg" width="197" height="84" align="middle" /></p>
         <div>
-            Καλημέρα / Καλησπέρα σας, ονομάζομαι……. και σας τηλεφωνώ από το τμήμα εξυπηρέτησης πελατών της HYUNDAI εκ μέρους του Συνεργείου… 
-        </div>
-        <div>
-            Θα μπορούσα να μιλήσω στον κο/ στην κα……………………….. 
+            Καλημέρα / Καλησπέρα σας, ονομάζομαι……. και σας τηλεφωνώ από το τμήμα εξυπηρέτησης πελατών της HYUNDAI εκ μέρους του Συνεργείου… Θα μπορούσα να μιλήσω στον κο/ στην 
+            κα……………………….. 
         </div>
         <div>
             Η μάρκα HYUNDAI σε συνεργασία με το δίκτυο των συνεργείων της επικοινωνεί με τους πελάτες της. Θα σας κάνω κάποιες ερωτήσεις για να μου πείτε πόσο ικανοποιημένος ή δυσαρεστημένος είστε από τα συνεργεία της HYUNDAI
@@ -15,11 +13,14 @@
             Οι απαντήσεις που θα μου δώσετε είναι εμπιστευτικές και θα χρησιμοποιηθούν για την βελτίωση των υπηρεσιών που προσφέρουν τα συνεργεία της HYUNDAI.
         </div>
         <div>
-            Θα σας απασχολήσω μόνο λίγα λεπτά για την τελευταία σας επίσκεψη στο συνεργείο HYUNDAI
+            Θα σας απασχολήσω μόνο λίγα λεπτά για την τελευταία σας επίσκεψη στο συνεργείο HYUNDAI.
+        </div>
+        <div>
+            <strong class="red-color">ΕΡ5β .</strong> Πόσες φορές έχετε πάει το όχημα σας σε <span class="red-color">οποιοδήποτε</span> εξουσιοδοτημένο συνεργείο της HYUNDAI;
         </div>
         <div>
             <strong>1.</strong> Πόσες φορές έχετε πάει το όχημα σας σε οποιοδήποτε εξουσιοδοτημένο συνεργείο της HYUNDAI;<br />
-            <table class="table table-bordered">
+            <table class="table table-bordered width22">
                 <tr>
                     <td>1 φορά</td>
                     <td>1</td>
@@ -45,13 +46,13 @@
                     <td>6</td>
                 </tr>
                 <tr>
-                    <td>7 φορά</td>
+                    <td>7+ φορά</td>
                     <td>7</td>
                 </tr>
             </table>
         </div>
         <div>
-            <strong>2.</strong> Ο λόγος της τελευταίας σας επίσκεψης στο συνεργείο ήταν για....<br />
+            <strong class="red-color">ΕΡ6.</strong> Ο λόγος της τελευταίας σας επίσκεψης στο συνεργείο ήταν για....
             <table class="table table-bordered">
                 <tr>
                     <td>Service</td>
@@ -67,394 +68,379 @@
                 </tr>
             </table>
         </div>
-        <div>
-            <strong>3.</strong> Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε αυτό το εξουσιοδοτημένο συνεργείο; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση «πολύ ικανοποιημένος, απλά ικανοποιημένος, μέτρια εντύπωση, απλά δυσαρεστημένος ή πολύ δυσαρεστημένος». <br />
-            <table class="table table-bordered">
-                <tr>
-                    <td>ΠΟΛΥ δυσαρεστημένος</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>ΔΥΣΑΡΕΣΤΗΜΕΝΟΣ</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>ΙΚΑΝΟΠΟΙΗΜΕΝΟΣ</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>ΠΟΛΥ ΙΚΑΝΟΠΟΙΗΜΕΝΟΣ</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>ΕΞΑΙΡΕΤΙΚΑ ΙΚΑΝΟΠΟΙΗΜΕΝΟΣ</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>ΔΞ/ΔΑ</td>
-                    <td>0</td>
-                </tr>
-            </table>
+        <div><h2 class="em-under">Γενικές Εντυπώσεις</h2></div>
+        <div><strong class="red-color">ΕΡ7.</strong> Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ Απογοητευμένος έως το 5 Εξαιρετικά ικανοποιημένος)
+        </div>
+        <div><strong class="red-color">ΕΡ7.</strong> Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ Απογοητευμένος έως το 5 Εξαιρετικά ικανοποιημένος)
         </div>
         <div>
-            <strong>4.</strong> Θα ήθελα τώρα να μιλήσουμε γι’ αυτή την τελευταία σας εμπειρία με το εξουσιοδοτημένο συνεργείο HYUNDAI <br />
-            Σκεφτείτε καταρχήν πόσο ικανοποιημένος ή δυσαρεστημένος είστε από καθένα από τα παρακάτω. Παρακαλώ απαντήστε μου δίνοντας μία απάντηση <br /><br />
-            ΕΞΑΙΡΕΤΙΚΑ ΙΚΑΝΟΠΟΙΗΜΕΝΟΣ (=5), 	<br />
-            ΠΟΛΥ ΙΚΑΝΟΠΟΙΗΜΕΝΟΣ, <br />
-            ΙΚΑΝΟΠΟΙΗΜΕΝΟΣ (=3), <br />
-            ΔΥΣΑΡΕΣΤΗΜΕΝΟΣ,	<br />
-            ΠΟΛΥ ΔΥΣΑΡΕΣΤΗΜΕΝΟΣ (=1)<br /><br />
-
-            <table class="table table-bordered">
-                <tr>
-                    <td>Διαχείριση τηλεφωνικής κλήσης για ραντεβού με τρόπο επαγγελματικό και φιλικό</td></tr>
-                <tr><td>Ευκολία κλεισίματος ραντεβού</td></tr>
-                <tr>
-                    <td>Άνεση-ευκολία ωραρίου λειτουργίας</td></tr>
-                <tr><td>Εμφάνιση του Εξουσιοδοτημένου συνεργείου</td></tr>
-                <tr><td>Φιλικότητα και εξυπηρέτηση του προσωπικού</td></tr>
-                <tr><td>Προθυμία να ακούσουν και να καταλάβουν το πρόβλημα σας</td></tr>
-                <tr><td>Επεξήγηση του service ή της επισκευής που επρόκειτο να γίνει</td></tr>
-                <tr><td>Ξεκάθαρη πληροφόρηση για το προβλεπόμενο κόστος πριν αρχίσει το service ή η επισκευή</td></tr>
-                <tr><td>Ειλικρίνεια-αξιοπιστία του προσωπικού</td></tr>
-                <tr><td>Άμεση φροντίδα κατά την άφιξη στο συνεργείο</td></tr>
-                <tr><td>Ικανότητα τήρησης υποσχέσεων αναφορικά με το χρόνο ολοκλήρωσης των εργασιών</td></tr>
-                <tr><td>Επεξήγηση των εργασιών που έγιναν στο αυτοκίνητο</td></tr>
-                <tr><td>Καθαριότητα αυτοκινήτου μετά το service ή την επισκευή</td></tr>
-                <tr><td>Επεξήγηση χρεώσεων για το service ή την επισκευή</td></tr>
-                <tr><td>Τίμια (λογική) τιμολόγηση ανταλλακτικών/ <br />
-                        Τίμια (λογική) τιμολόγηση εργασιών
-                    </td></tr>
-            </table>
-        </div>
-        <div>
-            <strong>5.</strong> Ολοκληρώθηκαν οι απαιτούμενες εργασίες σε αυτή την επίσκεψη στο συνεργείο HYUNDAI ή χρειάστηκε να επιστρέψετε το όχημα σας στο συνεργείο για επιπλέον εργασίες; <br />
-            <table class="table table-bordered">
-                <tr>
-                    <td>Ναι</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Όχι</td>
-                    <td>2</td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <strong>6.</strong>Για ποιο λόγο δεν ολοκληρώθηκαν οι απαιτούμενες εργασίες σε αυτή την επίσκεψη στο συνεργείο HYUNDAI ; <br />
-            <table class="table table-bordered">
-                <tr>
-                    <td>Δεν υπήρχε αρκετός χρόνος/ είχαν πολύ δουλειά</td></tr>
-                <tr><td>Δεν βρήκαν να υπάρχει πρόβλημα</td></tr>
-                <tr><td>Δεν υπήρχαν διαθέσιμα τα ανταλλακτικά</td></tr>
-                <tr><td>Τα ανταλλακτικά ήταν ελαττωματικά</td></tr>
-                <tr><td>Δεν βρήκαν  το πρόβλημα με την πρώτη επίσκεψη</td></tr>
-                <tr><td>Προσπάθησαν να κάνουν κάποιες επιδιορθώσεις, αλλά το πρόβλημα δεν λύθηκε</td></tr>
-                <tr><td>Το πρόβλημα λύθηκε αλλά προέκυψε κάποιο σχετιζόμενο πρόβλημα</td></tr>
-                <tr><td>Άλλο, διευκρινίστε………</td></tr>
-            </table>
-        </div>
-        <div>
-            <strong>7.</strong> Πόσες επιπλέον φορές πήγατε το αυτοκίνητό σας στο <strong class="udrl">ίδιο</strong> συνεργείο ώστε να σας επισκευάσουν σωστά το πρόβλημα που υπήρχε;  <br />
-            <table class="table table-bordered">
-                <tr>
-                    <td>Καμία</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>Μία</td>
-                    <td>1</td>
-                </tr>
-
-                <tr>
-                    <td>Δύο</td>
-                    <td>2</td>
-                </tr>
-
-                <tr>
-                    <td>Τρεις</td>
-                    <td>3</td>
-                </tr>
-
-                <tr>
-                    <td>Τέσσερις και περισσότερες</td>
-                    <td>4</td>
-                </tr>
-
-            </table>
-        </div>
-        <div>
-            <strong>8.</strong> Επικοινώνησαν μαζί σας μετά την συντήρηση / επισκευή για να ενημερωθούν αν μείνατε ικανοποιημένος από τις εργασίες; <br />
-            <table class="table table-bordered">
-                <tr>
-                    <td>Ναι</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Όχι</td>
-                    <td>2</td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <strong>9.</strong> Θα θέλατε να προσθέστε κάποια παρατήρηση για το συνεργείο, π.χ.: «σε τι θα μπορούσε να βελτιωθεί το συγκεκριμένο συνεργείο»; <br />
-            <table class="table table-bordered">
-                <tr>
-                    <td>ΝΑΙ:</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>ΟΧΙ:</td>
-                    <td>2</td>
-                </tr>
-            </table>
-            <div>
-                Τι παρατήρηση έχετε για το συνεργείο; ΕΡΕΥΝΗΤΗ ΣΗΜΕΙΩΣΗ
-            </div>
-        </div>
-        <div>
-            <strong>10.</strong> Θα θέλατε για την βοήθεια του αντιπροσώπου να χρησιμοποιηθούν οι παρατηρήσεις σας ονομαστικά; <br />
-            <table cellpadding="0" cellspacing="0" border="0" class="tb-data nob">
-                <tr>
-                    <td>ΝΑΙ:</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>ΟΧΙ:</td>
-                    <td>2</td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <strong>11.</strong> Θα συστήνατε το συνεργείο σε άλλους μετά από την εμπειρία που είχατε με αυτό; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση «σίγουρα ναι, μάλλον ναι, ίσως ναι/ ίσως όχι, μάλλον όχι, σίγουρα όχι».<br />
-            <table class="table table-bordered">
-                <tr>
-                    <td>σίγουρα όχι</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>πιθανά όχι</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>μπορεί ναι/ μπορεί όχι</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>πιθανά</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>σίγουρα</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>ΔΞ</td>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <strong>12.</strong> Θα επισκεπτόσασταν και πάλι το συνεργείο για service ή επισκευή του αυτοκινήτου σας; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση «σίγουρα ναι, μάλλον ναι, ίσως ναι/ ίσως όχι, μάλλον όχι, σίγουρα όχι».<br />
-            <table class="table table-bordered">
-                <tr>
-                    <td>σίγουρα όχι</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>πιθανά όχι</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>μπορεί ναι/ μπορεί όχι</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>πιθανά</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>σίγουρα</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>ΔΞ</td>
-                    <td>0</td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <strong>13.</strong> Είστε ικανοποιημένος από την ποιότητα του αυτοκινήτου σας;<br />
-            <table class="table table-bordered">
-                <tr>
-                    <td>Πολύ δυσαρεστημένος</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Δυσαρεστημένος</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>Ικανοποιημένος</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Πολύ ικανοποιημένος</td>
-                    <td>4</td>
-                </tr>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
                     <td>Εξαιρετικά ικανοποιημένος</td>
-                    <td>5</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ Απογοητευμένος</td>
                 </tr>
+            </table>
+        </div>
+        <div><strong class="red-color">ΕΡ8.</strong> Με βάση την εμπειρία σας από το συγκεκριμένο συνεργείο πόσο πιθανό θα ήταν να συστήσετε το συγκεκριμένο συνεργείο σε κάποιον φίλο σας /γνωστό σας / συγγενή σας
+        </div>
+
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>ΔΞ</td>
-                    <td>0</td>
+                    <td>Εξαιρετικά ικανοποιημένος</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ Απογοητευμένος</td>
+                </tr>
+            </table>
+        </div>
+
+        <div><strong>Θα ήθελα τώρα να μιλήσουμε γι’ αυτή την τελευταία σας εμπειρία με το εξουσιοδοτημένο συνεργείο HYUNDAI</strong></div>
+        <div><h2 class="em-under">Εγκαταστάσεις</h2></div>
+        <div>Β1) Πως θα αξιολογούσατε τις εγκαταστάσεις του συγκεκριμένου συνεργείου. Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή  έως το 5 Άριστη)</div>
+
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+                <tr>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
             </table>
         </div>
         <div>
-            <strong>14.</strong> Θα ήθελα να μου πείτε συνολικά για την μάρκα HYUNDAI σε σχέση με άλλες μάρκες που ξέρετε. Θα λέγατε ότι είναι μία μάρκα: ΔΙΑΒΑΣΕ<br />
-            <table class="table table-bordered">
+            Εάν έχει δώσει βαθμολογία από 4 έως 1 παρακαλώ να γίνουν οι παρακάτω διαγνωστικές ερωτήσεις<br /><br />
+            Β2. Πώς θα αξιολογούσατε την εμφάνιση του τμήματος Service;<br />
+            Β3. Την άνεση του χώρου αναμονής (π.χ. καθίσματα, μηχανές καφέ, κλπ….)<br />
+            Β4. Τη γενική καθαριότητα της αντιπροσωπείας;<br />
+            Β5. Την ευκολία στάθμευσης;
+
+        </div>
+        <div>Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή έως το 5 Άριστη)</div>
+
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>Κακή</td>
-                    <td>1</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
+            </table>
+        </div>
+
+        <div><h2 class="em-under">Προσωπικό</h2></div>
+        <div>Γ1) Πως θα αξιολογούσατε το προσωπικό του συγκεκριμένου συνεργείου </div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>Απλώς ανεκτή</td>
-                    <td>2</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
+            </table>
+        </div>
+        <div>Γ2) Αισθανθήκατε ότι σας αντιμετώπισαν σαν ένα σημαντικό πελάτη; </div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>Μέτρια </td>
-                    <td>3</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
+            </table>
+        </div>
+
+        <div>
+            Εάν έχει δώσει βαθμολογία από 4 έως 1 στην Ερωτ. Γ1 παρακαλώ να γίνουν οι παρακάτω διαγνωστικές ερωτήσεις<br /><br />
+            Γ3. Πώς θα αξιολογούσατε την φιλικότητα του προσωπικού;<br />
+            Γ4. Πώς θα αξιολογούσατε την εξυπηρέτηση του προσωπικού;<br />
+            Γ5. Την ειλικρίνεια και την αξιοπιστία τους;<br />
+            Γ6. Τον χειρισμό των τηλεφωνικών ερωτήσεων;<br />
+            Γ7. Την προθυμία να ακούσουν και να κατανοήσουν τα προβλήματα;<br />
+            Γ8. Την επεξήγηση της εργασίας που πρέπει να γίνει;<br />
+            Γ9. Την ικανότητα τους να διαγνώσουν προβλήματα;<br />
+        </div>
+        <div>Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή έως το 5 Άριστη)</div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>Καλή </td>
-                    <td>4</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
+            </table>
+        </div>
+
+        <div><h2 class="em-under">Θέματα Χρόνου</h2></div>
+        <div>Δ1) Τύχατε της προσοχή του προσωπικού (σας είχε το προσωπικό στο νού του)καθ’ όλη την διάρκεια της επίσκεψης σας; </div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>Πολύ καλή</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>ΔΞ</td>
-                    <td>0</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
             </table>
         </div>
         <div>
-            <strong>15.</strong> Θα συστήνατε σε άλλους την μάρκα Hyundai; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση «σίγουρα ναι, μάλλον ναι, ίσως ναι/ ίσως όχι, μάλλον όχι, σίγουρα όχι».<br />
-            <table class="table table-bordered">
+            Εάν έχει δώσει βαθμολογία από 4 έως 1 στην Ερωτ. Δ1 παρακαλώ να γίνουν οι παρακάτω διαγνωστικές ερωτήσεις<br /><br />
+            Δ2. Πώς θα αξιολογούσατε την ευκολία να κλείσετε ραντεβού;<br />
+            Δ3. Την προσοχή που σας δόθηκε κατά την άφιξή σας;<br />
+            Δ4. Τον χρόνο αναμονής όταν πήρανε το όχημά σας;<br />
+            Δ5. Την ικανότητα τους να ανταποκριθούν στο χρονοδιάγραμμα που σας είχαν δώσει αρχικά;<br />
+            Δ6. τον συνολικό χρόνο που απαιτήθηκε ώστε να ολοκληρωθεί το service του οχήματός σας;<br />
+            Δ7. Την ευελιξία της αντιπροσωπείας να σας κλείσει το ραντεβού που θέλατε;<br />
+            Δ8. Την ευκολία ωραρίου;
+        </div>
+        <div>Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή έως το 5 Άριστη)</div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>σίγουρα όχι</td>
-                    <td>1</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
+            </table>
+        </div>
+        <div><h2 class="em-under">Ποιότητα</h2></div>
+        <div>Ε1) Παρακαλώ αξιολογήστε την εμπιστοσύνη σας στις εργασίες που πραγματοποιήθηκαν στο αυτοκίνητο σας κατά τη διάρκεια του τελευταίου service.</div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>πιθανά όχι</td>
-                    <td>2</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
+            </table>
+        </div>
+        <div>Ε2) Σε ποιο βαθμό ολοκληρώθηκαν οι εργασίες που ζητήσατε;  Παρακαλώ δώστε τη βαθμολογία σας.</div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>μπορεί ναι/ μπορεί όχι</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>πιθανά</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>σίγουρα</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>ΔΞ</td>
-                    <td>&nbsp;</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
             </table>
         </div>
         <div>
-            <strong>16.</strong> Θα προχωρούσατε σε επαναγορά αυτοκινήτου Hyundai; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση «σίγουρα ναι, μάλλον ναι, ίσως ναι/ ίσως όχι, μάλλον όχι, σίγουρα όχι».<br />
-            <table class="table table-bordered">
+            Εάν έχει δώσει βαθμολογία από 4 έως 1 στην Ερωτ. Ε1 παρακαλώ να γίνουν οι παρακάτω διαγνωστικές ερωτήσεις<br/><br/>
+            Ε3. Πώς θα αξιολογούσατε την καθαριότητα του οχήματός σας μετά  το<br/> service ή  την επισκευή;<br/>
+            Ε4. Παρακαλώ βαθμολογήστε την εμπιστοσύνη σας στην τεχνική κατάρτιση<br/> της αντιπροσωπείας:<br/>
+        </div>
+        <div>Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή έως το 5 Άριστη)</div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>σίγουρα όχι</td>
-                    <td>1</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
+            </table>
+        </div>
+        <div><h2 class="font20px">Ποιότητα – Δεύτερη επίσκεψη</h2></div>
+        <div>
+            Ε6. Γιατί χρειάστηκε να επιστρέψετε το όχημά σας;<br /><br />
+            Α) Δεν ήταν αρκετός ο χρόνος / το πρόγραμμα ήταν γεμάτο<br />
+            Β) Δεν μπορούσαν να βρουν το πρόβλημα<br />
+            Γ) Δεν ήταν διαθέσιμα τα ανταλλακτικά<br />
+            Δ) Τα ανταλλακτικά που χρησιμοποιήθηκαν ήταν ελαττωματικά<br />
+            Ε) Το τμήμα του service δεν μπόρεσε να βρει το πρόβλημα την πρώτη φορά<br />
+            Ζ) Το τμήμα του service επιχείρησε την επισκευή αλλά δεν διόρθωσε το πρόβλημα<br />
+            Η) Το πρόβλημα διορθώθηκε αλλά παρουσιάστηκε άλλο πρόβλημα<br />
+            Θ) Άλλος λόγος
+        </div>
+        <div><h2 class="em-under">Κόστη</h2></div>
+        <div>Ζ1) Από άποψη κόστους, παρακαλώ αξιολογήστε την υπηρεσία που λάβατε</div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>πιθανά όχι</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>μπορεί ναι/ μπορεί όχι</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>πιθανά</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>σίγουρα</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>ΔΞ</td>
-                    <td>&nbsp;</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
             </table>
         </div>
         <div>
-            <strong>17.</strong> Σκέφτεστε να αγοράσετε αυτοκίνητο εσείς ή άλλο μέλος της οικογένειάς σας;<br />
-            <table class="table table-bordered">
-                <tr>
-                    <td>Ναι</td>
-                    <td>1</td>
-                    <td>ΕΡ24, 25</td>
-                </tr>
-                <tr>
-                    <td>Όχι</td>
-                    <td>2</td>
-                    <td>ΕΡ26</td>
-                </tr>
-            </table>
+            Εάν έχει δώσει βαθμολογία από 4 έως 1 στην Ερωτ. Ζ1 παρακαλώ να γίνουν οι παρακάτω διαγνωστικές ερωτήσεις<br/><br/>
+            Ζ2. Παροχή σαφών πληροφοριών σχετικά με το κόστος πριν την έναρξη της εργασίας;<br/>
+            Ζ3. Επεξήγηση των εργασιών που έγιναν;<br/>
+            Ζ4. Πόσο λογικό ήταν το κόστος των εργασιών και των ανταλλακτικών;<br/>
+            Ζ5. Επεξήγηση των χρεώσεων του service?<br/>
+            Z6. Επεξήγηση του μελλοντικού προγραμμάτος συντήρησης και επισκευής;
         </div>
+        <div>Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή έως το 5 Άριστη)</div>
         <div>
-            <strong>18.</strong> Πότε περίπου πιστεύετε ότι θα γίνει η αγορά του νέου αυτοκινήτου; <br />
-            <table class="table table-bordered">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>Σε 1-2 μήνες</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Σε 3-6 μήνες</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>Σε 7-12 μήνες</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Σε 2 χρόνια</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>Σε 3+ χρόνια</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>ΔΞ/ΔΑ</td>
-                    <td>0</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
             </table>
         </div>
+        <div><h2 class="em-under">Follow Up</h2></div>
+        <div>H1. Πως θα αξιολογούσατε την επικοινωνία που είχατε με την αντιπροσωπεία από το τελευταίο service / επισκευή που είχατε;</div>
         <div>
-            <strong>19.</strong> Κλείνοντας θα θέλατε να έρθει σε επαφή μαζί σας η HYUNDAI ώστε να σας ενημερώσουν για τα μοντέλα τους και τις προσφορές τους;<br />
-            <table class="table table-bordered">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
-                    <td>Ναι</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Όχι</td>
-                    <td>2</td>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
                 </tr>
             </table>
         </div>
+        <div>Η5. Πώς θα αξιολογούσατε τον τρόπο που αντιμετωπίστηκε το θέμα σας;</div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+                <tr>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
+                </tr>
+            </table>
+        </div>
+        <div><h2 class="em-under">Επικοινωνία πελάτη με αντιπροσωπεία</h2></div>
+        <div>H3. Υπήρξαν θέματα για τα οποία χρειάστηκε να επικοινωνήσετε με την αντιπροσωπεία μετά το τελευταίο service που κάνατε; (ΝΑΙ / ΟΧΙ)</div>
+        <div>H4. Λύθηκαν τα θέματα σας;  (ΝΑΙ / ΟΧΙ)</div>
+        <div><h2 class="em-under">Στο μέλλον</h2></div>
+        <div>Θ1. Θα πάτε ξανά στο συγκεκριμένο συνεργείο για κάποια μελλοντική εργασία;</div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+                <tr>
+                    <td>Σίγουρα<br />Ναι</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Σίγουρα<br />Όχι</td>
+                </tr>
+            </table>
+        </div>
+        <div>Θ2. Θα συνιστούσατε τα αυτοκίνητα της Hyundai στην οικογένειά σας και στους φίλους σας;</div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+                <tr>
+                    <td>Σίγουρα<br />Ναι</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Σίγουρα<br />Όχι</td>
+                </tr>
+            </table>
+        </div>
+        <div>Θ3. Θα αγοράζατε ξανά ένα αυτοκίνητο Hyundai;</div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+                <tr>
+                    <td>Σίγουρα<br />Ναι</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Σίγουρα<br />Όχι</td>
+                </tr>
+            </table>
+        </div>
+
+        <div><h2 class="em-under">Κλείσιμο Κλήσης</h2></div>
+        <div>Ι1. Πώς θα αξιολογούσατε την συνολική ποιότητα του αυτοκινήτου σας;</div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+                <tr>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
+                </tr>
+            </table>
+        </div>
+        <div>I2. Θα ήθελα να μου πείτε συνολικά για την μάρκα HYUNDAI σε σχέση με άλλες μάρκες που ξέρετε. Θα λέγατε ότι είναι μία μάρκα: </div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+                <tr>
+                    <td>Άριστη</td>
+                    <td class="dark-greenbg">5</td>
+                    <td class="light-greenbg">4</td>
+                    <td class="yellow-bg">3</td>
+                    <td class="orange-bg">2</td>
+                    <td class="red-bg">1</td>
+                    <td>Πολύ κακή</td>
+                </tr>
+            </table>
+        </div>
+
+        <div><h2 class="em-under txt-center">ΕΥΧΑΡΙΣΤΟΥΜΕ ΓΙΑ ΤΟ ΧΡΟΝΟ ΣΑΣ ΚΑΙ ΤΗΝ ΠΟΛΥΤΙΜΗ ΒΟΗΘΕΙΑ ΣΑΣ</h2></div>
 
         <?php include("footer.php"); ?>

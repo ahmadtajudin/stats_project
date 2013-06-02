@@ -162,21 +162,23 @@ class Tools {
             //Create mysql column names
             $database_table = Db_Actions::DbSanitizeData($_POST['table_name']);
             $query = "INSERT INTO ". $database_table . " (";
-            for($i=0; $i< count($columns); $i++){
+            for($i=0; $i<= count($columns); $i++){
                 $query .= $columns[$i] . ($i < count($columns) - 1 ? "," : "");
             }
             $query .= ") VALUES";
             //Create query with all the data
-            for($j=0; $j< count($data); $j++){
+            for($j=0; $j<= count($data); $j++){
                 if($j == 0){ continue; } // Skip first row, as that row contains our column names
                 
                 $query .= "(";
                 for($k=0; $k< count($columns); $k++){
                     $curr_row = trim($data[$j][$k]);
-                    $query .= ( empty($curr_row) ? "'0'" : "'".$curr_row."'" ) . ($k < count($columns) - 1 ? "," : "");
+                    $curr_row = empty($curr_row) && '0' != $curr_row ? "' '" : "'".$curr_row."'";
+                    $query .= $curr_row . ($k < count($columns) - 1 ? "," : "");
                 }
-                $query .= ")" . ($j < count($data) - 1 ? "," : "");
+                $query .= ")" . ($j <= count($data) - 1 ? "," : "");
             }
+           
             $lastID = Db_Actions::DbInsert($query);
             
             $_SESSION[Tools::$USER_MESSAGE] = "Data succesfully imported.";
