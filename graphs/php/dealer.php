@@ -40,7 +40,7 @@ class CHART_Dealer
         self::$all_dealers_according_to_user = 
         DB_DETAILS::ADD_ACTION("
             SELECT * FROM dealers WHERE dealer_code='".CHART_User::$LOGGED_USER->dealer_code."'
-        ", DB_DETAILS::$TYPE_SELECT);
+        ", DB_DETAILS::$TYPE_SELECT);     
     }
     public static function init_all_dealers()
     {

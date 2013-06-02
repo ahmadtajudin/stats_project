@@ -237,6 +237,16 @@ class ChartData extends DataModerator
       SELECT SUM(".$column_variable.") AS __SUM__ FROM data WHERE ".$this->area_year_month_dealercode_chain__SQL_condition
                     , DB_DETAILS::$TYPE_SELECT);
             $data_for .= "<sum_total_for_average_".$column_variable.">".$sumtotal_for_average[0]["__SUM__"]."</sum_total_for_average_".$column_variable.">";
+            /*if($i==0)
+            {
+                $count_total_sql = "
+                        SELECT COUNT(".$column_variable.") AS __COUNT__ FROM data WHERE ".$this->area_year_month_dealercode_chain__SQL_condition
+                        ." AND ".$column_variable."<>'0' AND ".$column_variable."<>'' ";
+                $count_total_withou_other_results__xN = DB_DETAILS::ADD_ACTION($count_total_sql, DB_DETAILS::$TYPE_SELECT);
+                $data_for .= "<count_total_topmainline_withou_other_results__xN_".$column_variable.">".
+                        $count_total_withou_other_results__xN[0]["__COUNT__"].
+                             "</count_total_topmainline_withou_other_results__xN_".$column_variable.">";
+            }*/
         }
         $data_for .= "</data>";
         return $data_for;

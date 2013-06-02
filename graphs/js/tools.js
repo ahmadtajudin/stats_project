@@ -62,8 +62,27 @@ ResizerPozicioner.resize_pozicion = function(element_id_or_class, rect_size_posi
 
 function ChartLineBase()
 {
+    /*
+     * 
+     * @type Boolean
+     * It is adding false, when line is first of the array of chart.
+     * In another case stay false.
+     */
+    this.isTopMain = false;
+    
     this.average_A = "-";
     this.average_B = "-";
+    
+    /*
+     * 
+     * @type String
+     * It will hold part html for parsing for the 
+     * pdf printing.
+     * It will hold N=XXX, or C=XXX
+     */
+    this.html_count_for_pring_pdf__A = "";
+    this.html_count_for_pring_pdf__B = "";
+    
     /*
      * If Right question available, then second line of the lines should be visible,
      * in another case should be invisible
@@ -234,6 +253,12 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
     this.line_label = labelLeftRightTexts.left_label;
     this.line_label_full = labelLeftRightTexts.left_label_full_text;
     
+    this.dataAXML = function(){return $($(this.chart.data_xml).find("group_A_data").get(0)).find("data").get(0);}
+    this.dataBXML = function(){return $($(this.chart.data_xml).find("group_B_data").get(0)).find("data").get(0);}
+    
+    this.leftTotal = function(){return parseFloat($(this.dataAXML()).find("count_total_"+this.column_name).text());}
+    this.rightTotal = function(){return parseFloat($(this.dataBXML()).find("count_total_"+this.column_name).text());}
+    
     this.details = details;
     this.column_name = column_name;
     this.count_areas = function()
@@ -359,8 +384,38 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
        this.average_A = average_left;
        this.average_B = average_right;
        
-       $(this.line__left).find(".xN_AreasLine_left_coeficient").html("A:"+average_left.toFixed(1));
-       $(this.line_right).find(".xN_AreasLine_left_coeficient").html("B:"+average_right.toFixed(1));
+       /*
+        * 
+        * @type String
+        * Top count should be, total top count line-second, tirth....or N line count
+        * Actualy, all other lines have same count.
+        * Top have total - SAME_COUNT
+        */
+       var count_data_readed_left = "", count_data_readed_right="";
+       if(!this.isTopMain)
+       {
+           count_data_readed_left = "<br/>(N="+leftTotal+")";
+           count_data_readed_right = "<br/>(N="+rightTotal+")";
+       }
+       else
+       {
+           var left_total_top_minues_next___A = this.leftTotal()-this.chart.lines[1].leftTotal();
+           var left_total_top_minues_next___B = this.rightTotal()-this.chart.lines[1].rightTotal();
+           count_data_readed_left = "<br/>(T="+left_total_top_minues_next___A+")";
+           count_data_readed_right = "<br/>(T="+left_total_top_minues_next___B+")";
+       }
+       
+       this.html_count_for_pring_pdf__A = count_data_readed_left;
+       this.html_count_for_pring_pdf__B = count_data_readed_right;
+       
+       $(this.line__left).find(".xN_AreasLine_left_coeficient").html
+       (
+               "A:"+average_left.toFixed(1)+count_data_readed_left
+       );
+       $(this.line_right).find(".xN_AreasLine_left_coeficient").html
+       (
+               "B:"+average_right.toFixed(1)+count_data_readed_right
+       );
     }
     
     this.get_percent_value_for_print = function(filter_type)
@@ -572,6 +627,10 @@ function ChartBase()
      */
     this.add_line = function( line )
     {
+        if(this.lines.length == 0)
+        {
+            line.isTopMain = true;
+        }
         this.lines.push( line );
         return line;
     }

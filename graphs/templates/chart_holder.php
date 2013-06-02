@@ -381,7 +381,6 @@
             text-align: left;
             background:url('images/bg_gray_to_white.jpg') repeat-y;
             padding-left: 10px;
-            padding-right: 20px;
         }
         .xN_AreasLine_right_label
         {
@@ -390,10 +389,14 @@
         .xN_AreasLine_left_coeficient
         {
             position:absolute;
-            left:-30px;
-            top:7px;
-            font-size: 11px;
+            left:-50px;
+            top:0px;
+            font-size: 9px;
             font-weight: bold;
+            line-height: 15px;
+            /*border:solid 1px;*/
+            text-align: right;
+            width:45px;
         }
     </style>
     <div id="template_xN_AreasLine"  class="displayNone">
@@ -405,7 +408,7 @@
                 <div class="xN_AreasLine_right xN_AreasLine_line">
                     <div class="posRel">
                         <div class="xN_AreasLine_left_coeficient">
-                            -
+                            -<br/>-
                         </div>
                     </div>
                     <div class="xN_AreasLine_parts_holder"></div>
@@ -414,7 +417,7 @@
                 <div class="xN_AreasLine_left xN_AreasLine_line">
                     <div class="posRel">
                         <div class="xN_AreasLine_left_coeficient">
-                            -
+                            -<br/>-
                         </div>
                     </div>
                     <div class="xN_AreasLine_parts_holder"></div>

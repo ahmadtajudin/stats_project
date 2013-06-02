@@ -352,8 +352,8 @@ class ChartDrawer
             {
                 $background_color_cell_vertical_par = "background_color_cell_vertical_par";
             }
-            $averageA = number_format($_SESSION["average_A_".$i], 1);
-            $averageB = number_format($_SESSION["average_B_".$i], 1);
+            $averageA = number_format($_SESSION["average_A_".$i], 1).$_SESSION["html_count_for_pring_pdf__A_".$i];
+            $averageB = number_format($_SESSION["average_B_".$i], 1).$_SESSION["html_count_for_pring_pdf__A_".$i];
             if(!self::group_B_is_visible())
             $lines_table_results .= '
             <tr>
@@ -459,6 +459,11 @@ class ChartDrawer
              */
             $_SESSION["average_A_".$i] = $_POST["average_A_".$i];
             $_SESSION["average_B_".$i] = $_POST["average_B_".$i];
+            /*
+             * Count rows for lines.Parsing HTML part
+             */
+            $_SESSION["html_count_for_pring_pdf__A_".$i] = $_POST["html_count_for_pring_pdf__A_".$i];
+            $_SESSION["html_count_for_pring_pdf__B_".$i] = $_POST["html_count_for_pring_pdf__B_".$i];
         }
         
         $_SESSION["passByDataA"] = $_POST["passByDataA"];

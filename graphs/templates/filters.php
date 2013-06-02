@@ -112,7 +112,11 @@ class ChartFilters
                                 CHART_Dealer::$dealers_list_for_using = CHART_Dealer::$all_dealers;
                             }
                             else if($filter_type == self::GROUP_B && 
-                                    CHART_User::$LOGGED_USER->user_type == CHART_User::TYPE_DEALER)
+                                   //( 
+                                    CHART_User::$LOGGED_USER->user_type == CHART_User::TYPE_DEALER 
+                                    /*||
+                                    CHART_User::$LOGGED_USER->user_type == CHART_User::TYPE_CLIENT
+                                    ) */)
                             {
                                 CHART_Dealer::$dealers_list_for_using = CHART_Dealer::$all_dealers_according_to_user;
                             }
@@ -374,6 +378,12 @@ function FiltersModerator()
              */
             object_details["average_A_"+i] = ChartModerator.CHART.lines[i].average_A;
             object_details["average_B_"+i] = ChartModerator.CHART.lines[i].average_B;
+            
+            /*
+             * Count rows for lines.Parsing HTML part
+             */
+            object_details["html_count_for_pring_pdf__A_"+i] = ChartModerator.CHART.lines[i].html_count_for_pring_pdf__A;
+            object_details["html_count_for_pring_pdf__B_"+i] = ChartModerator.CHART.lines[i].html_count_for_pring_pdf__B;
         }
         
         for(var i=1;i<=5;i++)
