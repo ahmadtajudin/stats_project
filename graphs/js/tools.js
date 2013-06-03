@@ -401,8 +401,8 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
        {
            var left_total_top_minues_next___A = this.leftTotal()-this.chart.lines[1].leftTotal();
            var left_total_top_minues_next___B = this.rightTotal()-this.chart.lines[1].rightTotal();
-           count_data_readed_left = "<br/>(T="+left_total_top_minues_next___A+")";
-           count_data_readed_right = "<br/>(T="+left_total_top_minues_next___B+")";
+           count_data_readed_left = "<br/>(N="+left_total_top_minues_next___A+")";
+           count_data_readed_right = "<br/>(N="+left_total_top_minues_next___B+")";
        }
        
        this.html_count_for_pring_pdf__A = count_data_readed_left;
