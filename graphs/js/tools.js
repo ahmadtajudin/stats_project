@@ -258,6 +258,8 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
     
     this.leftTotal = function(){return parseFloat($(this.dataAXML()).find("count_total_"+this.column_name).text());}
     this.rightTotal = function(){return parseFloat($(this.dataBXML()).find("count_total_"+this.column_name).text());}
+    this.leftTotal1234 = function(){return parseFloat($(this.dataAXML()).find("count_total_1234_"+this.column_name).text());}
+    this.rightTotal1234 = function(){return parseFloat($(this.dataBXML()).find("count_total_1234_"+this.column_name).text());}
     
     this.details = details;
     this.column_name = column_name;
@@ -394,15 +396,21 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
        var count_data_readed_left = "", count_data_readed_right="";
        if(!this.isTopMain)
        {
-           count_data_readed_left = "<br/>(N="+leftTotal+")";
-           count_data_readed_right = "<br/>(N="+rightTotal+")";
+           var left_total_top_minues_next___A = this.chart.lines[0].leftTotal1234();
+           var left_total_top_minues_next___B = this.chart.lines[0].rightTotal1234();
+           count_data_readed_left = "<br/>(N="+left_total_top_minues_next___A+")";
+           count_data_readed_right = "<br/>(N="+left_total_top_minues_next___B+")";
        }
        else
        {
-           var left_total_top_minues_next___A = this.leftTotal()-this.chart.lines[1].leftTotal();
-           var left_total_top_minues_next___B = this.rightTotal()-this.chart.lines[1].rightTotal();
-           count_data_readed_left = "<br/>(N="+left_total_top_minues_next___A+")";
-           count_data_readed_right = "<br/>(N="+left_total_top_minues_next___B+")";
+           count_data_readed_left = "<br/>(N="+leftTotal+")";
+           count_data_readed_right = "<br/>(N="+rightTotal+")";
+       }
+       if(!this.chart.show___NCount123Numbers)
+       {
+           count_data_readed_left = ""; 
+           count_data_readed_right = "";
+           $(".xN_AreasLine_left_coeficient").css("line-height", "30px");
        }
        
        this.html_count_for_pring_pdf__A = count_data_readed_left;
@@ -474,6 +482,7 @@ xN_AreasLine.prototype = new ChartLineBase();
 
 function ChartBase()
 {
+    this.show___NCount123Numbers = false;
     this.chart_have_average_form = false;
     this.chart_have_average_form_for_database = function(){if(this.chart_have_average_form)return "1";return "0";}
     this.setup_average_form = function()
@@ -595,33 +604,6 @@ function ChartBase()
      * Refference to all lines for the charts.
      */
     this.lines = [];
-    
-    /*
-     * This function is for init line in y position, in height
-     * And that line will be using in future for showing the result 
-     * of the diagram
-     * The name of the line is simple line
-     * All references for the simple lines, all ids will be store into 
-     * an array.With for loop should setup the results.
-     * On start they will have value 0
-     */
-    /*
-    this.add_simple_horizontal_line = function(id_line)
-    {
-        this.lines.push( new ChartSimpleLineHorizontal( id_line ) );
-    }*/
-    /*
-     * 
-     * @returns {undefined}
-     * Functions for adding x2, group A,B lines.
-     */
-    /*
-    this.add_simple_left_right_questions_line = function( position, label_txt )
-    {
-        var new_line = new SimpleLine_LeftRightQuestions( this, position, label_txt );
-        this.lines.push( new_line );
-        return new_line;
-    }*/
     /*
      * Function for addin a line into the chart
      */
@@ -947,6 +929,7 @@ Chart__GeneralImpresions.prototype = new ChartBase();
  */
 function Chart__Objects()
 {
+    this.show___NCount123Numbers = true;
     var line_details = 
     {
         range_from:5,range_to:1,
@@ -1024,6 +1007,7 @@ Chart__Objects.prototype = new ChartBase();
  */
 function Chart__Personal()
 {
+    this.show___NCount123Numbers = true;
     var line_details = 
     {
         range_from:5,range_to:1,
@@ -1116,6 +1100,7 @@ Chart__Personal.prototype = new ChartBase();
  */
 function Chart__QuestionsOnTime()
 {
+    this.show___NCount123Numbers = true;
     var line_details = 
     {
         range_from:5,range_to:1,
@@ -1202,6 +1187,7 @@ Chart__QuestionsOnTime.prototype = new ChartBase();
  */
 function Chart__Quality()
 {
+    this.show___NCount123Numbers = true;
     var line_details = 
     {
         range_from:5,range_to:1,
@@ -1339,6 +1325,7 @@ Chart__Quality_again_testing.prototype = new ChartBase();
  */
 function Chart__Costs()
 {
+    this.show___NCount123Numbers = true;
     var line_details = 
     {
         range_from:5,range_to:1,

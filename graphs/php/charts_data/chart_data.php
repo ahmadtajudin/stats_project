@@ -226,11 +226,20 @@ class ChartData extends DataModerator
                     SELECT COUNT(".$column_variable.") AS __COUNT__ FROM data WHERE ".$this->area_year_month_dealercode_chain__SQL_condition
                     ." AND ".$column_variable."<>'0' AND ".$column_variable."<>'' ";
             $count_total = DB_DETAILS::ADD_ACTION($count_total_sql, DB_DETAILS::$TYPE_SELECT);
+            $count_total_other_sql = "
+                    SELECT COUNT(".$column_variable.") AS __COUNT__ FROM data WHERE ".$this->area_year_month_dealercode_chain__SQL_condition
+                    ." AND ".$column_variable."<>'0' AND ".$column_variable."<>'5' AND ".$column_variable."<>'' ";
+            $count_total_other = DB_DETAILS::ADD_ACTION($count_total_other_sql, DB_DETAILS::$TYPE_SELECT);
             //print $count_total_sql;
             if($count_total[0]["__COUNT__"] == "0")
             {
                 $count_total[0]["__COUNT__"] = "1";
             }
+            if($count_total_other[0]["__COUNT__"] == "0")
+            {
+                $count_total_other[0]["__COUNT__"] = "1";
+            }
+            $data_for .= "<count_total_1234_".$column_variable.">".$count_total_other[0]["__COUNT__"]."</count_total_1234_".$column_variable.">";
             $data_for .= "<count_total_".$column_variable.">".$count_total[0]["__COUNT__"]."</count_total_".$column_variable.">";
             
             $sumtotal_for_average = DB_DETAILS::ADD_ACTION("

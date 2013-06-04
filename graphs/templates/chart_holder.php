@@ -408,7 +408,7 @@
                 <div class="xN_AreasLine_right xN_AreasLine_line">
                     <div class="posRel">
                         <div class="xN_AreasLine_left_coeficient">
-                            -<br/>-
+                            -
                         </div>
                     </div>
                     <div class="xN_AreasLine_parts_holder"></div>
@@ -417,7 +417,7 @@
                 <div class="xN_AreasLine_left xN_AreasLine_line">
                     <div class="posRel">
                         <div class="xN_AreasLine_left_coeficient">
-                            -<br/>-
+                            -
                         </div>
                     </div>
                     <div class="xN_AreasLine_parts_holder"></div>
