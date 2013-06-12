@@ -23,12 +23,15 @@ class CHART_User
     public $id,
             $user_type,
             $dealer_code;
+    public $chart_dealer;
     
     public function  CHART_User($row____data)
     {
         $this->id = $row____data["id"];
         $this->user_type = $row____data["user_type"];
         $this->dealer_code = $row____data["dealer_code"];
+        
+        $this->chart_dealer = CHART_Dealer::GET_BY_DEALER_CODE( $this->dealer_code );
     }
     
     public static function init_logged_user()

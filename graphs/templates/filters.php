@@ -402,10 +402,29 @@ function FiltersModerator()
             window.focus();
         });
     }
+    
+    
+    this.select_options_when_client_is_dealer = function()
+    {
+        $("#dealers_options__A").prop("disabled", true);
+        $("#dealers_options__A").val("<?php print CHART_User::$LOGGED_USER->dealer_code; ?>");
+        $("#chains_options__A").prop("disabled", true);
+        $("#chains_options__A").val("<?php print CHART_User::$LOGGED_USER->chart_dealer->chain; ?>");
+        if($("#chains_options__A").val() == "-1")
+        {
+            $("#chains_options__A").val("1");
+        }
+        $("#areas_options__A").prop("disabled", true);
+        $("#areas_options__A option:contains(<?php print CHART_User::$LOGGED_USER->chart_dealer->dealer_area; ?>)").attr('selected', 'selected');
+    }
 }
 FiltersModerator.FM = new FiltersModerator();
 FiltersModerator.TYPE_ORANGE = "A";
 FiltersModerator.TYPE___BLUE = "B";
+
+<?php if(CHART_User::$LOGGED_USER->user_type == CHART_User::TYPE_DEALER){ ?>
+FiltersModerator.FM.select_options_when_client_is_dealer();
+<?php } ?>
 
 $("#reset_button").click(function(e)
 {
