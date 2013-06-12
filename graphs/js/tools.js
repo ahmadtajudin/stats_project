@@ -383,6 +383,12 @@ function xN_AreasLine(chart, position, label_txt, details, column_name, labelLef
                           parseFloat($(dataAXML).find("count_total_"+this.column_name).text());
        var average_right = parseFloat($(dataBXML).find("sum_total_for_average_"+this.column_name).text())/
                           parseFloat($(dataBXML).find("count_total_"+this.column_name).text());
+       /*
+        * In case average to be 0, it should be 0 the sub_total/average
+        */
+       if(isNaN(average_left)){average_left = 0;}
+       if(isNaN(average_right)){average_right = 0;}
+       
        this.average_A = average_left;
        this.average_B = average_right;
        
@@ -698,10 +704,13 @@ function ChartBase()
     this.get_average_coeficient = function(filter_type)
     {
         var count = parseFloat($(this.data_xml).find("group_"+filter_type+"_data").find("count").text());
+        if(count == 0){count=1;}
         var average = parseFloat($(this.data_xml).find("group_"+filter_type+"_data").find("average_total").text());
         var coef = average/count;
+        console.log("["+filter_type+"]");
         console.log("average:["+average+"]")
-        console.log("count:["+count+"]")
+        console.log("count:["+count+"]");
+        console.log("=======================")
         return coef.toFixed(2);
     }
     

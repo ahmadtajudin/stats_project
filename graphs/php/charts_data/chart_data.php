@@ -189,10 +189,12 @@ class ChartData extends DataModerator
                     WHERE ".$this->area_year_month_dealercode_chain__SQL_condition." 
                     AND ".$column_init_for_average."<>''";
         $average_row = DB_DETAILS::ADD_ACTION($SQLSelectAverageSUM, DB_DETAILS::$TYPE_SELECT);
+        if($average_row[0]["___SUM___"] == ""){$average_row[0]["___SUM___"] = "0";}
         $SQLSelectAverageCOUNT = 
                 "SELECT COUNT(".$column_init_for_average.") AS ___COUNT___ FROM data 
                     WHERE ".$this->area_year_month_dealercode_chain__SQL_condition." 
                     AND ".$column_init_for_average."<>''";
+        //print $SQLSelectAverageSUM;
         $averagecount_row = DB_DETAILS::ADD_ACTION($SQLSelectAverageCOUNT, DB_DETAILS::$TYPE_SELECT);
         //print $SQLSelectAverageSUM;
         return "<average><average_total>".$average_row[0]["___SUM___"]."</average_total><count>".$averagecount_row[0]["___COUNT___"]."</count></average>";

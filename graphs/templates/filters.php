@@ -386,11 +386,17 @@ function FiltersModerator()
             object_details["html_count_for_pring_pdf__B_"+i] = ChartModerator.CHART.lines[i].html_count_for_pring_pdf__B;
         }
         
+        /*
+         * Parsing top 5 legend details.
+         */
+        object_details["there_is_x5_titles_legend"] = "true";
+        if(ChartModerator.CHART.line_details != null)
         for(var i=1;i<=5;i++)
         {
             object_details["legend_title_"+i] = ChartModerator.CHART.line_details["label_"+i];
             object_details["legend_color_"+i] = ChartModerator.CHART.line_details["color_"+i]; 
         }
+        else object_details["there_is_x5_titles_legend"] = "false";
         
         $.post("pdf_viewer/dompdf_tools.php", object_details, function(data)
         {
@@ -412,7 +418,7 @@ function FiltersModerator()
         $("#chains_options__A").val("<?php print CHART_User::$LOGGED_USER->chart_dealer->chain; ?>");
         if($("#chains_options__A").val() == "-1")
         {
-            $("#chains_options__A").val("1");
+            //$("#chains_options__A").val("1");
         }
         $("#areas_options__A").prop("disabled", true);
         $("#areas_options__A option:contains(<?php print CHART_User::$LOGGED_USER->chart_dealer->dealer_area; ?>)").attr('selected', 'selected');

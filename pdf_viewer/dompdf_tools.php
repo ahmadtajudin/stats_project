@@ -473,6 +473,7 @@ class ChartDrawer
         $_SESSION["average_A"] = $_POST["average_A"];
         $_SESSION["average_B"] = $_POST["average_B"];
         
+        if($_POST["there_is_x5_titles_legend"] == "true")
         for($i=1;$i<=5;$i++)
         {
             $_SESSION["legend_title_".$i] = $_POST["legend_title_".$i];

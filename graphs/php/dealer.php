@@ -22,10 +22,11 @@ class CHART_Dealer
      */
     public static $dealers_list_for_using;
     
-    public $id, $dealer_code, $dealer_name, $dealer_area, $chain;
+    public $id="-1", $dealer_code="undefined", $dealer_name="undefined", $dealer_area="undefined", $chain="undefined";
     
     public function  CHART_Dealer($row____data)
     {
+        if($row____data == NULL){return;}
         $this->id = $row____data["id"];
         $this->dealer_code = $row____data["dealer_code"];
         $this->dealer_name = $row____data["dealer_name"];
@@ -66,7 +67,7 @@ class CHART_Dealer
         {
             return new CHART_Dealer($dealers_data[0]);
         }
-        return NULL;
+        return new CHART_Dealer(NULL);
     }
 }
 ?>
