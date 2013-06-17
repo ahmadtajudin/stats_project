@@ -15,7 +15,7 @@ $html =
 <body>
     <div>
         <div class="relative" style=" page-break-after: always;">'.ChartDrawer::draw().'</div>
-        '.ChartDrawer::draw_lines_table_results().'
+        '.ChartDrawer::draw_lines_table_results().ChartDrawer::draw_lines_table_full_titles().'
     </div>
 </body>
 </html>';

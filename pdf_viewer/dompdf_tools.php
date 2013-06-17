@@ -418,6 +418,22 @@ class ChartDrawer
                 <img src="images/5.png" />&nbsp;&nbsp;Εξαιρετικά ικανοποιημένος (5)
          */
     }
+    public static function draw_lines_table_full_titles()
+    {
+        $top_position = self::top_diagram()+self::diagram_height()+150;
+        if($_SESSION["line_type_0"] == self::line_type_simple_horizontal)
+        {
+            return "";    
+        }
+        $html_titles = '<div style="padding:10px;background-color:#ccc; font-size:15px;margin-top:10px;">';
+        for($i=0;$i<$_SESSION["count_lines"];$i++)
+        {
+            $index_plus_eden = $i+1;
+            $html_titles .= '<div style="margin:5px;">('.$index_plus_eden.')'.$_SESSION["line_label_full_".$i].'</div>';
+        }
+        $html_titles .= '<div>';
+        return $html_titles;
+    }
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
@@ -453,6 +469,7 @@ class ChartDrawer
             $_SESSION["width_B_".$i] = $_POST["width_B_".$i];
             $_SESSION["line_type_".$i] = $_POST["line_type_".$i];
             $_SESSION["line_label_".$i] = $_POST["line_label_".$i];
+            $_SESSION["line_label_full_".$i] = $_POST["line_label_full_".$i];
             
             /*
              * This averages are for the parts when we have xN lines
