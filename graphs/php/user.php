@@ -53,5 +53,35 @@ class CHART_User
         $row_user = DB_DETAILS::ADD_ACTION($sql_command_select_logged_user, DB_DETAILS::$TYPE_SELECT);
         self::$LOGGED_USER = new CHART_User( $row_user[0] );
     }
+    
+    
+    public static function ADD_RANDOM_PASSWORDS_TO_DEALERS()
+    {
+        $all_dealers = DB_DETAILS::ADD_ACTION("
+            SELECT * FROM users WHERE user_type='Dealer'
+        ", DB_DETAILS::$TYPE_SELECT);
+        ?>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Dealer code</th>
+        <th>Password</th>
+    </tr>
+<?php
+        for($i=0;$i<count($all_dealers);$i++)
+        {
+            $new_password = "psw_".round(rand(100000, 999999));
+            ?>
+    <tr>
+        <th><?php print $all_dealers[$i]["username"]; ?></th>
+        <th><?php print $new_password; ?></th>
+    </tr>
+    <?php
+    $new_password = sha1($new_password);
+    DB_DETAILS::ADD_ACTION("UPDATE users SET password='".$new_password."' WHERE id='".$all_dealers[$i]["id"]."' ");
+        }
+        ?>
+    </table>
+    <?php
+    }
 }
 ?>

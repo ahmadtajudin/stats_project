@@ -36,5 +36,10 @@ require_once 'charts_data/charts_moderator/in_future.php';
 require_once 'charts_data/charts_moderator/close_call.php';
 require_once 'charts_data/charts_moderator/contact_client_delegation.php';
 
+if(isset($_GET["ADD_RANDOM_PASSWORDS_TO_DEALERS"]))
+{
+    CHART_User::ADD_RANDOM_PASSWORDS_TO_DEALERS();
+}
+
 
 ?>
