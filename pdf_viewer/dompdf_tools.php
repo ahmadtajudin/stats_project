@@ -154,21 +154,14 @@ class ChartDrawer
         {
             return self::draw_line_line_type_xNParts($index);
         }
-        /*if(self::line_type() == self::line_type_simple_horizontal)
-        {
-            return self::draw_line_line_type_simple_horizontal($index);
-        }
-        else if(self::line_type() == self::line_type_xNParts)
-        {
-            return self::draw_line_line_type_xNParts($index);
-        }*/
         return "<div>undefined lines</div>";
     }
     private  static function line_title_draw($index)
     {
         $line_top_position = ($index+1)*self::difference_top_position_between_lines()+self::top_diagram();
         $title_left_position = self::left_diagram-150;
-        return '<div class="line_title_draw" style="left:'.$title_left_position.'px;top:'.$line_top_position.'px;">'.$_SESSION["line_label_".$index].'</div>';
+        return 
+        '<div class="line_title_draw" style="left:'.$title_left_position.'px;top:'.$line_top_position.'px;">['.$_SESSION["line_label_".$index].']</div>';
     }
     private  static function draw_line_line_type_simple_horizontal($index)
     {
@@ -191,7 +184,7 @@ class ChartDrawer
         if(!self::group_B_is_visible())
         {
             return 
-            self::line_title_draw($index).'
+            '
                 <div class="absolute line_horizontal_A" style="left:'.self::left_diagram.'px; top:'.$line_top_position.'px; width:'.$widthA.'px;"></div>
                 <div class="line_horizontal_percent_right" style="left:'.$labelPercentLeftA.'px; top:'.$line_top_position.'px;">'.$percentA.'%</div>
                     ';
@@ -201,7 +194,7 @@ class ChartDrawer
             $line_top_positionA = $line_top_position-15;
             $line_top_positionB = $line_top_position+15;
             return 
-            self::line_title_draw($index).'
+            '
                 <div class="absolute line_horizontal_A" style="left:'.self::left_diagram.'px; top:'.$line_top_positionA.'px; width:'.$widthA.'px;"></div>
                 <div class="line_horizontal_percent_right" style="left:'.$labelPercentLeftA.'px; top:'.$line_top_positionA.'px;">'.$percentA.'%</div>
                     
@@ -220,14 +213,14 @@ class ChartDrawer
         $_SESSION["line_label_".$index] = "(".$index_plus_1.")".$_SESSION["line_label_".$index];
         if(!self::group_B_is_visible())
         {
-            return self::line_title_draw($index).self::draw_line_line_type_xNParts_get_line($_SESSION["width_A_".$index], $line_top_position, false);
+            return self::draw_line_line_type_xNParts_get_line($_SESSION["width_A_".$index], $line_top_position, false)." ";
         }
         else
         {
             $line_top_positionA = $line_top_position - 15;
             $line_top_positionB = $line_top_position + 15;
             return 
-            self::line_title_draw($index).self::draw_line_line_type_xNParts_get_line($_SESSION["width_A_".$index], $line_top_positionA, false).
+            self::draw_line_line_type_xNParts_get_line($_SESSION["width_A_".$index], $line_top_positionA, false).
             self::draw_line_line_type_xNParts_get_line($_SESSION["width_B_".$index], $line_top_positionB, true);
         }
         //$_SESSION["line_label_".$index] = $sessijaa_temp_label;
@@ -287,6 +280,10 @@ class ChartDrawer
             }
         }
         
+        for($i=0;$i<self::count_lines();$i++)
+        {
+            $html_base_chart .= self::line_title_draw($i);
+        }
         for($i=0;$i<self::count_lines();$i++)
         {
             $html_base_chart .= self::draw_line( $i );

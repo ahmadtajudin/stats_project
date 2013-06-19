@@ -20,7 +20,8 @@ $html =
 </body>
 </html>';
 //print $html;
- 
+//return;
+
 $dompdf = new DOMPDF();
 
 //$dompdf->set_paper('a4', 'landscape');
