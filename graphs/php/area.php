@@ -62,13 +62,21 @@ class CHART_Area
             }
             return;
         }
+        else
+        {
+            //array_push(self::$all_areas_for_dealer, $dealer_data[0]);
+            array_push(self::$all_areas_for_dealer, 
+                array("id"=>"dealer_area_from_database", 
+                    "area"=>"", "area_name_en"=>"", "area_name_gr"=>$dealer_data[0]["dealer_area"]));
+        }
         
-        for($i=0;$i<count(self::$all_areas);$i++)
+        /*for($i=0;$i<count(self::$all_areas);$i++)
         if(self::$all_areas[$i]["area"] == $dealer_data[0]["dealer_area"])
         {
             array_push(self::$all_areas_for_dealer, self::$all_areas[$i]);
-        }
-        array_push(self::$all_areas_for_dealer, array("id"=>"atina_solun", "area"=>"", "area_name_en"=>"", "area_name_gr"=>"Αθήνα + Θεσσαλονίκη"));
+        }*/
+        array_push(self::$all_areas_for_dealer, 
+                array("id"=>"atina_solun", "area"=>"", "area_name_en"=>"", "area_name_gr"=>"Αθήνα + Θεσσαλονίκη"));
     }
 }
 ?>

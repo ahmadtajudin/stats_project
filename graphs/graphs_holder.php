@@ -32,7 +32,8 @@ ChartData::init_all_months_periods();
 ?>
 <!---->
 <link rel="stylesheet" href="graphs/css/charts_style.css" />
-<script src="graphs/js/tools.js"></script>
+<!--<script src="graphs/js/tools.js"></script>-->
+<script src="graphs/js/tools.min.js"></script>
 <style>
     #chart_filters_block_holder
     {
