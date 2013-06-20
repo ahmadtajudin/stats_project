@@ -75,6 +75,7 @@ class CHART_Area
         {
             array_push(self::$all_areas_for_dealer, self::$all_areas[$i]);
         }*/
+        if($dealer_data[0]["chain"]=="1" || $dealer_data[0]["chain"]=="2")
         array_push(self::$all_areas_for_dealer, 
                 array("id"=>"atina_solun", "area"=>"", "area_name_en"=>"", "area_name_gr"=>"Αθήνα + Θεσσαλονίκη"));
     }

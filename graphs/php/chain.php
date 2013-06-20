@@ -61,11 +61,15 @@ class CHART_Chain
             }
             return;
         }
-        
-        for($i=0;$i<count(self::$all_chains);$i++)
-        if(self::$all_chains[$i]["chain"] == $dealer_data[0]["chain"])
+        else
         {
-            array_push(self::$all_chains_when_dealer, self::$all_chains[$i]);
+            $chain_row_data = 
+            DB_DETAILS::ADD_ACTION("
+                SELECT * FROM chains WHERE chain='".$dealer_data[0]["chain"]."'
+            ", DB_DETAILS::$TYPE_SELECT); 
+        
+            if(count($chain_row_data) > 0)     
+            array_push(self::$all_chains_when_dealer, $chain_row_data[0]);
         }
     }
 }

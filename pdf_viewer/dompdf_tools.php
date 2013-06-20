@@ -161,7 +161,7 @@ class ChartDrawer
         $line_top_position = ($index+1)*self::difference_top_position_between_lines()+self::top_diagram();
         $title_left_position = self::left_diagram-150;
         return 
-        '<div class="line_title_draw" style="left:'.$title_left_position.'px;top:'.$line_top_position.'px;">['.$_SESSION["line_label_".$index].']</div>';
+        '<div class="line_title_draw" style="left:'.$title_left_position.'px;top:'.$line_top_position.'px;">'.$_SESSION["line_label_".$index].'</div>';
     }
     private  static function draw_line_line_type_simple_horizontal($index)
     {
@@ -420,6 +420,8 @@ class ChartDrawer
         $top_position = self::top_diagram()+self::diagram_height()+150;
         if($_SESSION["line_type_0"] == self::line_type_simple_horizontal)
         {
+            if($_SESSION["chart_title"] != "Επικοινωνία πελάτη με αντιπροσωπεία" && 
+                   $_SESSION["chart_title"] != "Ποιότητα – Δεύτερη επίσκεψη" )
             return "";    
         }
         $html_titles = '<div style="padding:10px;background-color:#ccc; font-size:15px;margin-top:10px;">';

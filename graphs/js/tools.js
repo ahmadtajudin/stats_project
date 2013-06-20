@@ -1297,7 +1297,7 @@ function Chart__Quality_again_testing()
     "Το πρόβλημα διορθώθηκε αλλά παρουσιάστηκε άλλο πρόβλημα") );
     this.e68 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 612), 
     "Άλλος λόγος",
-    "") );
+    "Άλλος λόγος") );
     /*
     this.e61 = this.add_simple_left_right_questions_line( new Point(0, 43), "e61 need label" );
     this.e62 = this.add_simple_left_right_questions_line( new Point(0, 125), "e62 need label" );
@@ -1595,7 +1595,7 @@ function Chart__ContactClientDelegation()
     "Υπήρξαν θέματα για τα οποία χρειάστηκε να επικοινωνήσετε με την αντιπροσωπεία μετά το τελευταίο service που κάνατε") );
     this.h4 = this.add_line( new SimpleLine_LeftRightQuestions( this, new Point(0, 250), 
     "Λύθηκαν τα θέματα σας",
-    "") ); 
+    "Λύθηκαν τα θέματα σας") ); 
     this.show_data_to_diagram = function(  )
     {
         for(var i=3;i<=4;i++)
