@@ -3,8 +3,7 @@
     <div class="span12 faq-container">
         <p class="centered"><img src="images/login_glob_img.jpg" width="197" height="84" align="middle" /></p>
         <div>
-            Καλημέρα / Καλησπέρα σας, ονομάζομαι……. και σας τηλεφωνώ από το τμήμα εξυπηρέτησης πελατών της HYUNDAI εκ μέρους του Συνεργείου… Θα μπορούσα να μιλήσω στον κο/ στην 
-            κα……………………….. 
+            Καλημέρα / Καλησπέρα σας, ονομάζομαι……. και σας τηλεφωνώ από το τμήμα εξυπηρέτησης πελατών της HYUNDAI εκ μέρους του Συνεργείου… Θα μπορούσα να μιλήσω στον κο/ στην κα……………………….. 
         </div>
         <div>
             Η μάρκα HYUNDAI σε συνεργασία με το δίκτυο των συνεργείων της επικοινωνεί με τους πελάτες της. Θα σας κάνω κάποιες ερωτήσεις για να μου πείτε πόσο ικανοποιημένος ή δυσαρεστημένος είστε από τα συνεργεία της HYUNDAI
@@ -69,19 +68,21 @@
             </table>
         </div>
         <div><h2 class="em-under">Γενικές Εντυπώσεις</h2></div>
-        <div><strong class="red-color">ΕΡ7.</strong> Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ Απογοητευμένος έως το 5 Εξαιρετικά ικανοποιημένος)
+        <div><strong class="red-color">ΕΡ7.</strong> Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ Απογοητευμένος έως το 10 Εξαιρετικά ικανοποιημένος)
         </div>
-        <!--<div><strong class="red-color">ΕΡ7.</strong> Συνολικά, πόσο ικανοποιημένος μείνατε με την εμπειρία σας σε από αυτό το εξουσιοδοτημένο συνεργείο; Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ Απογοητευμένος έως το 5 Εξαιρετικά ικανοποιημένος)
-        </div>
-        -->
         <div>
             <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
                     <td>Εξαιρετικά ικανοποιημένος</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ Απογοητευμένος</td>
                 </tr>
@@ -94,10 +95,15 @@
             <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
                     <td>Εξαιρετικά ικανοποιημένος</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ Απογοητευμένος</td>
                 </tr>
@@ -109,13 +115,18 @@
         <div>Β1) Πως θα αξιολογούσατε τις εγκαταστάσεις του συγκεκριμένου συνεργείου. Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή  έως το 5 Άριστη)</div>
 
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -132,13 +143,18 @@
         <div>Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή έως το 5 Άριστη)</div>
 
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored  td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -148,27 +164,37 @@
         <div><h2 class="em-under">Προσωπικό</h2></div>
         <div>Γ1) Πως θα αξιολογούσατε το προσωπικό του συγκεκριμένου συνεργείου </div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
             </table>
         </div>
-        <div>Γ2) Αισθανθήκατε ότι σας αντιμετώπισαν σαν ένα σημαντικό πελάτη; </div>
+        <div>Γ2) Αισθανθήκατε ότι σας αντιμετώπισαν σαν ένα σημαντικό πελάτη;  </div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -184,16 +210,22 @@
             Γ7. Την προθυμία να ακούσουν και να κατανοήσουν τα προβλήματα;<br />
             Γ8. Την επεξήγηση της εργασίας που πρέπει να γίνει;<br />
             Γ9. Την ικανότητα τους να διαγνώσουν προβλήματα;<br />
+
         </div>
         <div>Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή έως το 5 Άριστη)</div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -203,13 +235,18 @@
         <div><h2 class="em-under">Θέματα Χρόνου</h2></div>
         <div>Δ1) Τύχατε της προσοχή του προσωπικού (σας είχε το προσωπικό στο νού του)καθ’ όλη την διάρκεια της επίσκεψης σας; </div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -224,16 +261,22 @@
             Δ6. τον συνολικό χρόνο που απαιτήθηκε ώστε να ολοκληρωθεί το service του οχήματός σας;<br />
             Δ7. Την ευελιξία της αντιπροσωπείας να σας κλείσει το ραντεβού που θέλατε;<br />
             Δ8. Την ευκολία ωραρίου;
+
         </div>
         <div>Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή έως το 5 Άριστη)</div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -242,13 +285,18 @@
         <div><h2 class="em-under">Ποιότητα</h2></div>
         <div>Ε1) Παρακαλώ αξιολογήστε την εμπιστοσύνη σας στις εργασίες που πραγματοποιήθηκαν στο αυτοκίνητο σας κατά τη διάρκεια του τελευταίου service.</div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -256,13 +304,18 @@
         </div>
         <div>Ε2) Σε ποιο βαθμό ολοκληρώθηκαν οι εργασίες που ζητήσατε;  Παρακαλώ δώστε τη βαθμολογία σας.</div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -270,18 +323,23 @@
         </div>
         <div>
             Εάν έχει δώσει βαθμολογία από 4 έως 1 στην Ερωτ. Ε1 παρακαλώ να γίνουν οι παρακάτω διαγνωστικές ερωτήσεις<br/><br/>
-            Ε3. Πώς θα αξιολογούσατε την καθαριότητα του οχήματός σας μετά  το<br/> service ή  την επισκευή;<br/>
-            Ε4. Παρακαλώ βαθμολογήστε την εμπιστοσύνη σας στην τεχνική κατάρτιση<br/> της αντιπροσωπείας:<br/>
+            Ε3. Πώς θα αξιολογούσατε την καθαριότητα του οχήματός σας μετά  το service ή  την επισκευή;<br/>
+            Ε4. Παρακαλώ βαθμολογήστε την εμπιστοσύνη σας στην τεχνική κατάρτιση της αντιπροσωπείας:<br/>
         </div>
         <div>Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή έως το 5 Άριστη)</div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -298,17 +356,23 @@
             Ζ) Το τμήμα του service επιχείρησε την επισκευή αλλά δεν διόρθωσε το πρόβλημα<br />
             Η) Το πρόβλημα διορθώθηκε αλλά παρουσιάστηκε άλλο πρόβλημα<br />
             Θ) Άλλος λόγος
+
         </div>
         <div><h2 class="em-under">Κόστη</h2></div>
         <div>Ζ1) Από άποψη κόστους, παρακαλώ αξιολογήστε την υπηρεσία που λάβατε</div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -321,16 +385,22 @@
             Ζ4. Πόσο λογικό ήταν το κόστος των εργασιών και των ανταλλακτικών;<br/>
             Ζ5. Επεξήγηση των χρεώσεων του service?<br/>
             Z6. Επεξήγηση του μελλοντικού προγραμμάτος συντήρησης και επισκευής;
+
         </div>
         <div>Παρακαλώ απαντήστε μου δίνοντας μία απάντηση από το (1 Πολύ κακή έως το 5 Άριστη)</div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -342,10 +412,15 @@
             <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -356,10 +431,15 @@
             <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -374,10 +454,15 @@
             <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
                     <td>Σίγουρα<br />Ναι</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Σίγουρα<br />Όχι</td>
                 </tr>
@@ -388,10 +473,15 @@
             <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
                     <td>Σίγουρα<br />Ναι</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Σίγουρα<br />Όχι</td>
                 </tr>
@@ -402,10 +492,15 @@
             <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
                 <tr>
                     <td>Σίγουρα<br />Ναι</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Σίγουρα<br />Όχι</td>
                 </tr>
@@ -415,13 +510,18 @@
         <div><h2 class="em-under">Κλείσιμο Κλήσης</h2></div>
         <div>Ι1. Πώς θα αξιολογούσατε την συνολική ποιότητα του αυτοκινήτου σας;</div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>
@@ -429,13 +529,18 @@
         </div>
         <div>I2. Θα ήθελα να μου πείτε συνολικά για την μάρκα HYUNDAI σε σχέση με άλλες μάρκες που ξέρετε. Θα λέγατε ότι είναι μία μάρκα: </div>
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table-colored">
+            <table cellpadding="0" cellspacing="0" border="0" class="table-colored td-less-pad">
                 <tr>
                     <td>Άριστη</td>
-                    <td class="dark-greenbg">5</td>
-                    <td class="light-greenbg">4</td>
-                    <td class="yellow-bg">3</td>
-                    <td class="orange-bg">2</td>
+                    <td class="dark-greenbg">10</td>
+                    <td class="dark-greenbg">9</td>
+                    <td class="light-greenbg">8</td>
+                    <td class="light-greenbg">7</td>
+                    <td class="yellow-bg">6</td>
+                    <td class="yellow-bg">5</td>
+                    <td class="orange-bg">4</td>
+                    <td class="orange-bg">3</td>
+                    <td class="red-bg">2</td>
                     <td class="red-bg">1</td>
                     <td>Πολύ κακή</td>
                 </tr>

@@ -148,6 +148,50 @@ table.table{
     width: 70%;
     margin: 10px 0 10px 0;
 }
+table.table-colored{
+    margin: 10px 0 10px 0;
+}
+table.table-colored td{
+    padding: 5px;
+    width: 50px;
+}
+table.table-colored td:last-child{
+    width: 80px !important;
+}
+td.dark-greenbg{
+    background: #339966;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+td.light-greenbg{
+    background: #99cc00;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+td.yellow-bg{
+    background: #ffff00;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+h2.font20px{
+   font-weight: bold;
+    font-size: 20px;
+}
+td.orange-bg{
+    background: #ff9900;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+td.red-bg{
+    background: #ff0000;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
 .dropdown{
     position: relative;
 }
@@ -262,4 +306,34 @@ div.modal-body .overlay-layer{
     position: absolute;
     left:0;
     top:0;
+}
+.hide-me{
+    display: none;
+}
+.red-color{
+    color: #ff0000;
+}
+.width22{
+    width: 150px !important;
+}
+h2.em-under{
+    font-weight: bold;
+    color: #000;
+    text-decoration: underline;
+    font-size: 20px;
+}
+.txt-center{
+    text-align: center;
+}
+div.browser-info{
+    padding-top: 17px;
+    font-family: Arial, Helvetica, Verdana;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+table.td-less-pad td{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    line-height: 1.2em !important;
 }

@@ -33,6 +33,7 @@ if (isset($_SESSION[Tools::$LOGGED_SSNAME])) {
                     <div class="logo centered"><a href="index.php"><img src="images/logo-hyundai.jpg" /></a></div>
                 </header>
                 <nav id="main-menu" class="full-row">
+                    <div class="browser-info">Best viewed with: Internet Explorer 9+, Chrome, Firefox 3.5+, Safari 3+, Opera 10+</div>
                 </nav>
             </div>
             <div class="clearfix"></div>
