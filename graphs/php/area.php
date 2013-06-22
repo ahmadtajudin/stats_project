@@ -65,9 +65,12 @@ class CHART_Area
         else
         {
             //array_push(self::$all_areas_for_dealer, $dealer_data[0]);
-            array_push(self::$all_areas_for_dealer, 
-                array("id"=>"dealer_area_from_database", 
-                    "area"=>"", "area_name_en"=>"", "area_name_gr"=>$dealer_data[0]["dealer_area"]));
+            $area_row = DB_DETAILS::ADD_ACTION("
+                SELECT * FROM areas WHERE 
+                area_name_gr='".$dealer_data[0]["dealer_area"]."'
+            ", DB_DETAILS::$TYPE_SELECT);
+            if(count($area_row) == 1)
+            array_push(self::$all_areas_for_dealer, $area_row[0]);
         }
         
         /*for($i=0;$i<count(self::$all_areas);$i++)
