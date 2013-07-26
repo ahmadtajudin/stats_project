@@ -776,6 +776,22 @@ function ChartBase()
 ChartBase.prototype = new Eventor();
 ChartBase.ON_CHART_DATA_LOAD = "ON_CHART_DATA_LOAD";
 ChartBase.ON_CHANGE_VISIBILITY_RESULT_B = "ON_CHANGE_VISIBILITY_RESULT_B";
+ChartBase.line_details =
+{
+    range_from:5,range_to:1,
+
+    color_5:"#339966",
+    color_4:"#99cc00",
+    color_3:"#ffff00",
+    color_2:"#ff9900",
+    color_1:"#ff0000",
+
+    label_1:"Πολύ Κακή",
+    label_2:"Κακή",
+    label_3:"Ούτε καλή ούτε κακή",
+    label_4:"Καλή",
+    label_5:"Άριστη "
+};
 
 function ChartTest()
 {
@@ -880,22 +896,7 @@ Chart__TotalVisits.prototype = new ChartBase();
  */
 function Chart__GeneralImpresions()
 {
-    var line_details = 
-    {
-        range_from:5,range_to:1,
-        
-        color_5:"#339966",
-        color_4:"#99cc00",
-        color_3:"#ffff00",
-        color_2:"#ff9900",
-        color_1:"#ff0000",
-        
-        label_1:"Πολύ Κακή",
-        label_2:"Κακή",
-        label_3:"Ούτε καλή ούτε κακή",
-        label_4:"Καλή",
-        label_5:"Άριστη "
-    };
+    var line_details = ChartBase.line_details;
     
     this.init
     (
@@ -939,22 +940,7 @@ Chart__GeneralImpresions.prototype = new ChartBase();
 function Chart__Objects()
 {
     this.show___NCount123Numbers = true;
-    var line_details = 
-    {
-        range_from:5,range_to:1,
-        
-        color_5:"#339966",
-        color_4:"#99cc00",
-        color_3:"#ffff00",
-        color_2:"#ff9900",
-        color_1:"#ff0000",
-        
-        label_1:"Πολύ Κακή",
-        label_2:"Κακή",
-        label_3:"Ούτε καλή ούτε κακή",
-        label_4:"Καλή",
-        label_5:"Άριστη "
-    };
+    var line_details = ChartBase.line_details;
     
     this.init
     (
@@ -1017,22 +1003,7 @@ Chart__Objects.prototype = new ChartBase();
 function Chart__Personal()
 {
     this.show___NCount123Numbers = true;
-    var line_details = 
-    {
-        range_from:5,range_to:1,
-        
-        color_5:"#339966",
-        color_4:"#99cc00",
-        color_3:"#ffff00",
-        color_2:"#ff9900",
-        color_1:"#ff0000",
-        
-        label_1:"Πολύ Κακή",
-        label_2:"Κακή",
-        label_3:"Ούτε καλή ούτε κακή",
-        label_4:"Καλή",
-        label_5:"Άριστη "
-    };
+    var line_details = ChartBase.line_details;
     
     this.init
     (
@@ -1110,22 +1081,7 @@ Chart__Personal.prototype = new ChartBase();
 function Chart__QuestionsOnTime()
 {
     this.show___NCount123Numbers = true;
-    var line_details = 
-    {
-        range_from:5,range_to:1,
-        
-        color_5:"#339966",
-        color_4:"#99cc00",
-        color_3:"#ffff00",
-        color_2:"#ff9900",
-        color_1:"#ff0000",
-        
-        label_1:"Πολύ Κακή",
-        label_2:"Κακή",
-        label_3:"Ούτε καλή ούτε κακή",
-        label_4:"Καλή",
-        label_5:"Άριστη "
-    };
+    var line_details = ChartBase.line_details;
     
     this.init
     (
@@ -1197,22 +1153,7 @@ Chart__QuestionsOnTime.prototype = new ChartBase();
 function Chart__Quality()
 {
     this.show___NCount123Numbers = true;
-    var line_details = 
-    {
-        range_from:5,range_to:1,
-        
-        color_5:"#339966",
-        color_4:"#99cc00",
-        color_3:"#ffff00",
-        color_2:"#ff9900",
-        color_1:"#ff0000",
-        
-        label_1:"Πολύ Κακή",
-        label_2:"Κακή",
-        label_3:"Ούτε καλή ούτε κακή",
-        label_4:"Καλή",
-        label_5:"Άριστη "
-    };
+    var line_details = ChartBase.line_details;
     
     this.init
     (
@@ -1335,22 +1276,7 @@ Chart__Quality_again_testing.prototype = new ChartBase();
 function Chart__Costs()
 {
     this.show___NCount123Numbers = true;
-    var line_details = 
-    {
-        range_from:5,range_to:1,
-        
-        color_5:"#339966",
-        color_4:"#99cc00",
-        color_3:"#ffff00",
-        color_2:"#ff9900",
-        color_1:"#ff0000",
-        
-        label_1:"Πολύ Κακή",
-        label_2:"Κακή",
-        label_3:"Ούτε καλή ούτε κακή",
-        label_4:"Καλή",
-        label_5:"Άριστη "
-    };
+    var line_details = ChartBase.line_details;
     
     this.init
     (
@@ -1407,22 +1333,7 @@ Chart__Costs.prototype = new ChartBase();
  */
 function Chart__FollowUp()
 {
-    var line_details = 
-    {
-        range_from:5,range_to:1,
-        
-        color_5:"#339966",
-        color_4:"#99cc00",
-        color_3:"#ffff00",
-        color_2:"#ff9900",
-        color_1:"#ff0000",
-        
-        label_1:"Πολύ Κακή",
-        label_2:"Κακή",
-        label_3:"Ούτε καλή ούτε κακή",
-        label_4:"Καλή",
-        label_5:"Άριστη "
-    };
+    var line_details = ChartBase.line_details;
     
     this.init
     (
@@ -1462,22 +1373,7 @@ Chart__FollowUp.prototype = new ChartBase();
  */
 function Chart__InFuture()
 {
-    var line_details = 
-    {
-        range_from:5,range_to:1,
-        
-        color_5:"#339966",
-        color_4:"#99cc00",
-        color_3:"#ffff00",
-        color_2:"#ff9900",
-        color_1:"#ff0000",
-        
-        label_1:"Σίγουρα Όχι",
-        label_2:"Μάλλον Όχι",
-        label_3:"Ούτε ναι ούτε όχι",
-        label_4:"Μάλλον Ναι",
-        label_5:"Σίγουρα Ναι "
-    };
+    var line_details = ChartBase.line_details;
     
     this.init
     (
@@ -1521,22 +1417,7 @@ Chart__InFuture.prototype = new ChartBase();
  */
 function Chart__CloseCall()
 {
-    var line_details = 
-    {
-        range_from:5,range_to:1,
-        
-        color_5:"#339966",
-        color_4:"#99cc00",
-        color_3:"#ffff00",
-        color_2:"#ff9900",
-        color_1:"#ff0000",
-        
-        label_1:"Πολύ Κακή",
-        label_2:"Κακή",
-        label_3:"Ούτε καλή ούτε κακή",
-        label_4:"Καλή",
-        label_5:"Άριστη "
-    };
+    var line_details = ChartBase.line_details;
     
     this.init
     (

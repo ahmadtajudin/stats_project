@@ -396,11 +396,11 @@ class ChartDrawer
                     <td class="table_header_th"><b>ΔΕΙΚΤΕΣ ΙΚΑΝΟΠΟΙΗΣΗΣ</b></td>
                     <td class="textAlignCenter table_header_th">Μέσος όρος</td>
                     <td class="textAlignCenter table_header_th">Group</td>
-                    <td class="textAlignCenter table_header_th">Πολύ απογοητευμένος (1)</td>
-                    <td class="textAlignCenter table_header_th">Απογοητευμένος (2)</td>
-                    <td class="textAlignCenter table_header_th">Ικανοποιημένος (3)</td>
-                    <td class="textAlignCenter table_header_th">Πολύ ικανοποιημένος (4)</td>
                     <td class="textAlignCenter table_header_th">Εξαιρετικά ικανοποιημένος (5)</td>
+                    <td class="textAlignCenter table_header_th">Πολύ ικανοποιημένος (4)</td>
+                    <td class="textAlignCenter table_header_th">Ικανοποιημένος (3)</td>
+                    <td class="textAlignCenter table_header_th">Απογοητευμένος (2)</td>
+                    <td class="textAlignCenter table_header_th">Πολύ απογοητευμένος (1)</td>
                 </tr>
                 '.$lines_table_results.'
             </table>
